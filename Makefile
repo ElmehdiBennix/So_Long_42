@@ -6,24 +6,19 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 07:56:09 by ebennix           #+#    #+#              #
-#    Updated: 2023/02/20 07:56:11 by ebennix          ###   ########.fr        #
+#    Updated: 2023/02/20 07:58:10 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-EXE := pipex
+EXE := 
 
 CC := cc
 
 CFLAGS := -g -Wall -Wextra -Werror
 
-HEADER := pipex.h
+HEADER := so_long.h
 
-FILES := pipex \
-		utils/pipex_utils \
-		utils/ft_split \
-		ft_printf/utils/ft_printf_hex \
-		ft_printf/utils/ft_printf_put \
-		ft_printf/ft_printf \
+FILES := 
 
 SRC := $(FILES:=.c)
 OBJ := $(SRC:.c=.o)
