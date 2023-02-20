@@ -1,0 +1,60 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/02/20 07:56:09 by ebennix           #+#    #+#              #
+#    Updated: 2023/02/20 07:56:11 by ebennix          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+EXE := pipex
+
+CC := cc
+
+CFLAGS := -g -Wall -Wextra -Werror
+
+HEADER := pipex.h
+
+FILES := pipex \
+		utils/pipex_utils \
+		utils/ft_split \
+		ft_printf/utils/ft_printf_hex \
+		ft_printf/utils/ft_printf_put \
+		ft_printf/ft_printf \
+
+SRC := $(FILES:=.c)
+OBJ := $(SRC:.c=.o)
+
+RM := rm -rf
+
+m := MakefileAutoPush
+
+all : $(EXE)
+
+$(EXE) : $(OBJ)
+	$(CC) $(OBJ) -o $(EXE)
+
+%.o : %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean :
+	$(RM) $(OBJ)
+
+fclean : clean
+	$(RM) $(EXE)
+
+re : fclean all
+
+git :
+	git add .
+	git status
+	git commit -m "$(m)"
+	git push
+
+force :
+	git push --force
+
+.PHONY : all clean fclean re git
