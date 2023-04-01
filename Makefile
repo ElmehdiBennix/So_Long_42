@@ -6,7 +6,7 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 07:56:09 by ebennix           #+#    #+#              #
-#    Updated: 2023/03/31 03:49:34 by ebennix          ###   ########.fr        #
+#    Updated: 2023/04/01 00:55:23 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ EXE := so_long
 
 CC := cc
 
-CFLAGS := -g -Wall -Wextra -Werror -Imlx
+CFLAGS := -g -Wall -Wextra -Werror -Imlx -lm
 
 HEADER := so_long.h
 
