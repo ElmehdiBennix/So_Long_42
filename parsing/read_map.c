@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/02 07:17:09 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/02 07:19:21 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ char    **read_map(char *map_name)
     if (fd < 0)
         failure(1);
     char **res = NULL;
-    while (1)
-    {
+    // while (1)
+    // {
         *res = get_next_line(fd);
-        if(*res == NULL)
-            break;
         printf("%s",*res);
-        res++;
-    }
+        // if(*res == NULL)
+        //     break;
+        // res++;
+    // }
     return (res);
 }
