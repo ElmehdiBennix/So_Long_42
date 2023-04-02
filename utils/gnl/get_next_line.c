@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 21:08:21 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/31 03:48:12 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/02 10:03:09 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,5 @@ char	*get_next_line(int fd)
 	row = ft_getrow(buffer);
 	buffer = ft_restbuffer(buffer);
 	return (row);
+	failure(1);
 }

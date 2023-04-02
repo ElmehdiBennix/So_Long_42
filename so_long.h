@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/02 07:03:10 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/02 09:40:53 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 # define TRUE 1
 # define FALSE 0
-# define BUFFER_SIZE 10
+# define BUFFER_SIZE 1
 
 typedef struct node
 {
