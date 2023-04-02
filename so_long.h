@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/01 04:37:29 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/02 07:03:10 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct components
 
 
 // parsing
+char    **read_map(char *map_name);
 
 
 
@@ -64,6 +65,7 @@ char	**ft_split(char *str, char delim);
 char	**free_2d(char **str);
 char	*ft_strchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 // linked list funcs
 int		ft_lstsize(t_list *lst);

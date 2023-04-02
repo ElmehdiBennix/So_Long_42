@@ -1,42 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 19:52:57 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/02 05:33:03 by ebennix          ###   ########.fr       */
+/*   Created: 2022/10/22 22:10:46 by ebennix           #+#    #+#             */
+/*   Updated: 2023/04/02 07:02:40 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char			*str;
-	unsigned int	i;
-	unsigned int	j;
+	size_t	i;
+	size_t	j;
 
-	i = -1;
-	j = -1;
-	if (!s1)
+	i = 0;
+	if (!needle[0])
+		return ((char *)haystack);
+	while (haystack[i] && i < len)
 	{
-		s1 = (char *)malloc(sizeof(char));
-		if (!s1)
-			return (NULL);
-		s1[0] = '\0';
+		j = 0;
+		if (haystack[i] == needle[0])
+		{
+			while (haystack[i + j] && needle[j] && haystack[i + j] == needle[j]
+				&& i + j < len)
+					j++;
+			if (!needle[j])
+				return ((char *)&haystack[i]);
+		}
+		i++;
 	}
-	if (!s2)
-		return (NULL);
-	str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1 * sizeof(char));
-	if (!str)
-		return (NULL);
-	while (s1[++i])
-		str[i] = s1[i];
-	while (s2[++j])
-		str[i + j] = s2[j];
-	str[i + j] = '\0';
-	free (s1);
-	return (str);
+	return (NULL);
 }
