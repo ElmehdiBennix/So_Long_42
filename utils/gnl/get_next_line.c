@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 21:08:21 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/02 10:03:09 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/04 06:44:12 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*ft_restbuffer(char *buffer)
 		free (buffer);
 		return (NULL);
 	}
-	rest = (char *) malloc ((ft_strlen(buffer)) - i + 1 * sizeof(char));
+	rest = (char *) ft_calloc ((ft_strlen(buffer)) - i + 1 , sizeof(char));
 	if (!rest)
 		return (NULL);
 	if (buffer[i] && buffer[i] == '\n')
@@ -52,9 +52,9 @@ static char	*ft_getrow(char *buffer)
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (buffer[i] == '\n')
-		row = (char *) malloc (i + 2 * sizeof(char));
+		row = (char *) ft_calloc (i + 2 , sizeof(char));
 	else
-		row = (char *) malloc (i + 1 * sizeof(char));
+		row = (char *) ft_calloc (i + 1 , sizeof(char));
 	if (!row)
 		return (NULL);
 	i = -1;
@@ -74,7 +74,7 @@ static char	*ft_readit(int fd, char *buffer)
 	char	*row;
 	int		i;
 
-	row = (char *) malloc((BUFFER_SIZE + 1) * sizeof(char));
+	row = (char *) ft_calloc((BUFFER_SIZE + 1) , sizeof(char));
 	if (!row)
 		return (NULL);
 	i = 1;

@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/02 09:40:53 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/04 06:45:55 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,16 @@
 
 typedef struct node
 {
-	int			content;
-	int			index;
-	int			position;
+	void		*content;
 	struct node	*next;
 }				t_list;
-
 
 typedef struct components
 {
 	int			P;
-	int			E;
 	int			C;
-	struct node	*next;
+	int			E;
 }				objects;
-
 
 // parsing
 char    **read_map(char *map_name);
@@ -66,15 +61,18 @@ char	**free_2d(char **str);
 char	*ft_strchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t nelem, size_t size);
+
 
 // linked list funcs
 int		ft_lstsize(t_list *lst);
 void	ft_lstfree(void *stack);
 void	ft_lstadd_back(t_list **lst, t_list	*node);
 void	ft_lstadd_front(t_list **lst, t_list *node);
-void	ft_lstcreate_back(t_list **lst, int content);
-void	ft_lstcreate_front(t_list **lst, int content);
-t_list	*ft_lstnew(int content);
+void	ft_lstcreate_back(t_list **lst, void *content);
+void	ft_lstcreate_front(t_list **lst, void *content);
+t_list	*ft_lstnew(void *content);
 t_list	*ft_lstlast(t_list *lst);
 
 #endif

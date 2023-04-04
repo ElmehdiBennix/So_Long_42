@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstcreate_front.c                               :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 05:09:25 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/04 06:24:46 by ebennix          ###   ########.fr       */
+/*   Created: 2023/04/04 06:44:52 by ebennix           #+#    #+#             */
+/*   Updated: 2023/04/04 06:45:46 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void	ft_lstcreate_front(t_list **lst, void *content)
+void	*ft_calloc(size_t nelem, size_t size)
 {
-	t_list	*front;
+	void	*p;
 
-	front = ft_lstnew(content);
-	ft_lstadd_front(lst, front);
+	p = (char *)malloc ((nelem * size) * sizeof(char));
+	if (!p)
+		return (0);
+	ft_bzero(p, (nelem * size));
+	return (p);
 }
-
-// void	ft_lstcreate_front(t_list **lst, char *content)
-// {
-// 	t_list	*front;
-
-// 	front = ft_lstnew(content);
-// 	ft_lstadd_front(lst, front);
-// }

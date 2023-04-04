@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 05:09:22 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/31 03:47:41 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/04 06:24:41 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void	ft_lstcreate_back(t_list **lst, int content)
+void	ft_lstcreate_back(t_list **lst, void *content)
 {
 	t_list	*back;
 

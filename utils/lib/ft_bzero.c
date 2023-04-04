@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstcreate_front.c                               :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 05:09:25 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/04 06:24:46 by ebennix          ###   ########.fr       */
+/*   Created: 2022/10/20 04:51:16 by ebennix           #+#    #+#             */
+/*   Updated: 2023/04/04 05:33:43 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void	ft_lstcreate_front(t_list **lst, void *content)
+static  void	*ft_memset(void *b, int c, size_t len)
 {
-	t_list	*front;
+	unsigned char	*p;
 
-	front = ft_lstnew(content);
-	ft_lstadd_front(lst, front);
+	p = (unsigned char *)b;
+	unsigned i = 0;
+	while (i < len)
+		p[i++] = (unsigned char)c;
+	return (b);
 }
 
-// void	ft_lstcreate_front(t_list **lst, char *content)
-// {
-// 	t_list	*front;
-
-// 	front = ft_lstnew(content);
-// 	ft_lstadd_front(lst, front);
-// }
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, 0, n);
+}
