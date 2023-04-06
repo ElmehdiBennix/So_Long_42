@@ -6,33 +6,50 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/06 01:38:49 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/06 04:38:20 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void collect_data(t_elements *solo , char data)
+void collect_data(t_elements *solo, char data)
 {
     if (data == 'P')
+    {
         solo -> player++;
+
+    }
     else if (data == 'C')
+    {
         solo -> collectible++;
+
+    }
     else if (data == 'E')
+    {
         solo -> exit++;
+    }
 }
 
-void valid_data(t_elements *solo)
+void valid_data(t_elements *solo , char flag)
 {
-    if (solo -> exit != 1)
-        failure(1);
-    if (solo -> player != 1)
-        failure(1);
-    if (solo -> collectible < 1)
-        failure(1);
+    if (flag == 'i')
+    {
+        solo ->player = 0;
+        solo ->collectible = 0;
+        solo ->exit = 0;
+    }
+    else if (flag == 'c')
+    {
+        if (solo -> exit != 1)
+            failure(1);
+        if (solo -> player != 1)
+            failure(1);
+        if (solo -> collectible < 1)
+            failure(1);
+    }
 }
 
-void row_one(char *res)
+void ones_row(char *res)
 {
     while (*res)
     {
@@ -45,36 +62,34 @@ void row_one(char *res)
 
 void valid_map(char **res)
 {
+    unsigned int x = 0;
+    unsigned int y;
     size_t comp;
     size_t len;
-    char *row;
-
     t_elements solo;
-    ft_bzero(&solo,sizeof(solo));
-    len = ft_strlen(*res);
-    row_one(*res);
-    while(*(++res))
+
+    valid_data(&solo,'i');
+    len = ft_strlen(res[x]);
+    ones_row(res[x]);
+    while(res[++x])
     {
-        row = *res;
-        comp = ft_strlen(row);
-        if (row[0] != '1')
+        y = 0;
+        comp = ft_strlen(res[x]);
+        if (res[x][y] != '1')
             failure(1);
-        while (*row)
+        while (res[x][++y] && y < (unsigned int)comp - 1)
         {
-            if((*row == '1' || *row == '0' || *row == 'P' || *row == 'C' || *row == 'E') && len == comp)
-            {
-                collect_data(&solo, *row);
-                row++;
-            }
+            if((res[x][y] == '1' || res[x][y] == '0' || res[x][y] == 'P' || res[x][y] == 'C' || res[x][y] == 'E') && len == comp)
+                collect_data(&solo, res[x][y]);
             else
                 failure(1);
         }
-        if (*(--row) != '1')
+        if (res[x][y] != '1')
             failure(1);
-        res++;
     }
-    row_one(*(--res));
-    valid_data(&solo);
+    ones_row(res[--x]);
+    printf("%d",++x);
+    valid_data(&solo,'c');
 }
 
 char    **read_map(char *map_name)
@@ -83,7 +98,6 @@ char    **read_map(char *map_name)
     char *str;
     char *row;
     char **res;
-
     str = ft_strnstr(map_name,".ber",ft_strlen(map_name));
     if(ft_strncmp(str,".ber",ft_strlen(str)) != 0)
         failure(1);
@@ -94,7 +108,7 @@ char    **read_map(char *map_name)
     while (1)
     {
         row = get_next_line(fd);
-        if (row == NULL)
+        if (row == NULL) // check for \n
             break;
         str = ft_strjoin(str,row);
         free(row);

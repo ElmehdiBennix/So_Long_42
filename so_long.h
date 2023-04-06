@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/06 01:39:34 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/06 01:54:52 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ int		ft_lstsize(t_list *lst);
 void	ft_lstfree(void *stack);
 void	ft_lstadd_back(t_list **lst, t_list	*node);
 void	ft_lstadd_front(t_list **lst, t_list *node);
-void	ft_lstcreate_back(t_list **lst, void *content);
-void	ft_lstcreate_front(t_list **lst, void *content);
-t_list	*ft_lstnew(void *content);
+void	ft_lstcreate_back(t_list **lst, unsigned int x , unsigned int y);
+void	ft_lstcreate_front(t_list **lst, unsigned int x , unsigned int y);
+t_list	*ft_lstnew(unsigned int x , unsigned int y);
 t_list	*ft_lstlast(t_list *lst);
 
 #endif
