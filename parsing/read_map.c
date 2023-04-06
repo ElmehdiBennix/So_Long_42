@@ -6,29 +6,29 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/04 06:56:06 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/06 01:38:49 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void collect_data(objects *solo , char data)
+void collect_data(t_elements *solo , char data)
 {
-    if (data == 'C')
-        solo -> C++;
-    else if (data == 'P')
-        solo -> P++;
+    if (data == 'P')
+        solo -> player++;
+    else if (data == 'C')
+        solo -> collectible++;
     else if (data == 'E')
-        solo -> E++;
+        solo -> exit++;
 }
 
-void valid_data(objects *solo)
+void valid_data(t_elements *solo)
 {
-    if (solo -> E != 1)
+    if (solo -> exit != 1)
         failure(1);
-    if (solo -> P != 1)
+    if (solo -> player != 1)
         failure(1);
-    if (solo -> C < 1)
+    if (solo -> collectible < 1)
         failure(1);
 }
 
@@ -49,11 +49,11 @@ void valid_map(char **res)
     size_t len;
     char *row;
 
-    objects solo;
-    ft_bzero(&solo,sizeof(objects));
+    t_elements solo;
+    ft_bzero(&solo,sizeof(solo));
     len = ft_strlen(*res);
     row_one(*res);
-    while(*res)
+    while(*(++res))
     {
         row = *res;
         comp = ft_strlen(row);
@@ -77,33 +77,29 @@ void valid_map(char **res)
     valid_data(&solo);
 }
 
-t_list get_map(char **res)
-{
-    t_list *map;
-    map = ft_lstnew(*res);
-    while (*(++res))
-        ft_lstcreate_back(&map, *res);
-    return (map);
-}
-
 char    **read_map(char *map_name)
 {
-    char *ber = ft_strnstr(map_name,".ber",ft_strlen(map_name));
-    if(ft_strncmp(ber,".ber",ft_strlen(ber)) != 0)
+    int fd;
+    char *str;
+    char *row;
+    char **res;
+
+    str = ft_strnstr(map_name,".ber",ft_strlen(map_name));
+    if(ft_strncmp(str,".ber",ft_strlen(str)) != 0)
         failure(1);
-    int fd = open(map_name, O_RDONLY);
+    fd = open(map_name, O_RDONLY);
     if (fd < 0)
         failure(1);
-    char *str = ft_strdup(""); 
+    str = ft_strdup("");
     while (1)
     {
-        char *row = get_next_line(fd);
+        row = get_next_line(fd);
         if (row == NULL)
             break;
         str = ft_strjoin(str,row);
+        free(row);
     }
-    char **res = ft_split(str,'\n');
-    get_map(res);
+    res = ft_split(str,'\n');
     valid_map(res);
     return (res);
 }

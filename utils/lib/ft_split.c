@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 20:52:56 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/04 06:43:29 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/04 09:55:40 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ char	**ft_split(char *str, char delim)
 		}
 	}
 	tab[i] = NULL;
+	free (str);
 	return (tab);
 }

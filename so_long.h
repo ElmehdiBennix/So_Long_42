@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/04 06:45:55 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/06 01:39:34 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,36 @@
 # include <math.h>
 # include <mlx.h>
 
-
 # define TRUE 1
 # define FALSE 0
 # define BUFFER_SIZE 1
 
-typedef struct node
+typedef struct coordinates
 {
-	void		*content;
-	struct node	*next;
-}				t_list;
+	unsigned int		x;
+	unsigned int		y;
+	struct coordinates	*next;
+}						t_list;
 
-typedef struct components
+typedef struct s_elements
 {
-	int			P;
-	int			C;
-	int			E;
-}				objects;
+	unsigned int 	player;
+	t_list			*p_position;
+	unsigned int	collectible;
+	t_list			*c_position;
+	unsigned int	exit;
+	t_list			*e_position;
+}					t_elements;
+typedef struct s_data
+{
+	char			**map;
+	t_elements		map_elemets;
+	unsigned int	h;
+	unsigned int	w;
+}					t_data;
 
 // parsing
 char    **read_map(char *map_name);
-
-
 
 //so_long funcs
 void	failure(int err);
