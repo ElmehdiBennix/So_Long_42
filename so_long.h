@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/06 01:54:52 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/09 20:17:33 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef struct s_data
 	t_elements		map_elemets;
 	unsigned int	h;
 	unsigned int	w;
+	//char **map_e;
+	//char **map_c;
 }					t_data;
 
 // parsing
