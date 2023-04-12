@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/12 00:16:35 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/12 01:38:10 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void collect_data(t_data *map, char data, int x , int y)
 {
-    (void)x;
-    (void)y;
     if (data == 'P')
     {
         map->elements.p_count++;
@@ -27,7 +25,6 @@ void collect_data(t_data *map, char data, int x , int y)
         map->elements.c_count++;
     else if (data == 'E')
         map->elements.e_count++;
-    
 }
 
 void set_check(t_data *map , char flag)
@@ -98,6 +95,22 @@ void valid_map(char **res ,t_data *map)
     set_check(map,'c');
 }
 
+void    flow_field(char **arr, int x, int y)
+{
+    if (arr[x][y] && arr[x][y] != '1' && arr[x][y] != 'X')
+    {
+        arr[x][y] = 'X';
+        if(arr[x][y] != 'E')
+        {
+            flow_field(arr, x + 1, y);
+            flow_field(arr, x - 1, y);
+            flow_field(arr, x, y + 1);
+            flow_field(arr, x, y - 1);
+        }
+    }
+
+}
+
 char    **read_map(char *map_name, t_data *map)
 {
     int fd;
@@ -122,6 +135,12 @@ char    **read_map(char *map_name, t_data *map)
     }
     res = ft_split(str,'\n');
     valid_map(res, map);
+    flow_field(res,3,11);
+    while(*res)
+    {
+        printf("%s\n",*res);
+        res++;
+    }
     return (res);
 }
 

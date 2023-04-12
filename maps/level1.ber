@@ -7,16 +7,4 @@
 10000000000000000000000001
 11111111111111111111111111
 
- fun(char **arr, int x, int y)
-
-{
-    if (arr[x][y] != '1' && arr[x][y] != '.' && arr[x][y])
-    {
-        arr[x][y] = '.';
-        fun (arr,x + 1, y);
-        fun (arr,x - 1, y);
-        fun (arr,x, y + 1);
-        fun (arr,x, y - 1);
-    }
-}
 
