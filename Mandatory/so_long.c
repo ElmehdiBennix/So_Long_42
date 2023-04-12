@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:19 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/12 02:29:08 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/12 03:19:24 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,12 @@ void so_long(char **av)
 
     map = (t_data *)ft_calloc(sizeof(t_data),1);
     read_map(*(++av), map);
-    // while(res != NULL)
-    // {
-    //     printf("%s",*res);
-    //     res++;
-    // }
-    // valid_map();
-    // void *p = mlx_init();
-    // mlx_new_window(p,800,1000,"test");
-    // mlx_loop(p);
+	void	*mlx;
+	void	*mlx_win;
 
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	mlx_loop(mlx);
 }
 
 int main(int ac, char **av)

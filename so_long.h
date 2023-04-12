@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/12 02:29:35 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/12 04:04:02 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 // if i pass it without allocating the meme needed it will crash better to allocate and end it with null
 // if i exited to scope of the fuction which has the variable and its value it will
 //be lost so we need to allocate it in the heap 
+
 
 // typedef struct img_s
 // {
@@ -91,3 +92,12 @@ void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nelem, size_t size);
 
 #endif
+
+
+
+// add a window in the start of the game containing play option and exit 
+// compile all mapes under makefile
+// add gravity and make the game side 2d 
+// maybe add futures like attack and get hit with health bar
+// flow field for the 2d game with gravity
+// add gravity to the game
