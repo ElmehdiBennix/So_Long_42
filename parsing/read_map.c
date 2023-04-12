@@ -6,45 +6,45 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/06 04:38:20 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/12 00:16:35 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void collect_data(t_elements *solo, char data)
+void collect_data(t_data *map, char data, int x , int y)
 {
+    (void)x;
+    (void)y;
     if (data == 'P')
     {
-        solo -> player++;
-
+        map->elements.p_count++;
+        map->p_position.x=x+1;
+        map->p_position.y=y+1;
+        // struct map map = {.x = 20,.y=20}; etc order does not matter
     }
     else if (data == 'C')
-    {
-        solo -> collectible++;
-
-    }
+        map->elements.c_count++;
     else if (data == 'E')
-    {
-        solo -> exit++;
-    }
+        map->elements.e_count++;
+    
 }
 
-void valid_data(t_elements *solo , char flag)
+void set_check(t_data *map , char flag)
 {
-    if (flag == 'i')
+    if (flag == 's')
     {
-        solo ->player = 0;
-        solo ->collectible = 0;
-        solo ->exit = 0;
+        map->elements.p_count = 0;
+        map->elements.c_count = 0;
+        map->elements.e_count = 0;
     }
     else if (flag == 'c')
     {
-        if (solo -> exit != 1)
+        if (map->elements.p_count != 1)
             failure(1);
-        if (solo -> player != 1)
+        if (map->elements.c_count < 1)
             failure(1);
-        if (solo -> collectible < 1)
+        if (map->elements.e_count != 1)
             failure(1);
     }
 }
@@ -60,15 +60,14 @@ void ones_row(char *res)
     }
 }
 
-void valid_map(char **res)
+void valid_map(char **res ,t_data *map)
 {
-    unsigned int x = 0;
-    unsigned int y;
+    int x = 0;
+    int y;
     size_t comp;
     size_t len;
-    t_elements solo;
 
-    valid_data(&solo,'i');
+    // set_check(map,'s');
     len = ft_strlen(res[x]);
     ones_row(res[x]);
     while(res[++x])
@@ -77,10 +76,10 @@ void valid_map(char **res)
         comp = ft_strlen(res[x]);
         if (res[x][y] != '1')
             failure(1);
-        while (res[x][++y] && y < (unsigned int)comp - 1)
+        while (res[x][++y] && y < (int)comp - 1)
         {
             if((res[x][y] == '1' || res[x][y] == '0' || res[x][y] == 'P' || res[x][y] == 'C' || res[x][y] == 'E') && len == comp)
-                collect_data(&solo, res[x][y]);
+                collect_data(map, res[x][y], x, y);
             else
                 failure(1);
         }
@@ -88,19 +87,27 @@ void valid_map(char **res)
             failure(1);
     }
     ones_row(res[--x]);
-    printf("%d",++x);
-    valid_data(&solo,'c');
+
+    printf("height == %d\n",++x);
+    printf("players == %d\n",map->elements.p_count);
+    printf("exit == %d\n",map->elements.e_count);
+    printf("collectibles == %d\n",map->elements.c_count);
+    printf("x == %d\n",map->p_position.x);
+    printf("y == %d\n",map->p_position.y);
+
+    set_check(map,'c');
 }
 
-char    **read_map(char *map_name)
+char    **read_map(char *map_name, t_data *map)
 {
     int fd;
     char *str;
     char *row;
     char **res;
+
     str = ft_strnstr(map_name,".ber",ft_strlen(map_name));
     if(ft_strncmp(str,".ber",ft_strlen(str)) != 0)
-        failure(1);
+        failure(1); // include colore and send erno + msg;
     fd = open(map_name, O_RDONLY);
     if (fd < 0)
         failure(1);
@@ -114,6 +121,8 @@ char    **read_map(char *map_name)
         free(row);
     }
     res = ft_split(str,'\n');
-    valid_map(res);
+    valid_map(res, map);
     return (res);
 }
+
+// 7sab is so off

@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/09 20:17:33 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/12 00:00:57 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,34 +27,50 @@
 # define FALSE 0
 # define BUFFER_SIZE 1
 
-typedef struct coordinates
-{
-	unsigned int		x;
-	unsigned int		y;
-	struct coordinates	*next;
-}						t_list;
+// if i pass it without allocating the meme needed it will crash better to allocate and end it with null
+// if i exited to scope of the fuction which has the variable and its value it will
+//be lost so we need to allocate it in the heap 
+
+// typedef struct img_s
+// {
+// 	void	*img_floor;
+// 	void	*img_player;
+// 	void	*img_exit;
+// 	void	*img_wall;
+// 	void	*img_collect;
+// 	int		height;
+// 	int		width;
+// 	char	*player;
+// 	char	*floor;
+// 	char	*wall;
+// 	char	*collect;
+// 	char	*exit;
+// }				t_img;
 
 typedef struct s_elements
 {
-	unsigned int 	player;
-	t_list			*p_position;
-	unsigned int	collectible;
-	t_list			*c_position;
-	unsigned int	exit;
-	t_list			*e_position;
-}					t_elements;
+	unsigned int 	p_count;
+	unsigned int 	c_count;
+	unsigned int	e_count;
+}				t_elements;
+
+typedef struct s_position
+{
+	int		x;
+	int		y;
+}				t_position;
+
 typedef struct s_data
 {
 	char			**map;
-	t_elements		map_elemets;
-	unsigned int	h;
-	unsigned int	w;
-	//char **map_e;
-	//char **map_c;
+	unsigned int	height;
+	unsigned int	width;
+	t_elements		elements;
+	t_position		p_position;	
 }					t_data;
 
 // parsing
-char    **read_map(char *map_name);
+char    **read_map(char *map_name, t_data *map);
 
 //so_long funcs
 void	failure(int err);
@@ -73,16 +89,5 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nelem, size_t size);
-
-
-// linked list funcs
-int		ft_lstsize(t_list *lst);
-void	ft_lstfree(void *stack);
-void	ft_lstadd_back(t_list **lst, t_list	*node);
-void	ft_lstadd_front(t_list **lst, t_list *node);
-void	ft_lstcreate_back(t_list **lst, unsigned int x , unsigned int y);
-void	ft_lstcreate_front(t_list **lst, unsigned int x , unsigned int y);
-t_list	*ft_lstnew(unsigned int x , unsigned int y);
-t_list	*ft_lstlast(t_list *lst);
 
 #endif
