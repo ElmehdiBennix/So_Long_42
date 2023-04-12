@@ -7,9 +7,9 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "so_long",
-            "program": "/Users/ebennix/Documents/So_long42/",
-            "args": ["maps/level1.ber"],
+            "name": "./so_long",
+            "program": "/Users/ebennix/Documents/So_long42/so_long",
+            "args": ["maps/level3.ber"],
             "cwd": "${workspaceFolder}"
         }
     ]

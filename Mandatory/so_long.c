@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:19 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/12 00:09:20 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/12 02:29:08 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void so_long(char **av)
     t_data  *map;
 
     map = (t_data *)ft_calloc(sizeof(t_data),1);
-    char **res = read_map(*(++av), map);
+    read_map(*(++av), map);
     // while(res != NULL)
     // {
     //     printf("%s",*res);

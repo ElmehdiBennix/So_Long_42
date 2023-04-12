@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/12 00:00:57 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/12 02:29:35 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct s_data
 }					t_data;
 
 // parsing
-char    **read_map(char *map_name, t_data *map);
+void    read_map(char *map_name, t_data *map);
 
 //so_long funcs
 void	failure(int err);

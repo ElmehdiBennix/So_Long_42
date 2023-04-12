@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/12 01:38:10 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/12 02:38:38 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void collect_data(t_data *map, char data, int x , int y)
     if (data == 'P')
     {
         map->elements.p_count++;
-        map->p_position.x=x+1;
-        map->p_position.y=y+1;
+        map->p_position.x=x;
+        map->p_position.y=y;
         // struct map map = {.x = 20,.y=20}; etc order does not matter
     }
     else if (data == 'C')
@@ -27,23 +27,14 @@ void collect_data(t_data *map, char data, int x , int y)
         map->elements.e_count++;
 }
 
-void set_check(t_data *map , char flag)
+void set_check(t_data *map)
 {
-    if (flag == 's')
-    {
-        map->elements.p_count = 0;
-        map->elements.c_count = 0;
-        map->elements.e_count = 0;
-    }
-    else if (flag == 'c')
-    {
-        if (map->elements.p_count != 1)
-            failure(1);
-        if (map->elements.c_count < 1)
-            failure(1);
-        if (map->elements.e_count != 1)
-            failure(1);
-    }
+    if (map->elements.p_count != 1)
+        failure(1);
+    if (map->elements.c_count < 1)
+        failure(1);
+    if (map->elements.e_count != 1)
+        failure(1);
 }
 
 void ones_row(char *res)
@@ -64,7 +55,6 @@ void valid_map(char **res ,t_data *map)
     size_t comp;
     size_t len;
 
-    // set_check(map,'s');
     len = ft_strlen(res[x]);
     ones_row(res[x]);
     while(res[++x])
@@ -84,34 +74,26 @@ void valid_map(char **res ,t_data *map)
             failure(1);
     }
     ones_row(res[--x]);
-
-    printf("height == %d\n",++x);
-    printf("players == %d\n",map->elements.p_count);
-    printf("exit == %d\n",map->elements.e_count);
-    printf("collectibles == %d\n",map->elements.c_count);
-    printf("x == %d\n",map->p_position.x);
-    printf("y == %d\n",map->p_position.y);
-
-    set_check(map,'c');
+    map->height = ++x;
+    map->width = len;
+    set_check(map);
 }
 
 void    flow_field(char **arr, int x, int y)
 {
-    if (arr[x][y] && arr[x][y] != '1' && arr[x][y] != 'X')
+    if (arr[x][y] && arr[x][y] != '1' && arr[x][y] != 'X' && arr[x][y] != 'E')
     {
         arr[x][y] = 'X';
-        if(arr[x][y] != 'E')
-        {
-            flow_field(arr, x + 1, y);
-            flow_field(arr, x - 1, y);
-            flow_field(arr, x, y + 1);
-            flow_field(arr, x, y - 1);
-        }
+        flow_field(arr, x + 1, y);
+        flow_field(arr, x - 1, y);
+        flow_field(arr, x, y + 1);
+        flow_field(arr, x, y - 1);
     }
-
+    if (arr[x][y] == 'E')
+        arr[x][y] = 'X';
 }
 
-char    **read_map(char *map_name, t_data *map)
+void    read_map(char *map_name, t_data *map)
 {
     int fd;
     char *str;
@@ -135,13 +117,16 @@ char    **read_map(char *map_name, t_data *map)
     }
     res = ft_split(str,'\n');
     valid_map(res, map);
-    flow_field(res,3,11);
+    flow_field(res,map->p_position.x,map->p_position.y);
     while(*res)
     {
-        printf("%s\n",*res);
+        while(**res)
+        {
+            if(**res == 'P' || **res == 'C'| **res == 'E')
+                failure(1);
+            (*res)++;
+        }
         res++;
     }
-    return (res);
+    map->map = ft_split(str,'\n');
 }
-
-// 7sab is so off
