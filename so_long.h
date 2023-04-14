@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/12 04:04:02 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/14 04:22:34 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,27 @@
 // if i exited to scope of the fuction which has the variable and its value it will
 //be lost so we need to allocate it in the heap 
 
+typedef struct s_walls
+{
+	void	*top_wall_v1;
+	void	*top_wall_v2;
+	void	*down_wall_v1;
+	void	*down_wall_v2;
+	void	*right_wall_v1;
+	void	*right_wall_v2;
+	void	*left_wall_v1;
+	void	*left_wall_v2;
+	void	*down_right_wall;
+	void	*down_left_wall;
+	void	*block_wall;
+	void	*full_wall;
 
-// typedef struct img_s
+	void	*floor;
+	int		height;
+	int		width;
+}				t_walls;
+
+// typedef struct s_img
 // {
 // 	void	*img_floor;
 // 	void	*img_player;
@@ -41,11 +60,6 @@
 // 	void	*img_collect;
 // 	int		height;
 // 	int		width;
-// 	char	*player;
-// 	char	*floor;
-// 	char	*wall;
-// 	char	*collect;
-// 	char	*exit;
 // }				t_img;
 
 typedef struct s_elements
@@ -63,15 +77,19 @@ typedef struct s_position
 
 typedef struct s_data
 {
+	void			*mlx;
+	void			*mlx_window;
 	char			**map;
 	unsigned int	height;
 	unsigned int	width;
 	t_elements		elements;
-	t_position		p_position;	
+	t_position		p_position;
+	t_walls			image;
 }					t_data;
 
 // parsing
 void    read_map(char *map_name, t_data *map);
+void    drawing(t_data *map);
 
 //so_long funcs
 void	failure(int err);
