@@ -2,6 +2,7 @@
     "files.associations": {
         "so_long.h": "c",
         "fcntl.h": "c",
-        "mlx.h": "c"
+        "mlx.h": "c",
+        "math.h": "c"
     }
 }

@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/15 03:00:19 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/15 03:57:49 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void init_image(t_data *map)
 	// if (!map->image.img_exit)
 	// 	failure(1);
 	// printf("%p\n", map->image.floor);
-
-	
 }
 
 // textures need to be recute to reduce the amount of them the effect of zoon <<<
@@ -73,12 +71,13 @@ void draw_map(t_data *map)
 		x += 16;
 	}
 	w = 0;
+	i = 0;
 	while(res[h])
 	{
 		x = 0;
 		w = 0;
 		printf("set\n");
-		while (res[h][w])
+		while (res[h][w++] && map->width >= i)
 		{
 			if(res[h][0] == '1')
 			{
@@ -87,17 +86,18 @@ void draw_map(t_data *map)
 				else			
 					mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.left_wall_v2,x,y);
 			}
-			// if (res[h][w] == '1')
-			// 	mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.block_wall,x,y);
+			if (res[h][w] == '1')
+				mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.block_wall,x,y);
 			else
 				mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.floor,x,y);
 			x += 16;
-			w++;
 		}
 		h++;
 		y += 16;
 	}
 }
+
+//window ress the res of texture * hight and width
 
 void    drawing(t_data *map)
 {
