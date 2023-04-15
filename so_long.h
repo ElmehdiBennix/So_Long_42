@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/14 04:22:34 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/15 00:28:42 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ typedef struct s_walls
 	void	*full_wall;
 
 	void	*floor;
-	int		height;
-	int		width;
+	int		img_width;
+	int		img_height;
 }				t_walls;
 
 // typedef struct s_img

@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/12 02:38:38 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/15 00:43:45 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void set_check(t_data *map)
 
 void ones_row(char *res)
 {
+    if (res == NULL)
+        failure(1);
     while (*res)
     {
         if (*res == '1')
@@ -106,6 +108,8 @@ void    read_map(char *map_name, t_data *map)
     fd = open(map_name, O_RDONLY);
     if (fd < 0)
         failure(1);
+    if (get_next_line(fd) == NULL)
+        failure(1);
     str = ft_strdup("");
     while (1)
     {
@@ -115,6 +119,7 @@ void    read_map(char *map_name, t_data *map)
         str = ft_strjoin(str,row);
         free(row);
     }
+    // segf when file is empty
     res = ft_split(str,'\n');
     valid_map(res, map);
     flow_field(res,map->p_position.x,map->p_position.y);
