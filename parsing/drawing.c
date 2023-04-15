@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/15 02:59:52 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/15 03:00:19 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void draw_map(t_data *map)
 				else			
 					mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.left_wall_v2,x,y);
 			}
-			if (res[h][w] == '1')
-				mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.block_wall,x,y);
+			// if (res[h][w] == '1')
+			// 	mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.block_wall,x,y);
 			else
 				mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.floor,x,y);
 			x += 16;
