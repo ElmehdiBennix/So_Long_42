@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/15 03:57:49 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/16 01:10:46 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,21 @@ void draw_map(t_data *map)
 	char **res;
 	res = map->map;
 	unsigned int i = 0;
-	while(res[0][w++] && map->width >= i)
-	{
-		if (i++ == 0)
-			mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.left_wall_v1,x,0);
-		else if (i > 0 && i != map->width)
-		{
-			if (i % 2 == 0)
-				mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.top_wall_v1,x,0);
-			else			
-				mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.top_wall_v2,x,0);
-		}
-		else if (i == map->width)
-			mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.right_wall_v1,x,0);
-		x += 16;
-	}
+	// while(res[0][w++] && map->width >= i)
+	// {
+	// 	if (i++ == 0)
+	// 		mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.left_wall_v1,x,0);
+	// 	else if (i > 0 && i != map->width)
+	// 	{
+	// 		if (i % 2 == 0)
+	// 			mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.top_wall_v1,x,0);
+	// 		else			
+	// 			mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.top_wall_v2,x,0);
+	// 	}
+	// 	else if (i == map->width)
+	// 		mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.right_wall_v1,x,0);
+	// 	x += 16;
+	// }
 	w = 0;
 	i = 0;
 	while(res[h])
@@ -77,7 +77,7 @@ void draw_map(t_data *map)
 		x = 0;
 		w = 0;
 		printf("set\n");
-		while (res[h][w++] && map->width >= i)
+		while (res[h][w] && map->width >= i)
 		{
 			if(res[h][0] == '1')
 			{
@@ -91,6 +91,7 @@ void draw_map(t_data *map)
 			else
 				mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.floor,x,y);
 			x += 16;
+			w++;
 		}
 		h++;
 		y += 16;
