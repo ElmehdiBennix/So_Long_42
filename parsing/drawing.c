@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/16 06:29:19 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/16 08:22:10 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void init_image(t_data *map)
 	// 	failure(1);
 	// printf("%p\n", map->image.floor);
 }
+//resize tbi
 
 // textures need to be recute to reduce the amount of them the effect of zoon <<<
 // 1234*
