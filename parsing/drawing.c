@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/16 01:11:26 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/16 01:37:23 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,41 +55,60 @@ void draw_map(t_data *map)
 	char **res;
 	res = map->map;
 	unsigned int i = 0;
-	// while(res[0][w++] && map->width >= i)
-	// {
-	// 	if (i++ == 0)
-	// 		mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.left_wall_v1,x,0);
-	// 	else if (i > 0 && i != map->width)
-	// 	{
-	// 		if (i % 2 == 0)
-	// 			mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.top_wall_v1,x,0);
-	// 		else			
-	// 			mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.top_wall_v2,x,0);
-	// 	}
-	// 	else if (i == map->width)
-	// 		mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.right_wall_v1,x,0);
-	// 	x += 16;
-	// }
+	while(res[0][w++] && map->width >= i)
+	{
+		if (i++ == 0)
+			mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.left_wall_v1,x,0);
+		else if (i > 0 && i != map->width)
+		{
+			if (i % 2 == 0)
+				mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.top_wall_v1,x,0);
+			else			
+				mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.top_wall_v2,x,0);
+		}
+		else if (i == map->width)
+			mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.right_wall_v1,x,0);
+		x += 16;
+	}
 	w = 0;
 	i = 0;
-	while(res[h])
+	while(res[h] && (unsigned int)h != map->height - 1)
 	{
 		x = 0;
 		w = 0;
-		printf("set\n");
-		while (res[h][w] && map->width >= i)
+		// printf("set\n");
+		i = 1;
+		printf("am hir\n");
+		while (res[h][w])
 		{
-			if(res[h][0] == '1')
-			{
-				// if (h % 2 == 0)
-					mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.left_wall_v1,x,y);
-				// else			
-				// 	mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.left_wall_v2,x,y);
-			}
 			if (res[h][w] == '1')
-				mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.block_wall,x,y);
+			{
+				if (i == 1)
+				{
+					if (h % 2 == 0)
+						mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.left_wall_v1,x,y);
+					else			
+						mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.left_wall_v2,x,y);
+				}
+				else if (i == map ->width)
+				{
+					if (h % 2 == 0)
+						mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.right_wall_v1,x,y);
+					else			
+						mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.right_wall_v2,x,y);
+				}
+				else
+					mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.block_wall,x,y);
+				printf("%d == ",i);
+				printf("%d\n",map->width);
+				i++;
+			}
 			else
+			{
 				mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.floor,x,y);
+				i++;
+			}
+			
 			x += 16;
 			w++;
 		}
