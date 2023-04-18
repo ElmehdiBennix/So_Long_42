@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/16 08:22:10 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/18 06:57:17 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void draw_map(t_data *map)
 	int w = 0;
 	int h = 1;
 	int x = 0;
-	int y = 72;
+	int y = 96;
 	char **res;
 	res = map->map;
 	unsigned int i = 0;
@@ -70,7 +70,7 @@ void draw_map(t_data *map)
 		}
 		else if (i == map->width)
 			mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.right_wall_v1,x,0);
-		x += 72;
+		x += 96;
 	}
 	w = 0;
 	i = 0;
@@ -110,11 +110,11 @@ void draw_map(t_data *map)
 				i++;
 			}
 			
-			x += 72;
+			x += 96;
 			w++;
 		}
 		h++;
-		y += 72;
+		y += 96;
 	}
 	w = 0;
 	i = 0;
@@ -132,7 +132,7 @@ void draw_map(t_data *map)
 		}
 		else if (i == map->width)
 			mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.down_right_wall,x,y);
-		x += 72;
+		x += 96;
 	}
 }
 
@@ -141,8 +141,8 @@ void draw_map(t_data *map)
 void    drawing(t_data *map)
 {
     map->mlx = mlx_init();
-	int hit = 72 * map->height ;
-	int wid = 72 * map->width ; 
+	int hit = 96 * map->height ;
+	int wid = 96 * map->width ; 
 	map->mlx_window = mlx_new_window(map->mlx, wid, hit, "yoto");
 	printf("%d %d \n",hit,wid);
 	init_image(map);
