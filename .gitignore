@@ -1,7 +1,7 @@
 ### C ###
+so_long
 # Prerequisites
 *.d
-
 # Object files
 *.o
 *.ko
