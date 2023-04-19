@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/19 04:02:43 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/19 04:06:33 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,9 @@ int draw_mid(t_data *map_data, char **map, int x, int y)
 				}
 				else
 				{
-					if (under_wall(map,h,w,'m') == 1)
+					if (h % 2 == 0 && under_wall(map,h,w,'m') == 1)
 						mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.block_wall_v1,x,y);
-					else if (under_wall(map,h,w,'m') == 1)
+					else if (h % 2 != 0 && under_wall(map,h,w,'m') == 1)
 						mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.block_wall_v2,x,y);
 					else if (under_wall(map,h,w,'m') == 0)
 						mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.full_wall,x,y);
