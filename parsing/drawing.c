@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/19 06:33:31 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/19 07:05:26 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,18 @@ int under_wall(char **map , int h, int w ,int flag)
 	else
 		return (0);
 }
+
+void draw_wall()
+{
+
+}
+
+void draw_floor()
+{
+
+}
+
+
 
 void draw_first(t_data *map_data, char **map, int x, int y)
 {
@@ -127,15 +139,9 @@ int draw_mid(t_data *map_data, char **map, int x, int y)
 				}
 				i++;
 			}
-			else if(map[h][w] == 'P')
-			{
-				mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.floor,x,y);
-				// mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.amongus,0,0);
-				i++;
-			}
 			else
 			{
-				mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.floor,x,y);
+				mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.floor,x,y); //add floor struct
 				i++;
 			}
 			x += 96;
@@ -175,11 +181,10 @@ void draw_map(t_data *map_data)
 	int y;
 	map = map_data->map;
 
-
 	draw_first(map_data, map, 0, 0);
-
 	y = draw_mid(map_data, map, 0, 96);
 	draw_last(map_data,map,0,y); // last y
+	
 }
 
 //window ress the res of texture * hight and width
@@ -193,7 +198,6 @@ void    drawing(t_data *map)
 	printf("%d %d \n",hit,wid);
 	init_image(map);
 	draw_map(map);
-
 	mlx_loop(map->mlx);
 }
 
