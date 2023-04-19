@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/18 06:57:17 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/19 04:02:43 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void init_image(t_data *map)
 {
-	map->image.block_wall = mlx_xpm_file_to_image(map->mlx,"textures/wall/block_wall_v1.xpm",&map->image.img_width,&map->image.img_height);
-
+	map->image.block_wall_v1 = mlx_xpm_file_to_image(map->mlx,"textures/wall/block_wall_v1.xpm",&map->image.img_width,&map->image.img_height);
+	map->image.block_wall_v2 = mlx_xpm_file_to_image(map->mlx,"textures/wall/block_wall_v2.xpm",&map->image.img_width,&map->image.img_height);
 	map->image.down_wall_v1 = mlx_xpm_file_to_image(map->mlx,"textures/wall/down_wall_v1.xpm",&map->image.img_width,&map->image.img_height);
 	map->image.down_wall_v2 = mlx_xpm_file_to_image(map->mlx,"textures/wall/down_wall_v2.xpm",&map->image.img_width,&map->image.img_height);
 	map->image.left_wall_v1 = mlx_xpm_file_to_image(map->mlx,"textures/wall/left_wall_v1.xpm",&map->image.img_width,&map->image.img_height);
@@ -37,103 +37,139 @@ void init_image(t_data *map)
 // textures need to be recute to reduce the amount of them the effect of zoon <<<
 // 1234*
 
-void draw_wall (t_data *map, char c,int x,int y)
+int under_wall(char **map , int h, int w ,int flag)
 {
-	if (c == '1')
-		mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.block_wall,x,y);
+	if (flag == 'f')
+	{
+		if (map[h][w-1] == '1')
+			return 1;
+		else
+			return 0;
+	}
+	else if (flag == 'm')
+	{
+		if (map[h+1][w] == '1')
+			return 1;
+		else
+			return 0;
+	}
 	else
-		mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.floor,x,y);
-
+		return (0);
 }
 
-// if number % 2 == 0 pair else impaire
-
-void draw_map(t_data *map)
+void draw_first(t_data *map_data, char **map, int x, int y)
 {
-	int w = 0;
-	int h = 1;
-	int x = 0;
-	int y = 96;
-	char **res;
-	res = map->map;
-	unsigned int i = 0;
-	while(res[0][w++] && map->width >= i)
+	int w;
+	unsigned int i;
+
+	i = 0;
+	w = 0;
+	while(map[0][w++] && map_data->width >= i)
 	{
 		if (i++ == 0)
-			mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.left_wall_v1,x,0);
-		else if (i > 0 && i != map->width)
+			mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.left_wall_v1,x,y);
+		else if (i > 0 && i != map_data->width)
 		{
-			if (i % 2 == 0)
-				mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.top_wall_v1,x,0);
-			else			
-				mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.top_wall_v2,x,0);
+			if (i % 2 == 0 && under_wall(map,1,w,'f') == 0)
+				mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.top_wall_v1,x,y);
+			else if (i % 2 != 0 && under_wall(map,1,w,'f') == 0)
+				mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.top_wall_v2,x,y);
+			else if (i % 2 == 0 && under_wall(map,1,w,'f') == 1)
+				mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.block_wall_v1,x,y);
+			else if (i % 2 != 0 && under_wall(map,1,w,'f') == 1)
+				mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.block_wall_v2,x,y);
 		}
-		else if (i == map->width)
-			mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.right_wall_v1,x,0);
+		else if (i == map_data->width)
+			mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.right_wall_v1,x,y);
 		x += 96;
 	}
-	w = 0;
-	i = 0;
-	while(res[h] && (unsigned int)h != map->height - 1)
+}
+
+int draw_mid(t_data *map_data, char **map, int x, int y)
+{
+	unsigned int i = 0;
+	int w;
+	int h = 0;
+
+	while(map[++h] && (unsigned int)h != map_data->height - 1)
 	{
 		x = 0;
-		w = 0;
+		w = -1;
 		i = 1;
-		// printf("am hir\n");
-		while (res[h][w])
+		while (map[h][++w])
 		{
-			if (res[h][w] == '1')
+			if (map[h][w] == '1')
 			{
 				if (i == 1)
 				{
 					if (h % 2 == 0)
-						mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.left_wall_v1,x,y);
+						mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.left_wall_v1,x,y);
 					else			
-						mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.left_wall_v2,x,y);
+						mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.left_wall_v2,x,y);
 				}
-				else if (i == map ->width)
+				else if (i == map_data ->width)
 				{
 					if (h % 2 == 0)
-						mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.right_wall_v1,x,y);
+						mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.right_wall_v1,x,y);
 					else			
-						mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.right_wall_v2,x,y);
+						mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.right_wall_v2,x,y);
 				}
 				else
-					mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.block_wall,x,y);
-				// printf("%d == ",i);
-				// printf("%d\n",map->width);
+				{
+					if (under_wall(map,h,w,'m') == 1)
+						mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.block_wall_v1,x,y);
+					else if (under_wall(map,h,w,'m') == 1)
+						mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.block_wall_v2,x,y);
+					else if (under_wall(map,h,w,'m') == 0)
+						mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.full_wall,x,y);
+				}
 				i++;
 			}
 			else
 			{
-				mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.floor,x,y);
+				mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.floor,x,y);
 				i++;
 			}
-			
 			x += 96;
-			w++;
 		}
-		h++;
 		y += 96;
 	}
-	w = 0;
+	return y;
+}
+
+void draw_last(t_data *map_data, char **map, int x, int y)
+{
+	int w;
+	unsigned int i;
+
 	i = 0;
-	x = 0;
-	while(res[h][w++] && map->width >= i)
+	w = 0;
+	while(map[map_data->height - 1][w++] && map_data->width >= i)
 	{
 		if (i++ == 0)
-			mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.down_left_wall,x,y);
-		else if (i > 0 && i != map->width)
+			mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.down_left_wall,x,y);
+		else if (i > 0 && i != map_data->width)
 		{
 			if (i % 2 == 0)
-				mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.down_wall_v1,x,y);
+				mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.down_wall_v1,x,y);
 			else			
-				mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.down_wall_v2,x,y);
+				mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.down_wall_v2,x,y);
 		}
-		else if (i == map->width)
-			mlx_put_image_to_window(map->mlx,map->mlx_window,map->image.down_right_wall,x,y);
+		else if (i == map_data->width)
+			mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.down_right_wall,x,y);
 		x += 96;
 	}
+}
+
+void draw_map(t_data *map_data)
+{
+	char **map;
+	int y;
+	map = map_data->map;
+
+	draw_first(map_data, map, 0, 0);
+	y = draw_mid(map_data, map, 0, 96);
+	draw_last(map_data,map,0,y); // last y
 }
 
 //window ress the res of texture * hight and width
@@ -156,3 +192,5 @@ void    drawing(t_data *map)
 // if there is a /n inside the map shoud display an error
 
 // mac res  2880, 1575, for window
+
+// 17 * 30 max
