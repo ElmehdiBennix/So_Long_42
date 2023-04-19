@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/19 02:49:39 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/19 05:48:00 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_walls
 	void	*block_wall_v1;
 	void	*block_wall_v2;
 	void	*full_wall;
+	void	*amongus;
 
 	void	*floor;
 	int		img_width;
