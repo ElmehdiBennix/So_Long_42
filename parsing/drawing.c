@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/19 05:39:45 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/19 05:41:13 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,7 @@ void draw_first(t_data *map_data, char **map, int x, int y)
 	while(map[0][w++] && map_data->width >= i)
 	{
 		if (i++ == 0)
-		{
-			fprintf(stderr,"%p\n", map_data->image.floor);
 			mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.left_wall_v1,x,y);
-
-		}
 		else if (i > 0 && i != map_data->width)
 		{
 			if (i % 2 == 0 && under_wall(map,1,w,'f') == 0)
