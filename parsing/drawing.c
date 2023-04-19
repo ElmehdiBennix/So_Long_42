@@ -6,31 +6,31 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/19 04:06:33 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/19 05:39:45 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void init_image(t_data *map)
+void init_image(t_data *map_data)
 {
-	map->image.block_wall_v1 = mlx_xpm_file_to_image(map->mlx,"textures/wall/block_wall_v1.xpm",&map->image.img_width,&map->image.img_height);
-	map->image.block_wall_v2 = mlx_xpm_file_to_image(map->mlx,"textures/wall/block_wall_v2.xpm",&map->image.img_width,&map->image.img_height);
-	map->image.down_wall_v1 = mlx_xpm_file_to_image(map->mlx,"textures/wall/down_wall_v1.xpm",&map->image.img_width,&map->image.img_height);
-	map->image.down_wall_v2 = mlx_xpm_file_to_image(map->mlx,"textures/wall/down_wall_v2.xpm",&map->image.img_width,&map->image.img_height);
-	map->image.left_wall_v1 = mlx_xpm_file_to_image(map->mlx,"textures/wall/left_wall_v1.xpm",&map->image.img_width,&map->image.img_height);
-	map->image.left_wall_v2 = mlx_xpm_file_to_image(map->mlx,"textures/wall/left_wall_v2.xpm",&map->image.img_width,&map->image.img_height);
-	map->image.down_left_wall = mlx_xpm_file_to_image(map->mlx,"textures/wall/down_left_wall.xpm",&map->image.img_width,&map->image.img_height);
-	map->image.down_right_wall = mlx_xpm_file_to_image(map->mlx,"textures/wall/down_right_wall.xpm",&map->image.img_width,&map->image.img_height);
-	map->image.full_wall = mlx_xpm_file_to_image(map->mlx,"textures/wall/full_wall.xpm",&map->image.img_width,&map->image.img_height);
-	map->image.right_wall_v1 = mlx_xpm_file_to_image(map->mlx,"textures/wall/right_wall_v1.xpm",&map->image.img_width,&map->image.img_height);
-	map->image.right_wall_v2 = mlx_xpm_file_to_image(map->mlx,"textures/wall/right_wall_v2.xpm",&map->image.img_width,&map->image.img_height);
-	map->image.top_wall_v1 = mlx_xpm_file_to_image(map->mlx,"textures/wall/top_wall_v1.xpm",&map->image.img_width,&map->image.img_height);
-	map->image.top_wall_v2 = mlx_xpm_file_to_image(map->mlx,"textures/wall/top_wall_v2.xpm",&map->image.img_width,&map->image.img_height);
-	map->image.floor = mlx_xpm_file_to_image(map->mlx,"textures/floor_v1.xpm",&map->image.img_width,&map->image.img_height);
-	// if (!map->image.img_exit)
+	map_data->image.block_wall_v1 = mlx_xpm_file_to_image(map_data->mlx,"textures/wall/block_wall_v1.xpm",&map_data->image.img_width,&map_data->image.img_height);
+	map_data->image.block_wall_v2 = mlx_xpm_file_to_image(map_data->mlx,"textures/wall/block_wall_v2.xpm",&map_data->image.img_width,&map_data->image.img_height);
+	map_data->image.down_wall_v1 = mlx_xpm_file_to_image(map_data->mlx,"textures/wall/down_wall_v1.xpm",&map_data->image.img_width,&map_data->image.img_height);
+	map_data->image.down_wall_v2 = mlx_xpm_file_to_image(map_data->mlx,"textures/wall/down_wall_v2.xpm",&map_data->image.img_width,&map_data->image.img_height);
+	map_data->image.left_wall_v1 = mlx_xpm_file_to_image(map_data->mlx,"textures/wall/left_wall_v1.xpm",&map_data->image.img_width,&map_data->image.img_height);
+	map_data->image.left_wall_v2 = mlx_xpm_file_to_image(map_data->mlx,"textures/wall/left_wall_v2.xpm",&map_data->image.img_width,&map_data->image.img_height);
+	map_data->image.down_left_wall = mlx_xpm_file_to_image(map_data->mlx,"textures/wall/down_left_wall.xpm",&map_data->image.img_width,&map_data->image.img_height);
+	map_data->image.down_right_wall = mlx_xpm_file_to_image(map_data->mlx,"textures/wall/down_right_wall.xpm",&map_data->image.img_width,&map_data->image.img_height);
+	map_data->image.full_wall = mlx_xpm_file_to_image(map_data->mlx,"textures/wall/full_wall.xpm",&map_data->image.img_width,&map_data->image.img_height);
+	map_data->image.right_wall_v1 = mlx_xpm_file_to_image(map_data->mlx,"textures/wall/right_wall_v1.xpm",&map_data->image.img_width,&map_data->image.img_height);
+	map_data->image.right_wall_v2 = mlx_xpm_file_to_image(map_data->mlx,"textures/wall/right_wall_v2.xpm",&map_data->image.img_width,&map_data->image.img_height);
+	map_data->image.top_wall_v1 = mlx_xpm_file_to_image(map_data->mlx,"textures/wall/top_wall_v1.xpm",&map_data->image.img_width,&map_data->image.img_height);
+	map_data->image.top_wall_v2 = mlx_xpm_file_to_image(map_data->mlx,"textures/wall/top_wall_v2.xpm",&map_data->image.img_width,&map_data->image.img_height);
+	map_data->image.floor = mlx_xpm_file_to_image(map_data->mlx,"textures/floor_v3.xpm",&map_data->image.img_width,&map_data->image.img_height);
+	// if (!map_data->image.img_exit)
 	// 	failure(1);
-	// printf("%p\n", map->image.floor);
+	// printf("%p\n", map_data->image.floor);
 }
 //resize tbi
 
@@ -67,7 +67,11 @@ void draw_first(t_data *map_data, char **map, int x, int y)
 	while(map[0][w++] && map_data->width >= i)
 	{
 		if (i++ == 0)
+		{
+			fprintf(stderr,"%p\n", map_data->image.floor);
 			mlx_put_image_to_window(map_data->mlx,map_data->mlx_window,map_data->image.left_wall_v1,x,y);
+
+		}
 		else if (i > 0 && i != map_data->width)
 		{
 			if (i % 2 == 0 && under_wall(map,1,w,'f') == 0)
@@ -167,7 +171,9 @@ void draw_map(t_data *map_data)
 	int y;
 	map = map_data->map;
 
+
 	draw_first(map_data, map, 0, 0);
+
 	y = draw_mid(map_data, map, 0, 96);
 	draw_last(map_data,map,0,y); // last y
 }
