@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 05:05:48 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/20 05:10:30 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/20 06:15:53 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdarg.h>
 # include <limits.h>
 # include <fcntl.h>
+# include <errno.h>
 # include "colors.h"
 
 typedef struct s_list

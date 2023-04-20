@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/20 04:58:42 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/20 06:29:17 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	draw_wall(t_data *map_data, int h, int w, int x, int y)
 		else
 			mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->image.left_wall_v2, x, y);
 	}
-	else if (w == map_data->width)
+	else if ((unsigned int)w == map_data->width)
 	{
 		if (h % 2 == 0)
 			mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->image.right_wall_v1, x, y);

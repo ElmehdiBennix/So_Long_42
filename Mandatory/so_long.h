@@ -6,22 +6,15 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/20 04:59:18 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/20 06:15:55 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <errno.h>
-# include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
-# include <stdarg.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <unistd.h>
 # include "../utils/inc/utils.h"
 
 # define TRUE 1
