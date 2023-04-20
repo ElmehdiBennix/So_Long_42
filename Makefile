@@ -6,24 +6,21 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 07:56:09 by ebennix           #+#    #+#              #
-#    Updated: 2023/04/15 01:01:47 by ebennix          ###   ########.fr        #
+#    Updated: 2023/04/20 05:04:09 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 EXE := so_long
 
+ARCH := ../utils/utils.a
+
 CC := cc
 
 CFLAGS := -g -Wall -Wextra -Imlx
 # -Werror
-HEADER := so_long.h
+HEADER := Mandatory/so_long.h
 
-FILES := Mandatory/so_long 			parsing/read_map													\
-		 utils/lib/ft_atoi					\
-		 parsing/drawing	\
-		 utils/lib/ft_split			utils/lib/ft_strdup			utils/lib/ft_strjoin				\
-		 utils/lib/ft_strlen		utils/lib/ft_isdigit		utils/lib/ft_strchr			utils/lib/ft_strncmp			\
-		 utils/lib/ft_strnstr		utils/gnl/get_next_line		utils/solo/error			utils/lib/ft_bzero	 utils/lib/ft_calloc	\
+FILES := Mandatory/so_long 			Mandatory/parsing/read_map				 parsing/drawing\
 
 SRC := $(FILES:=.c)
 OBJ := $(SRC:.c=.o)
@@ -35,7 +32,8 @@ m := MakefileAutoPush
 all : $(EXE)
 
 $(EXE) : $(OBJ)
-	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(EXE)
+	$(MAKE) -f $(ARCH)
+	$(CC) $(OBJ) $(ARCH) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(EXE)
 
 %.o : %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@

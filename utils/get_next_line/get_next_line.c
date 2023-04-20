@@ -6,11 +6,11 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 21:08:21 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/04 06:44:12 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/20 02:38:36 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../inc/utils.h"
 
 static char	*ft_restbuffer(char *buffer)
 {
@@ -27,7 +27,7 @@ static char	*ft_restbuffer(char *buffer)
 		free (buffer);
 		return (NULL);
 	}
-	rest = (char *) ft_calloc ((ft_strlen(buffer)) - i + 1 , sizeof(char));
+	rest = (char *) malloc ((ft_strlen(buffer)) - i + 1 * sizeof(char));
 	if (!rest)
 		return (NULL);
 	if (buffer[i] && buffer[i] == '\n')
@@ -52,9 +52,9 @@ static char	*ft_getrow(char *buffer)
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (buffer[i] == '\n')
-		row = (char *) ft_calloc (i + 2 , sizeof(char));
+		row = (char *) malloc (i + 2 * sizeof(char));
 	else
-		row = (char *) ft_calloc (i + 1 , sizeof(char));
+		row = (char *) malloc (i + 1 * sizeof(char));
 	if (!row)
 		return (NULL);
 	i = -1;
@@ -74,7 +74,7 @@ static char	*ft_readit(int fd, char *buffer)
 	char	*row;
 	int		i;
 
-	row = (char *) ft_calloc((BUFFER_SIZE + 1) , sizeof(char));
+	row = (char *) malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!row)
 		return (NULL);
 	i = 1;
@@ -97,16 +97,36 @@ static char	*ft_readit(int fd, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char		*buffer;
-	char			*row;
+	static char	*buffer[OPEN_MAX];
+	char		*row;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = ft_readit(fd, buffer);
-	if (!buffer)
+	buffer[fd] = ft_readit(fd, buffer[fd]);
+	if (!buffer[fd])
 		return (NULL);
-	row = ft_getrow(buffer);
-	buffer = ft_restbuffer(buffer);
+	row = ft_getrow(buffer[fd]);
+	buffer[fd] = ft_restbuffer(buffer[fd]);
 	return (row);
-	failure(1);
 }
+
+// int main (void)
+// {
+// 	int fd1 =open("test.txt", O_RDONLY);
+// 	int fd2 =open("test1.txt", O_RDONLY);
+// 	int fd3 =open("test2.txt", O_RDONLY);
+
+// 	char *line = get_next_line(fd1);
+// 	printf ("%s",line);
+// 	char *line1= get_next_line(fd2);
+// 	printf ("%s",line1);
+// 	char *line2 = get_next_line(fd3);
+// 	printf ("%s",line2);
+// 	line = get_next_line(fd1);
+// 	printf ("%s",line);
+// 	line1= get_next_line(fd2);
+// 	printf ("%s",line1);
+// 	line2 = get_next_line(fd3);
+// 	printf ("%s",line2);
+// 	return(0);
+// }

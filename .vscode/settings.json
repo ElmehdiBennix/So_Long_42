@@ -4,6 +4,7 @@
         "fcntl.h": "c",
         "mlx.h": "c",
         "math.h": "c",
-        "ios": "c"
+        "ios": "c",
+        "utils.h": "c"
     }
 }
