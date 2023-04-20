@@ -6,11 +6,10 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 07:56:09 by ebennix           #+#    #+#              #
-#    Updated: 2023/04/20 05:57:27 by ebennix          ###   ########.fr        #
+#    Updated: 2023/04/20 06:08:31 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-include utils/Makefile
 
 EXE := so_long
 
@@ -35,16 +34,18 @@ m := MakefileAutoPush
 all : $(EXE)
 
 $(EXE) : $(OBJ)
-	$(MAKE) all
+	make -C utils
 	$(CC) $(OBJ) $(ARCH) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(EXE)
 
 %.o : %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
+	make clean -C utils
 	$(RM) $(OBJ)
 
 fclean : clean
+	make fclean -C utils
 	$(RM) $(EXE)
 
 re : fclean all
