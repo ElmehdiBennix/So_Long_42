@@ -6,13 +6,15 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 07:56:09 by ebennix           #+#    #+#              #
-#    Updated: 2023/04/20 05:04:09 by ebennix          ###   ########.fr        #
+#    Updated: 2023/04/20 05:57:27 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+include utils/Makefile
+
 EXE := so_long
 
-ARCH := ../utils/utils.a
+ARCH := utils/utils.a
 
 CC := cc
 
@@ -20,7 +22,8 @@ CFLAGS := -g -Wall -Wextra -Imlx
 # -Werror
 HEADER := Mandatory/so_long.h
 
-FILES := Mandatory/so_long 			Mandatory/parsing/read_map				 parsing/drawing\
+FILES := Mandatory/so_long 			Mandatory/parsing/read_map		Mandatory/graphics/drawing		\
+		 Mandatory/hooks/mlx_hooks		Mandatory/graphics/init_image	\
 
 SRC := $(FILES:=.c)
 OBJ := $(SRC:.c=.o)
@@ -32,7 +35,7 @@ m := MakefileAutoPush
 all : $(EXE)
 
 $(EXE) : $(OBJ)
-	$(MAKE) -f $(ARCH)
+	$(MAKE) all
 	$(CC) $(OBJ) $(ARCH) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(EXE)
 
 %.o : %.c $(HEADER)

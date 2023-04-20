@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 05:05:48 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/20 04:02:53 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/20 05:10:30 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ int	ft_printnbr(int fd, int n);
 int	ft_hex(int fd, unsigned int n, char flag);
 int	ft_fprintf(int fd, const char *str, ...);
 
+
+void	failure(int erno);
+void	exit_msg(int fd, char *msg, char *color, int erno);
 
 
 char	*get_next_line(int fd);
