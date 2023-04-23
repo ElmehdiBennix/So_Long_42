@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "./so_long",
             "program": "/Users/ebennix/Documents/So_long42/so_long",
-            "args": ["maps/level3.ber"],
+            "args": ["maps/Mandatory_maps/level3.ber"],
             "cwd": "${workspaceFolder}"
         }
     ]
