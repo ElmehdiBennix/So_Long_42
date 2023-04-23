@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/20 06:15:55 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/23 21:42:06 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,20 @@ typedef struct s_walls
 	void			*block_wall_v2;
 	void			*full_wall;
 
-	void			*floor;
 	int				img_width;
 	int				img_height;
 }					t_walls;
 
-// typedef struct s_floor
-// {
-// 	void	*floor;
-// 	void	*right_floor;
-// 	void	*left_floor;
-//	void	*left_right_floor
+typedef struct s_floor
+{
+	void	*floor;
+	void	*right_floor;
+	void	*left_floor;
+	void	*left_right_floor;
 
-// 	int		height;
-// 	int		width;
-// }				t_floor;
+	int		img_height;
+	int		img_width;
+}				t_floor;
 
 // typedef struct s_componets
 // {
@@ -102,7 +101,8 @@ typedef struct s_data
 	unsigned int	width;
 	t_elements		elements;
 	t_position		p_position;
-	t_walls			image;
+	t_walls			walls;
+	t_floor			floors;
 }					t_data;
 
 // parsing
@@ -110,7 +110,7 @@ void				read_map(char *map_name, t_data *map);
 void				drawing(t_data *map);
 
 //so_long funcs
-void	init_image(t_data *map_data);
+void	init_images(t_data *map_data);
 
 
 #endif
