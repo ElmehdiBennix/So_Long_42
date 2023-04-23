@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/23 21:43:33 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/23 21:56:58 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,17 +173,8 @@ void	draw_map(t_data *map_data)
 
 void	drawing(t_data *map)
 {
-	int	hit;
-	int	wid;
-
-	map->mlx = mlx_init();
-	hit = 96 * map->height;
-	wid = 96 * map->width;
-	map->mlx_window = mlx_new_window(map->mlx, wid, hit, "yoto");
-	printf("%d %d \n", hit, wid);
 	init_images(map);
 	draw_map(map);
-	mlx_loop(map->mlx);
 }
 
 // need to be fixed if the map has /n in the first line it says error

@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/23 21:42:06 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/23 21:53:38 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,17 @@ typedef struct s_floor
 	int		img_width;
 }				t_floor;
 
-// typedef struct s_componets
-// {
-// 	void	*player;
-// 	void	*exit;
-// 	void	*collectible;
-// 	void	*;
-// 	void	*;
+typedef struct s_componets
+{
+	void	*player;
+	void	*exit;
+	void	*collectible;
+	// void	*;
+	// void	*;
 
-// 	int		height;
-// 	int		width;
-// }				t_componets;
+	int		height;
+	int		width;
+}				t_componets;
 
 typedef struct s_elements
 {
@@ -103,6 +103,7 @@ typedef struct s_data
 	t_position		p_position;
 	t_walls			walls;
 	t_floor			floors;
+	t_componets		componets;
 }					t_data;
 
 // parsing
