@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/25 00:32:25 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/25 00:36:19 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ int    key_hooks(int key_code, t_data *game); // change struct name to game
 
 //so_long funcs
 void	init_images(t_data *map_data);
+int	under_wall(char **map, int x, int y, int flag);
 
 
 #endif
