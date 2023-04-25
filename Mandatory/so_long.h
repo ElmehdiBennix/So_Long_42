@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/25 00:36:19 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/25 00:56:24 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ typedef struct s_componets
 	// void	*;
 	// void	*;
 
-	int		height;
-	int		width;
+	int		img_height;
+	int		img_width;
 }				t_componets;
 
 typedef struct s_elements
@@ -113,7 +113,7 @@ typedef struct s_data
 	t_position		p_position;
 	t_walls			walls;
 	t_floor			floors;
-	t_componets		componets;
+	t_componets		*componets;
 }					t_data;
 
 // parsing

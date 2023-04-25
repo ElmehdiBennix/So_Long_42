@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/24 23:26:28 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/25 01:55:44 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,18 +127,18 @@ int	draw_mid(t_data *map_data, char **map, int x, int y)
 			else if (map[h][w] == 'P')
 			{
 				draw_floor(map_data, h, w, x, y);
-				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->componets.player, x, y);
+				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->componets->player, x, y);
 			}
 			else if (map[h][w] == 'C')
 			{
 				draw_floor(map_data, h, w, x, y);
-				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->componets.collectible, x, y);
+				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->componets->collectible, x, y);
 
 			}
 			else if (map[h][w] == 'E')
 			{
 				draw_floor(map_data, h, w, x, y);
-				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->componets.exit, x, y);
+				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->componets->exit, x, y);
 
 			}
 			else

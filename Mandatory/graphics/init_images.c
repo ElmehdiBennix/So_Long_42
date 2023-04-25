@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:05:48 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/24 23:27:12 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/25 00:59:22 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,14 @@ static	void	init_floors(t_data *map_data)
 
 static	void	init_componets(t_data *map_data)
 {
-	map_data->componets.player = mlx_xpm_file_to_image(map_data->mlx,"textures/player/player.xpm",&map_data->floors.img_width,&map_data->floors.img_height);
-	map_data->componets.exit = mlx_xpm_file_to_image(map_data->mlx,"textures/exit/exit.xpm",&map_data->floors.img_width,&map_data->floors.img_height);
-	map_data->componets.collectible = mlx_xpm_file_to_image(map_data->mlx,"textures/collectible/coin.xpm",&map_data->floors.img_width,&map_data->floors.img_height);
+	t_componets *comps;
+
+	comps = calloc(sizeof(t_componets),1);
+	comps->player = mlx_xpm_file_to_image(map_data->mlx,"textures/player/player.xpm",&comps->img_width,&comps->img_height);
+	comps->exit = mlx_xpm_file_to_image(map_data->mlx,"textures/exit/exit.xpm",&comps->img_width,&comps->img_height);
+	comps->collectible = mlx_xpm_file_to_image(map_data->mlx,"textures/collectible/coin.xpm",&comps->img_width,&comps->img_height);
+
+	map_data->componets = comps ;
 	// map_data->floors.left_right_floor = mlx_xpm_file_to_image(map_data->mlx,"textures/floor/left_right_floor.xpm",&map_data->floors.img_width,&map_data->floors.img_height);
 }
 
