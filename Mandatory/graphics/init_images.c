@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:05:48 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/23 21:52:45 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/24 23:27:12 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,19 @@ static	void	init_floors(t_data *map_data)
 	map_data->floors.left_right_floor = mlx_xpm_file_to_image(map_data->mlx,"textures/floor/left_right_floor.xpm",&map_data->floors.img_width,&map_data->floors.img_height);
 }
 
-// static	void	init_componets(t_data *map_data)
-// {
-// 	map_data->floors.floor = mlx_xpm_file_to_image(map_data->mlx,"textures/floor/floor.xpm",&map_data->floors.img_width,&map_data->floors.img_height);
-// 	map_data->floors.left_floor = mlx_xpm_file_to_image(map_data->mlx,"textures/floor/left_floor.xpm",&map_data->floors.img_width,&map_data->floors.img_height);
-// 	map_data->floors.right_floor = mlx_xpm_file_to_image(map_data->mlx,"textures/floor/right_floor.xpm",&map_data->floors.img_width,&map_data->floors.img_height);
-// 	map_data->floors.left_right_floor = mlx_xpm_file_to_image(map_data->mlx,"textures/floor/left_right_floor.xpm",&map_data->floors.img_width,&map_data->floors.img_height);
-// }
+static	void	init_componets(t_data *map_data)
+{
+	map_data->componets.player = mlx_xpm_file_to_image(map_data->mlx,"textures/player/player.xpm",&map_data->floors.img_width,&map_data->floors.img_height);
+	map_data->componets.exit = mlx_xpm_file_to_image(map_data->mlx,"textures/exit/exit.xpm",&map_data->floors.img_width,&map_data->floors.img_height);
+	map_data->componets.collectible = mlx_xpm_file_to_image(map_data->mlx,"textures/collectible/coin.xpm",&map_data->floors.img_width,&map_data->floors.img_height);
+	// map_data->floors.left_right_floor = mlx_xpm_file_to_image(map_data->mlx,"textures/floor/left_right_floor.xpm",&map_data->floors.img_width,&map_data->floors.img_height);
+}
 
 void	init_images(t_data *map_data)
 {
 	init_walls(map_data);
 	init_floors(map_data);
+	init_componets(map_data);
 	// fprintf(stderr,"%p",map_data->image.amongus);
 	// if (!map_data->image.img_exit)
 	// 	failure(1);

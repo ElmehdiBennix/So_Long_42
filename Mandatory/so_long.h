@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/23 21:53:38 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/25 00:32:25 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,16 @@
 // if i exited to scope of the fuction which has the variable and its value it will
 //be lost so we need to allocate it in the heap
 
+//MACOS keycodes
+# define mac_W 13
+# define mac_A 0
+# define mac_S 1
+# define mac_D 2
+# define mac_UP 126
+# define mac_DOWN 125
+# define mac_LEFT 123
+# define mac_RIGHT 124
+# define mac_ESC 53
 
 // Enum -> idle, up, down, left, right
 typedef enum s_moves
@@ -107,8 +117,10 @@ typedef struct s_data
 }					t_data;
 
 // parsing
-void				read_map(char *map_name, t_data *map);
-void				drawing(t_data *map);
+void	read_map(char *map_name, t_data *map);
+void	drawing(t_data *map);
+int    key_hooks(int key_code, t_data *game); // change struct name to game
+
 
 //so_long funcs
 void	init_images(t_data *map_data);
