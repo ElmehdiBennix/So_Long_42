@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:09:42 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/27 08:20:30 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/27 08:34:46 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,12 @@ static  void move(t_data *game, unsigned int x, unsigned int y)
     char **map;
 
     map = game->map;
-    printf("curent = %c\n",map[game->p_position.x][game->p_position.y]);
-    printf("next = %c\n",map[game->p_position.x + x][game->p_position.y + y]);
-    printf("line = %s\n",map[game->p_position.x + x]);
     if (map[game->p_position.x + x][game->p_position.y + y] == '0')
     {
         mlx_put_image_to_window(game->mlx , game->mlx_window, game->floors.floor, 96 * game->p_position.y,96 *  game->p_position.x);
         game->p_position.x += x;
         game->p_position.y += y;
-        mlx_put_image_to_window(game->mlx ,game->mlx_window, game->componets->player , 96 * game->p_position.y , 96 * game->p_position.x);
+        mlx_put_image_to_window(game->mlx ,game->mlx_window, game->componets.player , 96 * game->p_position.y , 96 * game->p_position.x);
     }
     else if (map[game->p_position.x + x][game->p_position.y + y] == 'C')
     {
@@ -33,7 +30,7 @@ static  void move(t_data *game, unsigned int x, unsigned int y)
         mlx_put_image_to_window(game->mlx , game->mlx_window, game->floors.floor, 96 * game->p_position.y,96 *  game->p_position.x);
         game->p_position.x += x;
         game->p_position.y += y;
-        mlx_put_image_to_window(game->mlx ,game->mlx_window, game->componets->player , 96 * game->p_position.y , 96 * game->p_position.x);
+        mlx_put_image_to_window(game->mlx ,game->mlx_window, game->componets.player , 96 * game->p_position.y , 96 * game->p_position.x);
     }
     else if (map[game->p_position.x + x][game->p_position.y + y] == 'E' && game->elements.c_count == 0)
         failure(1);
