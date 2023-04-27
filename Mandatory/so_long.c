@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:19 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/25 01:17:50 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/27 07:56:50 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	so_long(char **av)
 	map->mlx_window = mlx_new_window(map->mlx, wid, hit, "yoto");
 	printf("%d %d \n", hit, wid);
 	drawing(map);
-	mlx_hook(map->mlx_window, 2, 0,key_hooks , map);
 	// mlx_key_hook(map->mlx_window, key_hooks, map);
+	mlx_hook(map->mlx_window, 2, 0,key_hooks , map);
 	mlx_loop(map->mlx);
 }
 

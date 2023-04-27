@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/25 01:55:44 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/27 08:24:20 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,6 @@ void	draw_wall(t_data *map_data, int h, int w, int x, int y)
 	}
 }
 
-void	draw_floor(t_data *map_data, int h, int w, int x, int y)
-{
-	char	**map;
-
-	map = map_data->map;
-	if (under_wall(map, h, w, 'l') == 1 && under_wall(map, h, w, 'r') == 1)
-		mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->floors.left_right_floor, x, y);
-	else if (under_wall(map, h, w, 'r') == 1)
-		mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->floors.right_floor, x, y);
-	else if (under_wall(map, h, w, 'l') == 1)
-		mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->floors.left_floor, x, y);
-	else
-		mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->floors.floor, x, y);	
-}
-
 void	draw_first(t_data *map_data, char **map, int x, int y)
 {
 	int				w;
@@ -126,23 +111,22 @@ int	draw_mid(t_data *map_data, char **map, int x, int y)
 				draw_wall(map_data, h, w, x, y);
 			else if (map[h][w] == 'P')
 			{
-				draw_floor(map_data, h, w, x, y);
+				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->floors.floor, x, y);
 				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->componets->player, x, y);
 			}
 			else if (map[h][w] == 'C')
 			{
-				draw_floor(map_data, h, w, x, y);
+				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->floors.floor, x, y);
 				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->componets->collectible, x, y);
 
 			}
 			else if (map[h][w] == 'E')
 			{
-				draw_floor(map_data, h, w, x, y);
+				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->floors.floor, x, y);
 				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->componets->exit, x, y);
-
 			}
 			else
-				draw_floor(map_data, h, w, x, y);
+				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->floors.floor, x, y);
 			x += 96;
 		}
 		y += 96;
