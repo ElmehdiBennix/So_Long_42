@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/23 19:45:51 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/27 09:05:00 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	collect_data(t_data *map, char data, int x, int y)
 		map->elements.p_count++;
 		map->p_position.x = x;
 		map->p_position.y = y;
-		// struct map map = {.x = 20,.y=20}; etc order does not matter
 	}
 	else if (data == 'C')
 		map->elements.c_count++;

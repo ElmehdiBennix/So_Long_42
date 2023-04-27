@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/27 08:37:51 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/27 09:05:37 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	draw_wall(t_data *map_data, int h, int w, int x, int y)
 	}
 }
 
-void	draw_first(t_data *map_data, char **map, int x, int y)
+static	void	draw_first(t_data *map_data, char **map, int x, int y)
 {
 	int				w;
 	unsigned int	i;
@@ -95,7 +95,7 @@ void	draw_first(t_data *map_data, char **map, int x, int y)
 	}
 }
 
-int	draw_mid(t_data *map_data, char **map, int x, int y)
+static	int	draw_mid(t_data *map_data, char **map, int x, int y)
 {
 	int	w;
 	int	h;
@@ -134,7 +134,7 @@ int	draw_mid(t_data *map_data, char **map, int x, int y)
 	return (y);
 }
 
-void	draw_last(t_data *map_data, char **map, int x, int y)
+static	void	draw_last(t_data *map_data, char **map, int x, int y)
 {
 	int				w;
 	unsigned int	i;
