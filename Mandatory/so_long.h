@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/27 08:34:04 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/27 09:55:28 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,7 @@ typedef struct s_walls
 typedef struct s_floor
 {
 	void	*floor;
-	void	*right_floor;
-	void	*left_floor;
-	void	*left_right_floor;
+
 
 	int		img_height;
 	int		img_width;
@@ -81,8 +79,6 @@ typedef struct s_componets
 	void	*player;
 	void	*exit;
 	void	*collectible;
-	// void	*;
-	// void	*;
 
 	int		img_height;
 	int		img_width;
@@ -124,6 +120,10 @@ int    key_hooks(int key_code, t_data *game); // change struct name to game
 
 //so_long funcs
 void	init_images(t_data *map_data);
+int	under_wall(char **map, int x, int y, int flag);
+void open_window(t_data *game);
+
+void	draw_wall(t_data *map_data, int h, int w, int x, int y);
 int	under_wall(char **map, int x, int y, int flag);
 
 

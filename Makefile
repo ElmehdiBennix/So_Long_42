@@ -6,7 +6,7 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 07:56:09 by ebennix           #+#    #+#              #
-#    Updated: 2023/04/25 01:52:04 by ebennix          ###   ########.fr        #
+#    Updated: 2023/04/27 09:56:49 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CFLAGS := -g -Wall -Wextra -Imlx
 HEADER := Mandatory/so_long.h
 
 FILES := Mandatory/so_long 			Mandatory/parsing/read_map		Mandatory/graphics/drawing		\
-		 Mandatory/hooks/mlx_hooks		Mandatory/graphics/init_images	\
+		 Mandatory/hooks/mlx_hooks		Mandatory/graphics/init_images	Mandatory/graphics/init_window	Mandatory/sl_utils/utils\
 
 SRC := $(FILES:=.c)
 OBJ := $(SRC:.c=.o)
@@ -38,7 +38,7 @@ library:
 	make -C utils
 	
 $(EXE) : $(OBJ)
-	$(CC) $(OBJ) $(ARCH) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(EXE)
+	$(CC) $(OBJ) $(ARCH) -lmlx -framework OpenGL -framework AppKit -o $(EXE)
 
 %.o : %.c $(HEADER) | library
 	$(CC) $(CFLAGS) -c $< -o $@
