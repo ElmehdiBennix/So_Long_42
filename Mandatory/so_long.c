@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:19 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/27 09:47:41 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/29 20:28:48 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	so_long(char **av)
 
 	game = (t_data *)ft_calloc(sizeof(t_data), 1);
 	if (!game)
-		failure(1);
+		exit_msg(2,"Memory problem !",RED,1);
 	read_map(*(++av), game);
 	open_window(game);
 	drawing(game);
@@ -29,6 +29,6 @@ void	so_long(char **av)
 int	main(int ac, char **av)
 {
 	if (ac != 2)
-		failure(1);
+		exit_msg(2,"only one argumet is allowed.",RED,1);
 	so_long(av);
 }

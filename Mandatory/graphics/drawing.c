@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/27 09:55:05 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/29 20:31:01 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,3 @@ void	drawing(t_data *map_data)
 	y = draw_mid(map_data, map, 0, 96);
 	draw_last(map_data, map, 0, y);
 }
-
-// need to be fixed if the map has /n in the first line it says error
-
-// if there is a /n inside the map shoud display an error

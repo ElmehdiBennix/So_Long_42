@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_window.c                                      :+:      :+:    :+:   */
+/*   flow_field.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 09:43:15 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/29 20:33:44 by ebennix          ###   ########.fr       */
+/*   Created: 2023/04/29 21:18:53 by ebennix           #+#    #+#             */
+/*   Updated: 2023/04/29 21:19:09 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void open_window(t_data *game)
+void	flow_field(char **arr, int x, int y)
 {
-	int	hit;
-	int	wid;
-
-	hit = 96 * game->height;
-	wid = 96 * game->width;
-	if (wid > 2600 || hit > 1450 )
-		exit_msg(2,"Map is valid but its too big for the window.",GREEN,0);
-    game->mlx = mlx_init();
-	game->mlx_window = mlx_new_window(game->mlx, wid, hit, "traps and dungeons");
+	if (arr[x][y] && arr[x][y] != '1' && arr[x][y] != 'X' && arr[x][y] != 'E')
+	{
+		arr[x][y] = 'X';
+		flow_field(arr, x + 1, y);
+		flow_field(arr, x - 1, y);
+		flow_field(arr, x, y + 1);
+		flow_field(arr, x, y - 1);
+	}
+	if (arr[x][y] == 'E')
+		arr[x][y] = 'X';
 }
-
-// mac res 2880 * 1575

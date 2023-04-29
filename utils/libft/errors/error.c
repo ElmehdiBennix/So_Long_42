@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 09:52:25 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/20 02:41:36 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/29 19:57:40 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	failure(int erno)
 {
-	write(2, "Error\n", 7);
+	ft_fprintf(2, "%s %s %s \n", RED, "Error\n", DEFAULT);
 	exit(erno);
 }

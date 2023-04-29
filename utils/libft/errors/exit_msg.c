@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 02:29:46 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/20 02:41:38 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/29 20:11:40 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	exit_msg(int fd, char *msg, char *color, int erno)
 {
-	ft_fprintf(fd, "%s %s %s\n", color, msg, DEFAULT);
+	ft_fprintf(fd, "%s-> %s %s\n", color, msg, DEFAULT);
 	exit(erno);
 }

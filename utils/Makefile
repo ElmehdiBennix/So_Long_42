@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 04:53:15 by ebennix           #+#    #+#              #
-#    Updated: 2023/04/20 04:00:13 by ebennix          ###   ########.fr        #
+#    Updated: 2023/04/29 19:20:59 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME := utils.a
 CFLAGS := -g -Wall -Wextra -Werror
 
 HEADER := /inc/utils.h
+COLORS := /inc/colors.h
 
 OBJ_DIR := obj_files
 
@@ -50,7 +51,7 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	$(AR) $(NAME) $(OBJ)
 
-%.o:%.c $(HEADER)
+%.o:%.c $(HEADER) %(COLORS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :

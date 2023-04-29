@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/27 09:55:28 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/29 21:22:50 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct s_data
 	t_walls			walls;
 	t_floor			floors;
 	t_componets		componets;
+	unsigned int	moves;
 }					t_data;
 
 // parsing
@@ -125,13 +126,10 @@ void open_window(t_data *game);
 
 void	draw_wall(t_data *map_data, int h, int w, int x, int y);
 int	under_wall(char **map, int x, int y, int flag);
+void	set_check(t_data *map);
+void	collect_data(t_data *map, char data, int x, int y);
+void	ones_row(char *res);
+void	flow_field(char **arr, int x, int y);
 
 
 #endif
-
-// add a window in the start of the game containing play option and exit
-// compile all mapes under makefile
-// add gravity and make the game side 2d
-// maybe add futures like attack and get hit with health bar
-// flow field for the 2d game with gravity
-// add gravity to the game

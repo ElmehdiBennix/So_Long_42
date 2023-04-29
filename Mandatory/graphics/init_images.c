@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:05:48 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/27 09:04:04 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/29 20:34:29 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ static	void	init_componets(t_data *map_data)
 static void protections (t_data *map_data)
 {
 	if (!map_data->walls.top_wall_v2 || !map_data->walls.block_wall_v2 || !map_data->walls.down_wall_v1 || !map_data->walls.down_wall_v2 || !map_data->walls.left_wall_v1)
-		failure(1);
+		exit_msg(2,"Texture file not found.",RED,1);
 	if (!map_data->walls.left_wall_v2 || !map_data->walls.down_left_wall || !map_data->walls.down_right_wall || !map_data->walls.full_wall)
-		failure(1);
+		exit_msg(2,"Texture file not found.",RED,1);
 	if (!map_data->walls.top_wall_v1 || !map_data->walls.right_wall_v2 || !map_data->walls.down_right_wall || !map_data->walls.right_wall_v1)
-		failure(1);
+		exit_msg(2,"Texture file not found.",RED,1);
 	if (!map_data->componets.player || !map_data->componets.exit || !map_data->componets.collectible || !map_data->floors.floor)
-		failure(1);
+		exit_msg(2,"Texture file not found.",RED,1);
 }
 
 void	init_images(t_data *map_data)
