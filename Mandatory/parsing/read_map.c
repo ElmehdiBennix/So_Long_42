@@ -6,11 +6,30 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/29 21:30:12 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/29 22:16:21 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+static	char *file_data(int fd)
+{
+	char *str;
+	char *row;
+
+	str = ft_strdup("");
+	while (1)
+	{
+		row = get_next_line(fd);
+		if (row == NULL)
+			break;
+		if (row[0] == '\n')
+			exit_msg(2,"New line in map.",RED,1);
+		str = ft_strjoin(str, row);
+		free(row);
+	}
+	return (str);
+}
 
 void	valid_map(char **res, t_data *game)
 {
@@ -49,7 +68,6 @@ void	read_map(char *map_name, t_data *game)
 {
 	int fd;
 	char *str;
-	char *row;
 	char **res;
 
 	str = ft_strnstr(map_name, ".ber", ft_strlen(map_name));
@@ -58,29 +76,10 @@ void	read_map(char *map_name, t_data *game)
 	fd = open(map_name, O_RDONLY);
 	if (fd < 0)
 		exit_msg(2,"File not found.",RED,1);
-	str = ft_strdup("");
-	while (1)
-	{
-		row = get_next_line(fd);
-		if (row == NULL)
-			break;
-		if (row[0] == '\n')
-			exit_msg(2,"New line in map.",RED,1);
-		str = ft_strjoin(str, row);
-		free(row);
-	}
+	str = file_data(fd);
 	res = ft_split(str, '\n');
 	valid_map(res, game);
 	flow_field(res, game->p_position.x, game->p_position.y);
-	while (*res)
-	{
-		while (**res)
-		{
-			if (**res == 'P' || **res == 'C' || **res == 'E')
-				exit_msg(2,"No Valid Path.",RED,1);
-			(*res)++;
-		}
-		res++;
-	}
-	game->map = ft_split(str, '\n');
+	game->map = valid_path(res, str);
+	free(res);
 }

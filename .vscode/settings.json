@@ -5,6 +5,7 @@
         "mlx.h": "c",
         "math.h": "c",
         "ios": "c",
-        "utils.h": "c"
+        "utils.h": "c",
+        "sstream": "c"
     }
 }

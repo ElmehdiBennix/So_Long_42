@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/29 21:22:50 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/29 21:56:22 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ typedef struct s_data
 	void			*mlx;
 	void			*mlx_window;
 	char			**map;
-	unsigned int	height;
-	unsigned int	width;
+	size_t			height;
+	size_t			width;
 	t_elements		elements;
 	t_position		p_position;
 	t_walls			walls;
@@ -130,6 +130,7 @@ void	set_check(t_data *map);
 void	collect_data(t_data *map, char data, int x, int y);
 void	ones_row(char *res);
 void	flow_field(char **arr, int x, int y);
+char **valid_path(char **res, char *str);
 
 
 #endif
