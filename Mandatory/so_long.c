@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:19 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/29 22:06:38 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/04/29 22:17:28 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	so_long(char **av)
 	if (!game)
 		exit_msg(2,"Memory problem !",RED,1);
 	read_map(*(++av), game);
-	open_window(game);
-	drawing(game);
-	mlx_hook(game->mlx_window, 2, 0,key_hooks , game);
-	mlx_loop(game->mlx);
+	// open_window(game);
+	// drawing(game);
+	// mlx_hook(game->mlx_window, 2, 0,key_hooks , game);
+	// mlx_loop(game->mlx);
 	atexit(checker);
 }
 
