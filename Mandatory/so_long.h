@@ -6,16 +6,16 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/29 21:56:22 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/01 19:31:51 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include "../utils/inc/utils.h"
 # include <math.h>
 # include <mlx.h>
-# include "../utils/inc/utils.h"
 
 # define TRUE 1
 # define FALSE 0
@@ -43,7 +43,7 @@ typedef enum s_moves
 	l = -1,
 	u = 2,
 	d = -2,
-} 			t_moves;
+}					t_moves;
 
 typedef struct s_walls
 {
@@ -67,22 +67,21 @@ typedef struct s_walls
 
 typedef struct s_floor
 {
-	void	*floor;
+	void			*floor;
 
-
-	int		img_height;
-	int		img_width;
-}				t_floor;
+	int				img_height;
+	int				img_width;
+}					t_floor;
 
 typedef struct s_componets
 {
-	void	*player;
-	void	*exit;
-	void	*collectible;
+	void			*player;
+	void			*exit;
+	void			*collectible;
 
-	int		img_height;
-	int		img_width;
-}				t_componets;
+	int				img_height;
+	int				img_width;
+}					t_componets;
 
 typedef struct s_elements
 {
@@ -114,23 +113,21 @@ typedef struct s_data
 }					t_data;
 
 // parsing
-void	read_map(char *map_name, t_data *map);
-void	drawing(t_data *map);
-int    key_hooks(int key_code, t_data *game); // change struct name to game
-
+void				read_map(char *map_name, t_data *map);
+void				drawing(t_data *map);
+int	key_hooks(int key_code, t_data *game); // change struct name to game
 
 //so_long funcs
-void	init_images(t_data *map_data);
-int	under_wall(char **map, int x, int y, int flag);
-void open_window(t_data *game);
+void				init_images(t_data *map_data);
+int					under_wall(char **map, int x, int y, int flag);
+void				open_window(t_data *game);
 
-void	draw_wall(t_data *map_data, int h, int w, int x, int y);
-int	under_wall(char **map, int x, int y, int flag);
-void	set_check(t_data *map);
-void	collect_data(t_data *map, char data, int x, int y);
-void	ones_row(char *res);
-void	flow_field(char **arr, int x, int y);
-char **valid_path(char **res, char *str);
-
+void				draw_wall(t_data *map_data, int h, int w, int x, int y);
+int					under_wall(char **map, int x, int y, int flag);
+void				set_check(t_data *map);
+void				collect_data(t_data *map, char data, int x, int y);
+void				ones_row(char *res);
+void				flow_field(char **arr, int x, int y);
+char				**valid_path(char **res, char *str);
 
 #endif

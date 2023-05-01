@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:18:53 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/29 22:28:45 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/01 19:31:30 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,20 @@ void	flow_field(char **arr, int x, int y)
 		arr[x][y] = 'X';
 }
 
-char **valid_path(char **res, char *str)
+char	**valid_path(char **res, char *str)
 {
-    char **map;
+	char **map;
 
 	while (*res)
 	{
 		while (**res)
 		{
 			if (**res == 'P' || **res == 'C' || **res == 'E')
-				exit_msg(2,"No Valid Path.",RED,1);
+				exit_msg(2, "No Valid Path.", RED, 1);
 			(*res)++;
 		}
 		res++;
 	}
-    map = ft_split(str, '\n');
+	map = ft_split(str, '\n');
 	return (map);
 }
