@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/04 06:14:01 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/04 06:39:43 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ typedef struct s_data
 	t_componets		componets;
 	unsigned int	moves;
 	unsigned int	frame;
-	// unsigned int	frame;
+	unsigned int	predict;
 }					t_data;
 
 // parsing
