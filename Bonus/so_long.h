@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/02 01:30:31 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/04 01:08:27 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@
 # define TRUE 1
 # define FALSE 0
 
-// if i pass it without allocating the meme needed it will crash better to allocate and end it with null
-// if i exited to scope of the fuction which has the variable and its value it will
-//be lost so we need to allocate it in the heap
-
-//MACOS keycodes
+// MACos keycodes
 # define mac_W 13
 # define mac_A 0
 # define mac_S 1
@@ -34,16 +30,6 @@
 # define mac_LEFT 123
 # define mac_RIGHT 124
 # define mac_ESC 53
-
-// Enum -> idle, up, down, left, right
-typedef enum s_moves
-{
-	i = 0,
-	r = 1,
-	l = -1,
-	u = 2,
-	d = -2,
-}					t_moves;
 
 typedef struct s_walls
 {
@@ -65,20 +51,30 @@ typedef struct s_walls
 	int				img_height;
 }					t_walls;
 
-typedef struct s_floor
+typedef struct s_textures
 {
 	void			*floor;
+	// void			*bones;
+	// void			*chain_v1;
+	// void			*chain_v2;
+	// void			*rocks;
+	// void			*head_bone;
+	// t_list			flag;
+	// t_list			torch;
 
 	int				img_height;
 	int				img_width;
-}					t_floor;
+}					t_textures;
 
 typedef struct s_componets
 {
-	void			*player;
-	void			*exit;
-	void			*collectible;
+	t_list			*player;
+	t_list			*exit;
+	t_list			*collectible;
+	t_list			*floor_enemy;
+	t_list			*wall_enemy;
 
+	int				enemy_status;
 	int				img_height;
 	int				img_width;
 }					t_componets;
@@ -90,7 +86,6 @@ typedef struct s_elements
 	unsigned int	e_count;
 }					t_elements;
 
-// qdd texxturs stuct for a random math function that puts life into the map
 typedef struct s_position
 {
 	int				x;
@@ -107,14 +102,15 @@ typedef struct s_data
 	t_elements		elements;
 	t_position		p_position;
 	t_walls			walls;
-	t_floor			floors;
+	t_textures		floors;
 	t_componets		componets;
 	unsigned int	moves;
+	unsigned int 	frames;
 }					t_data;
 
 // parsing
 void				read_map(char *map_name, t_data *map);
-int				drawing(t_data *map);
+int					drawing(t_data *map);
 int					key_hooks(int key_code, t_data *game); // change struct name to game
 
 //so_long funcs

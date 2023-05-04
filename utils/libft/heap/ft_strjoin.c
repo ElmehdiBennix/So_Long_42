@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:52:57 by ebennix           #+#    #+#             */
-/*   Updated: 2023/04/20 02:41:50 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/01 19:40:49 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	if (!s2)
 		return (NULL);
-	str = (char *)ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1 , sizeof(char));
+	str = (char *)ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
 	if (!str)
 		return (NULL);
 	while (s1[++i])
