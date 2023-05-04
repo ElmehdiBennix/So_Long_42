@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/04 06:04:24 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/04 06:24:21 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,22 @@
 void	textures(t_data *game, int x, int y ,char flag) // w for wall || f for floor
 {
 	int		luck;
+	
+	int predictable;
+	predictable = 0;
 
 	srand(time(0));
 	luck = rand() % 4;
-	if (((game->frame++ %  17) == 0) && flag == 'w')
+	if (((predictable++ %  17) == 0) && flag == 'w')
 	{
 		if (luck == 0)
-			mlx_put_image_to_window(game->mlx, game->mlx_window, game->floors.chain_v1, x, y);
-		else if (luck == 1)
-			mlx_put_image_to_window(game->mlx, game->mlx_window, game->floors.chain_v2, x, y);
-		else if (luck == 2)
 			mlx_put_image_to_window(game->mlx, game->mlx_window, game->floors.flag, x, y);
-		else if (luck == 3)
+		else if (luck == 1)
 			mlx_put_image_to_window(game->mlx, game->mlx_window, game->floors.torch, x, y);
+		else if (luck == 2)
+			mlx_put_image_to_window(game->mlx, game->mlx_window, game->floors.chain_v1, x, y);
+		else if (luck == 3)
+			mlx_put_image_to_window(game->mlx, game->mlx_window, game->floors.chain_v2, x, y);
 	}
 	else if (((game->frame++ %  17) == 0) && flag == 'f')
 	{
@@ -57,9 +60,15 @@ static void	draw_first(t_data *game, char **map, int x, int y)
 		else if (i > 0 && i != game->width)
 		{
 			if (i % 2 == 0 && under_wall(map, 1, w, 'l') == 0)
+			{
 				mlx_put_image_to_window(game->mlx, game->mlx_window,game->walls.top_wall_v1, x, y);
+				// textures(game, x, y , 'w');
+			}
 			else if (i % 2 != 0 && under_wall(map, 1, w, 'l') == 0)
+			{
 				mlx_put_image_to_window(game->mlx, game->mlx_window,game->walls.top_wall_v2, x, y);
+				// textures(game, x, y , 'w');
+			}
 			else if (i % 2 == 0 && under_wall(map, 1, w, 'l') == 1)
 				mlx_put_image_to_window(game->mlx, game->mlx_window,game->walls.block_wall_v1, x, y);
 			else if (i % 2 != 0 && under_wall(map, 1, w, 'l') == 1)
@@ -90,7 +99,7 @@ static int	draw_mid(t_data *game, char **map, int x, int y)
 			else
 			{
 				mlx_put_image_to_window(game->mlx, game->mlx_window, game->floors.floor, x, y);
-				textures(game, x, y ,'f');
+				// textures(game, x, y ,'f');
 				if(map[h][w] == 'C')
 				{
 					if (map[game->p_position.x][game->p_position.y] == 'C')
@@ -129,9 +138,6 @@ static void	draw_last(t_data *game, char **map, int x, int y)
 		x += 96;
 	}
 }
-
-
-
 
 int	drawing(t_data *game)
 {
