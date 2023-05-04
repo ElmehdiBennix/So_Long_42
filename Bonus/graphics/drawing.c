@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/04 04:21:12 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/04 04:35:02 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	draw_mid(t_data *game, char **map, int x, int y)
 						mlx_put_image_to_window(game->mlx, game->mlx_window, game->componets.collectible -> content, x, y);
 				}
 				if (map[h][w] == 'E')
-					mlx_put_image_to_window(game->mlx, game->mlx_window, game->componets.exit, x, y);
+					mlx_put_image_to_window(game->mlx, game->mlx_window, game->componets.exit -> content, x, y);
 			}
 			x += 96;
 		}
@@ -116,6 +116,17 @@ int	drawing(t_data *game)
 	{
 		game->componets.collectible = game->componets.collectible -> next;
 		game->componets.player = game->componets.player -> next;
+		if (game->elements.c_count == 0)
+		{
+			int i;
+			i = 0 ;
+			while (game->componets.exit -> next != NULL && i <= 4)
+			{
+				game->componets.exit = game->componets.exit -> next;
+				fprintf(stderr,"%p\n",game->componets.exit);
+				i++;
+			}
+		}
 	}
 	return (0);
 }
