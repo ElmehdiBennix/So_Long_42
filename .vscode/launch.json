@@ -7,8 +7,8 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "./so_long",
-            "program": "/Users/ebennix/Documents/So_long42/so_long",
+            "name": "./so_long_bonus",
+            "program": "/Users/ebennix/Documents/So_long42/so_long_bonus",
             "args": ["maps/Mandatory_maps/level3.ber"],
             "cwd": "${workspaceFolder}"
         }

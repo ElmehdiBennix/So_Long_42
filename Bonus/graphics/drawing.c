@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/04 01:12:51 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/04 04:21:12 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	draw_first(t_data *game, char **map, int x, int y)
 	w = 0;
 	while (map[0][w++] && game->width >= i)
 	{
+		
 		if (i++ == 0)
 			mlx_put_image_to_window(game->mlx, game->mlx_window,game->walls.left_wall_v1, x, y);
 		else if (i > 0 && i != game->width)
@@ -62,10 +63,7 @@ static int	draw_mid(t_data *game, char **map, int x, int y)
 					if (map[game->p_position.x][game->p_position.y] == 'C')
 						map[game->p_position.x][game->p_position.y] = '0';
 					else
-					{
-						mlx_put_image_to_window(game->mlx, game->mlx_window, game->componets.collectible->content, x, y);
-						game->componets.collectible = game->componets.collectible -> next;
-					}
+						mlx_put_image_to_window(game->mlx, game->mlx_window, game->componets.collectible -> content, x, y);
 				}
 				if (map[h][w] == 'E')
 					mlx_put_image_to_window(game->mlx, game->mlx_window, game->componets.exit, x, y);
@@ -108,9 +106,16 @@ int	drawing(t_data *game)
 
 	map = game->map;
 	mlx_clear_window(game->mlx,game->mlx_window);
+	
 	draw_first(game, map, 0, 0);
 	y = draw_mid(game, map, 0, 96);
 	draw_last(game, map, 0, y);
-	mlx_put_image_to_window(game->mlx, game->mlx_window,game->componets.player, 96 * game->p_position.y, 96 * game->p_position.x);
+	mlx_put_image_to_window(game->mlx, game->mlx_window,game->componets.player->content, 96 * game->p_position.y, 96 * game->p_position.x);
+	static int	frame;
+	if ((frame++ %  5) == 0)
+	{
+		game->componets.collectible = game->componets.collectible -> next;
+		game->componets.player = game->componets.player -> next;
+	}
 	return (0);
 }

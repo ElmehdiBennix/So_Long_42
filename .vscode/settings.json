@@ -6,7 +6,10 @@
         "math.h": "c",
         "ios": "c",
         "utils.h": "c",
-        "sstream": "c"
+        "sstream": "c",
+        "__debug": "c",
+        "atomic": "c",
+        "memory": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
