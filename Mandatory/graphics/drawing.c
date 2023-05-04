@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/03 23:48:50 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/04 05:25:54 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ static int	draw_mid(t_data *map_data, char **map, int x, int y)
 static void	draw_last(t_data *map_data, char **map, int x, int y)
 {
 	int				w;
-	unsigned  
-
+	unsigned int i;
+	
 	i = 0;
 	w = 0;
 	while (map[map_data->height - 1][w++] && map_data->width >= i)

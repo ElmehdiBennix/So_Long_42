@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/02 01:30:31 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/04 05:26:17 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ typedef struct s_data
 	void			*mlx;
 	void			*mlx_window;
 	char			**map;
-	size_t			height;
-	size_t			width;
+	unsigned int	height;
+	unsigned int	width;
 	t_elements		elements;
 	t_position		p_position;
 	t_walls			walls;

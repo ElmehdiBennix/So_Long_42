@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:05:48 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/04 04:20:44 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/04 06:05:43 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,33 @@ static void	init_componets(t_data *game)
 	game->componets.exit = ft_lstnew(mlx_xpm_file_to_image(game->mlx, "textures/exit/exit_1.xpm", &game->componets.img_width, &game->componets.img_height));
 	ft_lstcreate_back(&game->componets.exit,mlx_xpm_file_to_image(game->mlx, "textures/exit/exit_2.xpm", &game->componets.img_width, &game->componets.img_height));
 	ft_lstcreate_back(&game->componets.exit,mlx_xpm_file_to_image(game->mlx, "textures/exit/exit_3.xpm", &game->componets.img_width, &game->componets.img_height));
-	ft_lstcreate_back(&game->componets.exit,mlx_xpm_file_to_image(game->mlx, "textures/player/exit_4.xpm", &game->componets.img_width, &game->componets.img_height));
+	ft_lstcreate_back(&game->componets.exit,mlx_xpm_file_to_image(game->mlx, "textures/exit/exit_4.xpm", &game->componets.img_width, &game->componets.img_height));
 
+	last = NULL;
 
+	game->floors.torch = ft_lstnew(mlx_xpm_file_to_image(game->mlx, "textures/decoration/torch_1.xpm", &game->componets.img_width, &game->componets.img_height));
+	ft_lstcreate_back(&game->floors.torch,mlx_xpm_file_to_image(game->mlx, "textures/decoration/torch_2.xpm", &game->componets.img_width, &game->componets.img_height));
+	ft_lstcreate_back(&game->floors.torch,mlx_xpm_file_to_image(game->mlx, "textures/decoration/torch_3.xpm", &game->componets.img_width, &game->componets.img_height));
+	ft_lstcreate_back(&game->floors.torch,mlx_xpm_file_to_image(game->mlx, "textures/decoration/torch_4.xpm", &game->componets.img_width, &game->componets.img_height));
+	last = ft_lstlast(game->floors.torch);
+	last->next = game->floors.torch;
+
+	last = NULL;
+
+	game->floors.flag = ft_lstnew(mlx_xpm_file_to_image(game->mlx, "textures/flag/flag_1.xpm", &game->componets.img_width, &game->componets.img_height));
+	ft_lstcreate_back(&game->floors.flag,mlx_xpm_file_to_image(game->mlx, "textures/flag/flag_2.xpm", &game->componets.img_width, &game->componets.img_height));
+	ft_lstcreate_back(&game->floors.flag,mlx_xpm_file_to_image(game->mlx, "textures/flag/flag_3.xpm", &game->componets.img_width, &game->componets.img_height));
+	ft_lstcreate_back(&game->floors.flag,mlx_xpm_file_to_image(game->mlx, "textures/flag/flag_4.xpm", &game->componets.img_width, &game->componets.img_height));
+	last = ft_lstlast(game->floors.flag);
+	last->next = game->floors.flag;
+
+	game->floors.bones = mlx_xpm_file_to_image(game->mlx, "textures/decoration/bones.xpm", &game->floors.img_width, &game->floors.img_height);
+	game->floors.chain_v1 = mlx_xpm_file_to_image(game->mlx, "textures/decoration/chain_v1.xpm", &game->floors.img_width, &game->floors.img_height);
+	game->floors.chain_v2 = mlx_xpm_file_to_image(game->mlx, "textures/decoration/chain_v2.xpm", &game->floors.img_width, &game->floors.img_height);
+	game->floors.rocks = mlx_xpm_file_to_image(game->mlx, "textures/decoration/rocks.xpm", &game->floors.img_width, &game->floors.img_height);
+	game->floors.head_bone = mlx_xpm_file_to_image(game->mlx, "textures/decoration/head_bone.xpm", &game->floors.img_width, &game->floors.img_height);
+	game->floors.web = mlx_xpm_file_to_image(game->mlx, "textures/decoration/web.xpm", &game->floors.img_width, &game->floors.img_height);
+	
 	game->floors.floor = mlx_xpm_file_to_image(game->mlx, "textures/floor/floor.xpm", &game->floors.img_width, &game->floors.img_height);
 }
 

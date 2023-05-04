@@ -6,11 +6,41 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/04 04:35:02 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/04 06:04:24 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	textures(t_data *game, int x, int y ,char flag) // w for wall || f for floor
+{
+	int		luck;
+
+	srand(time(0));
+	luck = rand() % 4;
+	if (((game->frame++ %  17) == 0) && flag == 'w')
+	{
+		if (luck == 0)
+			mlx_put_image_to_window(game->mlx, game->mlx_window, game->floors.chain_v1, x, y);
+		else if (luck == 1)
+			mlx_put_image_to_window(game->mlx, game->mlx_window, game->floors.chain_v2, x, y);
+		else if (luck == 2)
+			mlx_put_image_to_window(game->mlx, game->mlx_window, game->floors.flag, x, y);
+		else if (luck == 3)
+			mlx_put_image_to_window(game->mlx, game->mlx_window, game->floors.torch, x, y);
+	}
+	else if (((game->frame++ %  17) == 0) && flag == 'f')
+	{
+		if (luck == 0)
+			mlx_put_image_to_window(game->mlx, game->mlx_window, game->floors.bones, x, y);
+		else if (luck == 1)
+			mlx_put_image_to_window(game->mlx, game->mlx_window, game->floors.head_bone, x, y);
+		else if (luck == 2)
+			mlx_put_image_to_window(game->mlx, game->mlx_window, game->floors.rocks, x, y);
+		else if (luck == 3)
+			mlx_put_image_to_window(game->mlx, game->mlx_window, game->floors.web, x, y);
+	}
+}
 
 static void	draw_first(t_data *game, char **map, int x, int y)
 {
@@ -55,9 +85,12 @@ static int	draw_mid(t_data *game, char **map, int x, int y)
 		{
 			if (map[h][w] == '1')
 				draw_wall(game, h, w, x, y);
+			else if (map[h][w] == 'E')
+					mlx_put_image_to_window(game->mlx, game->mlx_window, game->componets.exit -> content, x, y);
 			else
 			{
 				mlx_put_image_to_window(game->mlx, game->mlx_window, game->floors.floor, x, y);
+				textures(game, x, y ,'f');
 				if(map[h][w] == 'C')
 				{
 					if (map[game->p_position.x][game->p_position.y] == 'C')
@@ -65,8 +98,6 @@ static int	draw_mid(t_data *game, char **map, int x, int y)
 					else
 						mlx_put_image_to_window(game->mlx, game->mlx_window, game->componets.collectible -> content, x, y);
 				}
-				if (map[h][w] == 'E')
-					mlx_put_image_to_window(game->mlx, game->mlx_window, game->componets.exit -> content, x, y);
 			}
 			x += 96;
 		}
@@ -78,7 +109,7 @@ static int	draw_mid(t_data *game, char **map, int x, int y)
 static void	draw_last(t_data *game, char **map, int x, int y)
 {
 	int				w;
-	unsigned  
+	unsigned int	 i;
 
 	i = 0;
 	w = 0;
@@ -99,6 +130,9 @@ static void	draw_last(t_data *game, char **map, int x, int y)
 	}
 }
 
+
+
+
 int	drawing(t_data *game)
 {
 	char	**map;
@@ -111,22 +145,15 @@ int	drawing(t_data *game)
 	y = draw_mid(game, map, 0, 96);
 	draw_last(game, map, 0, y);
 	mlx_put_image_to_window(game->mlx, game->mlx_window,game->componets.player->content, 96 * game->p_position.y, 96 * game->p_position.x);
-	static int	frame;
-	if ((frame++ %  5) == 0)
+	if ((game->frame++ %  5) == 0)
 	{
 		game->componets.collectible = game->componets.collectible -> next;
 		game->componets.player = game->componets.player -> next;
+		game->floors.flag = game->floors.flag -> next;
+		game->floors.torch = game->floors.torch -> next;
 		if (game->elements.c_count == 0)
-		{
-			int i;
-			i = 0 ;
-			while (game->componets.exit -> next != NULL && i <= 4)
-			{
+			if (game->componets.exit -> next != NULL)
 				game->componets.exit = game->componets.exit -> next;
-				fprintf(stderr,"%p\n",game->componets.exit);
-				i++;
-			}
-		}
 	}
 	return (0);
 }

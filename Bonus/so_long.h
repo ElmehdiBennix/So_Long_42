@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/04 04:20:52 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/04 06:04:50 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include "../utils/inc/utils.h"
-# include <math.h>
+# include <time.h>
 # include <mlx.h>
 
 # define TRUE 1
@@ -54,13 +54,14 @@ typedef struct s_walls
 typedef struct s_textures
 {
 	void			*floor;
-	// void			*bones;
-	// void			*chain_v1;
-	// void			*chain_v2;
-	// void			*rocks;
-	// void			*head_bone;
-	// t_list			flag;
-	// t_list			torch;
+	void			*bones;
+	void			*chain_v1;
+	void			*chain_v2;
+	void			*rocks;
+	void			*head_bone;
+	void			*web;
+	t_list			*flag;
+	t_list			*torch;
 
 	int				img_height;
 	int				img_width;
@@ -97,14 +98,15 @@ typedef struct s_data
 	void			*mlx;
 	void			*mlx_window;
 	char			**map;
-	size_t			height;
-	size_t			width;
+	unsigned int	height;
+	unsigned int	width;
 	t_elements		elements;
 	t_position		p_position;
 	t_walls			walls;
 	t_textures		floors;
 	t_componets		componets;
 	unsigned int	moves;
+	unsigned int	frame;
 }					t_data;
 
 // parsing
