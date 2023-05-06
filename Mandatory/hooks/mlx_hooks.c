@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:09:42 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/03 23:48:08 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/05 23:02:19 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	move(t_data *game, unsigned int x, unsigned int y)
 	char	**map;
 
 	map = game->map;
-	if (map[game->p_position.x + x][game->p_position.y + y] == '0')
+	if (map[game->p_position.x + x][game->p_position.y + y] == '0' )
 	{
 		game->moves++;
 		game->p_position.x += x;
