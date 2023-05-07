@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/01 19:31:34 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/07 23:26:12 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	valid_map(char **res, t_data *game)
 		while (res[x][++y] && y < (int)comp - 1)
 		{
 			if ((res[x][y] == '1' || res[x][y] == '0' || res[x][y] == 'P'
-					|| res[x][y] == 'C' || res[x][y] == 'E') && len == comp)
+					|| res[x][y] == 'C' || res[x][y] == 'E' || res[x][y] == 'T') && len == comp)
 				collect_data(game, res[x][y], x, y);
 			else
 				exit_msg(2, "Map must be :\033[0;32m rectangular.", RED, 1);

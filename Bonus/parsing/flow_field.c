@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:18:53 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/01 19:31:30 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/07 23:25:04 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	flow_field(char **arr, int x, int y)
 {
-	if (arr[x][y] && arr[x][y] != '1' && arr[x][y] != 'X' && arr[x][y] != 'E')
+	if (arr[x][y] && arr[x][y] != '1' && arr[x][y] != 'X' && arr[x][y] != 'E' && arr[x][y] != 'T')
 	{
 		arr[x][y] = 'X';
 		flow_field(arr, x + 1, y);

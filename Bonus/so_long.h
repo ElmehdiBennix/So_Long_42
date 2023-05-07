@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/04 06:39:43 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/08 00:18:27 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ typedef struct s_componets
 	t_list			*player;
 	t_list			*exit;
 	t_list			*collectible;
-	// void			*floor_enemy;
-	// void			*wall_enemy;
+	t_list			*floor_enemy;
+	t_list			*wall_enemy;
 
-	// int				enemy_status;
+	int				enemy_status;
 	int				img_height;
 	int				img_width;
 }					t_componets;
@@ -102,12 +102,12 @@ typedef struct s_data
 	unsigned int	width;
 	t_elements		elements;
 	t_position		p_position;
+	t_position		draw_pos;
 	t_walls			walls;
 	t_textures		floors;
 	t_componets		componets;
 	unsigned int	moves;
 	unsigned int	frame;
-	unsigned int	predict;
 }					t_data;
 
 // parsing

@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:05:48 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/04 06:05:43 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/08 00:13:13 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,31 @@ static void	init_componets(t_data *game)
 	ft_lstcreate_back(&game->componets.exit,mlx_xpm_file_to_image(game->mlx, "textures/exit/exit_3.xpm", &game->componets.img_width, &game->componets.img_height));
 	ft_lstcreate_back(&game->componets.exit,mlx_xpm_file_to_image(game->mlx, "textures/exit/exit_4.xpm", &game->componets.img_width, &game->componets.img_height));
 
+// enemy
+	last = NULL;
+	
+	game->componets.floor_enemy = ft_lstnew(mlx_xpm_file_to_image(game->mlx, "textures/enemy/floor_enemy/peaks_1.xpm", &game->componets.img_width, &game->componets.img_height));
+	ft_lstcreate_back(&game->componets.floor_enemy,mlx_xpm_file_to_image(game->mlx, "textures/enemy/floor_enemy/peaks_2.xpm", &game->componets.img_width, &game->componets.img_height));
+	ft_lstcreate_back(&game->componets.floor_enemy,mlx_xpm_file_to_image(game->mlx, "textures/enemy/floor_enemy/peaks_3.xpm", &game->componets.img_width, &game->componets.img_height));
+	ft_lstcreate_back(&game->componets.floor_enemy,mlx_xpm_file_to_image(game->mlx, "textures/enemy/floor_enemy/peaks_4.xpm", &game->componets.img_width, &game->componets.img_height));
+	last = ft_lstlast(game->componets.floor_enemy);
+	last->next = game->componets.floor_enemy;
+
+	// while(1)
+	// {
+	// 	printf("%p\n",game->componets.floor_enemy);
+	// 	game->componets.floor_enemy = game->componets.floor_enemy ->next;
+	// }
+	last = NULL;
+	
+	game->componets.wall_enemy = ft_lstnew(mlx_xpm_file_to_image(game->mlx, "textures/enemy/wall_enemy/flame_1.xpm", &game->componets.img_width, &game->componets.img_height));
+	ft_lstcreate_back(&game->componets.wall_enemy,mlx_xpm_file_to_image(game->mlx, "textures/enemy/wall_enemy/flame_2.xpm", &game->componets.img_width, &game->componets.img_height));
+	ft_lstcreate_back(&game->componets.wall_enemy,mlx_xpm_file_to_image(game->mlx, "textures/enemy/wall_enemy/flame_3.xpm", &game->componets.img_width, &game->componets.img_height));
+	ft_lstcreate_back(&game->componets.wall_enemy,mlx_xpm_file_to_image(game->mlx, "textures/enemy/wall_enemy/flame_4.xpm", &game->componets.img_width, &game->componets.img_height));
+	last = ft_lstlast(game->componets.wall_enemy);
+	last->next = game->componets.wall_enemy;
+
+// decoration
 	last = NULL;
 
 	game->floors.torch = ft_lstnew(mlx_xpm_file_to_image(game->mlx, "textures/decoration/torch_1.xpm", &game->componets.img_width, &game->componets.img_height));
