@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:09:42 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/06 01:06:23 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/07 06:07:08 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static void	move(t_data *game, unsigned int x, unsigned int y)
 	char	**map;
 
 	map = game->map;
-	// ft_fprintf(1, "%d-> Coins \n",game->elements.c_count);
-	// problemmms
-	ft_fprintf(1, "%c-> position of player \n",map[game->p_position.x + x][game->p_position.y + y]);
-	if (map[game->p_position.x + x][game->p_position.y + y] == 'E' && game->elements.c_count == 0)
+	// // ft_fprintf(1, "%d-> Coins \n",game->elements.c_count);
+	// // problemmms
+	// ft_fprintf(1, "%c-> position of player \n",map[game->p_position.x + x][game->p_position.y + y]);
+	if (game->elements.c_count == 0 && map[game->p_position.x + x][game->p_position.y + y] == 'E')
 		exit_msg(1, "U escaped good job.", YELLOW, 0);
 	if (map[game->p_position.x + x][game->p_position.y + y] == 'C')
 	{
@@ -30,7 +30,7 @@ static void	move(t_data *game, unsigned int x, unsigned int y)
 		game->p_position.y += y;
 		ft_fprintf(1, "%s-> Coin collected.\n%s", GREEN, DEFAULT);
 	}
-	if (map[game->p_position.x + x][game->p_position.y + y] != '1' || map[game->p_position.x + x][game->p_position.y + y] != 'E')
+	else if (map[game->p_position.x + x][game->p_position.y + y] != '1' && map[game->p_position.x + x][game->p_position.y + y] != 'E')
 	{
 		game->moves++;
 		game->p_position.x += x;
@@ -54,4 +54,6 @@ int	key_hooks(int key_code, t_data *game)
 	return (0);
 }
 
-// add enemy and wall textures + counter in window and make the exit not walkable and fix the texture of first wall and last wall
+// add enemy 
+// wall textures
+// counter in window

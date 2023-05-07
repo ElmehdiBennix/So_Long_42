@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:05:48 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/01 19:38:41 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/06 23:12:57 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static void	init_walls(t_data *map_data)
 
 static void	init_componets(t_data *map_data)
 {
-	map_data->componets.player = mlx_xpm_file_to_image(map_data->mlx, "textures/player/player.xpm", &map_data->componets.img_width, &map_data->componets.img_height);
-	map_data->componets.exit = mlx_xpm_file_to_image(map_data->mlx, "textures/exit/exit.xpm", &map_data->componets.img_width, &map_data->componets.img_height);
-	map_data->componets.collectible = mlx_xpm_file_to_image(map_data->mlx, "textures/collectible/coin.xpm", &map_data->componets.img_width, &map_data->componets.img_height);
+	map_data->componets.player = mlx_xpm_file_to_image(map_data->mlx, "textures/player/skull_1.xpm", &map_data->componets.img_width, &map_data->componets.img_height);
+	map_data->componets.exit = mlx_xpm_file_to_image(map_data->mlx, "textures/exit/exit_1.xpm", &map_data->componets.img_width, &map_data->componets.img_height);
+	map_data->componets.collectible = mlx_xpm_file_to_image(map_data->mlx, "textures/collectible/coin_1.xpm", &map_data->componets.img_width, &map_data->componets.img_height);
 	map_data->floors.floor = mlx_xpm_file_to_image(map_data->mlx, "textures/floor/floor.xpm", &map_data->floors.img_width, &map_data->floors.img_height);
 }
 

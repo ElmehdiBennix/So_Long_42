@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:09:42 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/05 23:02:19 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/06 23:12:01 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	move(t_data *game, unsigned int x, unsigned int y)
 	char	**map;
 
 	map = game->map;
-	if (map[game->p_position.x + x][game->p_position.y + y] == '0' )
+	if (map[game->p_position.x + x][game->p_position.y + y] == '0')
 	{
 		game->moves++;
 		game->p_position.x += x;
@@ -31,7 +31,7 @@ static void	move(t_data *game, unsigned int x, unsigned int y)
 		game->p_position.y += y;
 		ft_fprintf(1, "%s-> Coin collected.\n%s", GREEN, DEFAULT);
 	}
-	else if (map[game->p_position.x + x][game->p_position.y + y] == 'E'&& game->elements.c_count == 0)
+	else if (map[game->p_position.x + x][game->p_position.y + y] == 'E' && game->elements.c_count == 0)
 		exit_msg(1, "U escaped good job.", YELLOW, 0);
 	ft_fprintf(1, "%s Number of moves: %d.\n%s", BLUE, game->moves, DEFAULT);
 }

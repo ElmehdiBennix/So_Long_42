@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/05 03:21:21 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/07 06:25:31 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	draw_first(t_data *game, char **map, int x, int y)
 	w = 0;
 	while (map[0][w++])
 	{
-		if (w == 0)
+		if (w == 1)
 			mlx_put_image_to_window(game->mlx, game->mlx_window,game->walls.left_wall_v1, x, y);
 		else if (w > 0 && w != game->width)
 		{
@@ -140,7 +140,7 @@ static void	draw_last(t_data *game, char **map, int x, int y)
 	w = 0;
 	while (map[game->height - 1][w++])
 	{
-		if (w == 0)
+		if (w == 1)
 			mlx_put_image_to_window(game->mlx, game->mlx_window, game->walls.down_left_wall, x, y);
 		else if (w > 0 && w != game->width)
 		{
@@ -167,6 +167,9 @@ int	drawing(t_data *game)
 	draw_last(game, map, 0, y);
 	mlx_put_image_to_window(game->mlx, game->mlx_window,game->componets.player->content, 96 * game->p_position.y, 96 * game->p_position.x);
 	mlx_put_image_to_window(game->mlx, game->mlx_window,game->floors.torch, 96, 96);
+
+	mlx_string_put(game->mlx, game->mlx_window,5,10, 0xFFFF00 ,"Moves = ");
+	mlx_string_put(game->mlx, game->mlx_window,85,10, 0xFFFF00 ,ft_itoa(game->moves));
 	if ((game->frame++ %  5) == 0)
 	{
 		game->componets.collectible = game->componets.collectible -> next;
