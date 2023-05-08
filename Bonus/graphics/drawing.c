@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/08 01:30:39 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/08 02:16:51 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ static void	draw_first(t_data *game, char **map, int x, int y)
 		x += 96;
 	}
 }
-
-// pair or impair for difrent types of enemys
 
 void draw_texture(t_data *game, char texture ,int flag)
 {
@@ -153,7 +151,10 @@ int	drawing(t_data *game)
 			if (game->componets.exit -> next != NULL)
 				game->componets.exit = game->componets.exit -> next;
 	}
+	if (map[game->p_position.x][game->p_position.y] == 'T' && game->componets.enemy_status == TRUE)
+		exit_msg(1, "u died good luck next time !!", YELLOW, 0);
 	if(game->status == 6)
 		game->status = 0;
+	// printf("%d\n",game->componets.enemy_status);
 	return (0);
 }

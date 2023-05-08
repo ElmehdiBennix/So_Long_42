@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:19 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/05 03:19:36 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/08 02:15:21 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	chance(t_data *game) // w for wall || f for floor
 		while (map[h][++w])
 		{
    			rando = rand() % 10;
-			if (map[h][w] == '0' && rando == 0)
+			if (map[h][w] == '0' && (rando == 0 || rando == 1))
 			{
     			rando = rand() % 4;
 				if (rando == 0)
