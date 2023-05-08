@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/08 00:45:38 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/08 01:09:04 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,12 +134,14 @@ int	drawing(t_data *game)
 	mlx_string_put(game->mlx, game->mlx_window,10,10, 0xFFFF00 ,"Moves = ");
 	mlx_string_put(game->mlx, game->mlx_window,90,10, 0xFFFF00 ,ft_itoa(game->moves));
 	// mlx_put_image_to_window(game->mlx, game->mlx_window, game->componets.floor_enemy, 50, 50);
-
+	if ((game->frame++ %  13) == 0)
+	{
+		game->componets.floor_enemy = game->componets.floor_enemy -> next;
+		game->componets.wall_enemy = game->componets.wall_enemy -> next;
+	}
 	if ((game->frame++ %  5) == 0)
 	{
 		game->componets.collectible = game->componets.collectible -> next;
-		game->componets.floor_enemy = game->componets.floor_enemy -> next;
-		game->componets.wall_enemy = game->componets.wall_enemy -> next;
 		game->componets.player = game->componets.player -> next;
 		// game->floors.flag = game->floors.flag -> next;
 		// game->floors.torch = game->floors.torch -> next;
