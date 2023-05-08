@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:09:42 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/08 00:10:23 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/08 01:23:40 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static void	move(t_data *game, unsigned int x, unsigned int y)
 	ft_fprintf(1, "%c-> position of player \n",map[game->p_position.x + x][game->p_position.y + y]);
 	if (game->elements.c_count == 0 && map[game->p_position.x + x][game->p_position.y + y] == 'E')
 		exit_msg(1, "U escaped good job.", YELLOW, 0);
-	// if (map[game->p_position.x + x][game->p_position.y + y] == 'T' && game->componets.enemy_status == TRUE)
-	// 	exit_msg(1, "u died good luck next time !!", YELLOW, 0);
+	if (map[game->p_position.x + x][game->p_position.y + y] == 'T' && game->componets.enemy_status == TRUE)
+		exit_msg(1, "u died good luck next time !!", YELLOW, 0);
 	if (map[game->p_position.x + x][game->p_position.y + y] == 'C')
 	{
 		game->moves++;
