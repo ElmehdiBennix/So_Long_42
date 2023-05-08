@@ -6,11 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:09:42 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/08 02:09:50 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/08 02:46:06 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+// #define NDEBUG // debug disabler
+// #include <assert.h> // assert that a line has what it needs otherwise it aborts 
 
 static void	move(t_data *game, unsigned int x, unsigned int y)
 {
@@ -19,7 +21,7 @@ static void	move(t_data *game, unsigned int x, unsigned int y)
 	map = game->map;
 	// // ft_fprintf(1, "%d-> Coins \n",game->elements.c_count);
 	// // problemmms
-	ft_fprintf(1, "%c-> position of player \n",map[game->p_position.x + x][game->p_position.y + y]);
+	// ft_fprintf(1, "%c-> position of player \n",map[game->p_position.x + x][game->p_position.y + y]);
 	if (game->elements.c_count == 0 && map[game->p_position.x + x][game->p_position.y + y] == 'E')
 		exit_msg(1, "U escaped good job.", YELLOW, 0);
 	if (map[game->p_position.x + x][game->p_position.y + y] == 'C')
@@ -36,7 +38,9 @@ static void	move(t_data *game, unsigned int x, unsigned int y)
 		game->p_position.x += x;
 		game->p_position.y += y;
 	}
-	ft_fprintf(1, "%s Number of moves: %d.\n%s", BLUE, game->moves, DEFAULT);
+	// assert(game->moves == 0);
+	// ft_fprintf(1, "%s Number of moves: %d.\n%s, %s, %d", BLUE, game->moves, DEFAULT, __FILE__, __LINE__); // file and function and line of the exe to check
+	ft_fprintf(1, "%s Number of moves: %d.\n%s, %s, %d", BLUE, game->moves, DEFAULT, __FILE__, __LINE__);
 }
 
 int	key_hooks(int key_code, t_data *game)

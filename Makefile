@@ -6,7 +6,7 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 07:56:09 by ebennix           #+#    #+#              #
-#    Updated: 2023/05/08 02:30:30 by ebennix          ###   ########.fr        #
+#    Updated: 2023/05/08 02:30:54 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,5 +81,6 @@ git :
 
 play :
 	./so_long_bonus maps/Mandatory_maps/level2.ber
+	./so_long_bonus maps/Mandatory_maps/level3.ber
 
 .PHONY : all clean fclean re git
