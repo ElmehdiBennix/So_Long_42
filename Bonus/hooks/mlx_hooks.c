@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:09:42 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/08 02:46:06 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/08 03:18:41 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	move(t_data *game, unsigned int x, unsigned int y)
 	}
 	// assert(game->moves == 0);
 	// ft_fprintf(1, "%s Number of moves: %d.\n%s, %s, %d", BLUE, game->moves, DEFAULT, __FILE__, __LINE__); // file and function and line of the exe to check
-	ft_fprintf(1, "%s Number of moves: %d.\n%s, %s, %d", BLUE, game->moves, DEFAULT, __FILE__, __LINE__);
+	ft_fprintf(1, "%s Number of moves: %d.\n%s", BLUE, game->moves, DEFAULT);
 }
 
 int	key_hooks(int key_code, t_data *game)

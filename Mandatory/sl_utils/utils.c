@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 09:54:28 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/08 00:25:01 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/08 03:37:11 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	set_check(t_data *map)
 		exit_msg(2, "Map must have :\033[0;32m 1 Exit.", RED, 1);
 }
 
-int	under_wall(char **map, int x, int y, int flag) // left / top / right / down
+int	under_wall(char **map, int x, int y, int flag)
 {
 	if (flag == 'l')
 	{

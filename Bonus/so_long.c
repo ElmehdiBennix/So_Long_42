@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:19 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/08 02:15:21 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/08 03:52:32 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	checker(void)
 	system("leaks so_long");
 }
 
-void	chance(t_data *game) // w for wall || f for floor
+void	floor_chance(t_data *game) // w for wall || f for floor
 {
     int rando;
 	char **map = game->map;
@@ -54,14 +54,14 @@ void	so_long(char **av)
 	if (!game)
 		exit_msg(2, "Memory problem !", RED, 1);
 	read_map(*(++av), game);
-	chance(game);
+	floor_chance(game);
 	open_window(game);
 	init_images(game);
 	mlx_loop_hook(game->mlx, drawing, game);
 	mlx_hook(game->mlx_window, 2, 0, key_hooks , game);
 	mlx_loop(game->mlx);
 
-	free(game); // at every exit or fail
+     // at every exit or fail
 	// atexit(checker);
 }
 
