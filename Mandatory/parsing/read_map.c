@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 20:04:08 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:15:32 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,33 +31,37 @@ static char	*file_data(int fd)
 	return (str);
 }
 
-static	void	valid_map(char **res, t_data *game)
+static	void	data_loop(t_data *game, char **res, int x, int len)
+{
+	int		y;
+	int		comp;
+
+	y = 0;
+	comp = ft_strlen(res[x]);
+	if (res[x][y] != '1')
+		exit_msg(2, "Map must be surrounded by walls.", RED, 1);
+	while (res[x][++y] && y < comp - 1)
+	{
+		if ((res[x][y] == '1' || res[x][y] == '0' || res[x][y] == 'P'
+				|| res[x][y] == 'C' || res[x][y] == 'E') && len == comp)
+			collect_data(game, res[x][y], x, y);
+		else
+			exit_msg(2, "Unallowed symbol or Map is not :\033[0;32m rectangular.", RED, 1);
+	}
+	if (res[x][y] != '1')
+		exit_msg(2, "Map must be surrounded by walls.", RED, 1);
+}
+
+static	void	valid_map(t_data *game, char **res)
 {
 	int		x;
-	int		y;
-	size_t	comp;
-	size_t	len;
+	int		len;
 
 	x = 0;
 	len = ft_strlen(res[x]);
 	ones_row(res[x]);
 	while (res[++x])
-	{
-		y = 0;
-		comp = ft_strlen(res[x]);
-		if (res[x][y] != '1')
-			exit_msg(2, "Map must be surrounded by walls.", RED, 1);
-		while (res[x][++y] && y < (int)comp - 1)
-		{
-			if ((res[x][y] == '1' || res[x][y] == '0' || res[x][y] == 'P'
-					|| res[x][y] == 'C' || res[x][y] == 'E') && len == comp)
-				collect_data(game, res[x][y], x, y);
-			else
-				exit_msg(2, "Unallowed symbol or Map is not :\033[0;32m rectangular.", RED, 1);
-		}
-		if (res[x][y] != '1')
-			exit_msg(2, "Map must be surrounded by walls.", RED, 1);
-	}
+		data_loop(game, res, x, len);
 	ones_row(res[--x]);
 	game->height = ++x;
 	game->width = len;
@@ -78,7 +82,7 @@ void	read_map(char *map_name, t_data *game)
 		exit_msg(2, "File not found.", RED, 1);
 	str = file_data(fd);
 	res = ft_split(str, '\n');
-	valid_map(res, game);
+	valid_map(game, res);
 	flow_field(res, game->p_pos.x, game->p_pos.y);
 	game->map = valid_path(res, str);
 }

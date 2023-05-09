@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 09:54:28 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 19:58:55 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:23:49 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,20 @@ void	put_image(t_data *game, void *p)
 {
 	mlx_put_image_to_window(game->mlx, game->mlx_win, p,
 		game->d_pos.x, game->d_pos.y);
+}
+
+void	draw_terain(t_data *game, char **map, unsigned w, unsigned h)
+{
+	put_image(game, game->floors.floor);
+	if (map[h][w] == 'C')
+	{
+		if (map[game->p_pos.x][game->p_pos.y] == 'C')
+			map[game->p_pos.x][game->p_pos.y] = '0';
+		else
+			put_image(game, game->componets.collectible);
+	}
+	if (map[h][w] == 'E')
+		put_image(game, game->componets.exit);
 }
 
 void	draw_wall(t_data *game, int h, int w)

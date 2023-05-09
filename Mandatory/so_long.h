@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 19:52:09 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:28:14 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,26 +99,24 @@ typedef struct s_data
 	unsigned int	moves;
 }					t_data;
 
-// mac res 2880 * 1575
-
-// parsing
 void	read_map(char *str, t_data *game);
-int		drawing(t_data *game);
-int		key_hooks(int key_code, t_data *game); // change struct name to game
-
-//so_long funcs
-void	init_images(t_data *game);
-int		under_wall(char **map, int x, int y, int flag);
 void	open_window(t_data *game);
+void	init_images(t_data *game);
+int		drawing(t_data *game);
+int		key_hooks(int key_code, t_data *game);
 
 void	put_image(t_data *game, void *p);
-
 void	draw_wall(t_data *game, int h, int w);
-int		under_wall(char **map, int x, int y, int flag);
-void	set_check(t_data *game);
-void	collect_data(t_data *game, char data, int x, int y);
+void	draw_terain(t_data *game, char **map, unsigned w, unsigned h);
+
 void	ones_row(char *res);
+void	collect_data(t_data *game, char data, int x, int y);
+void	set_check(t_data *game);
+int		under_wall(char **map, int x, int y, int flag);
+
 void	flow_field(char **arr, int x, int y);
 char	**valid_path(char **res, char *str);
+
+// mac res 2880 * 1575
 
 #endif

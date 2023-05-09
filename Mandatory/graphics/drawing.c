@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 20:01:48 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:24:59 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,7 @@ static void	draw_mid(t_data *game, char **map)
 			if (map[h][w] == '1')
 				draw_wall(game, h, w);
 			else
-			{
-				put_image(game, game->floors.floor);
-				if (map[h][w] == 'C')
-				{
-					if (map[game->p_pos.x][game->p_pos.y] == 'C')
-						map[game->p_pos.x][game->p_pos.y] = '0';
-					else
-						put_image(game, game->componets.collectible);
-				}
-				if (map[h][w] == 'E')
-					put_image(game, game->componets.exit);
-			}
+				draw_terain(game, map, w, h);
 			game->d_pos.x += 96;
 		}
 		game->d_pos.y += 96;
