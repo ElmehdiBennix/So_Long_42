@@ -6,108 +6,135 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/04 05:25:54 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 18:52:14 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static void	draw_first(t_data *map_data, char **map, int x, int y)
+static void	draw_first(t_data *game, char **map)
 {
-	int				w;
-	unsigned int	i;
+	unsigned int	w;
 
-	i = 0;
 	w = 0;
-	while (map[0][w++] && map_data->width >= i)
+	game->draw_position.x = 0;
+	game->draw_position.y = 0;
+	while (map[0][w++])
 	{
-		if (i++ == 0)
-			mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->walls.left_wall_v1, x, y);
-		else if (i > 0 && i != map_data->width)
+		if (w == 1)
+			mlx_put_image_to_window(game->mlx, game->mlx_window,
+				game->walls.left_wall_v1, game->draw_position.x,
+				game->draw_position.y);
+		else if (w > 0 && w != game->width)
 		{
-			if (i % 2 == 0 && under_wall(map, 1, w, 'l') == 0)
-				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->walls.top_wall_v1, x, y);
-			else if (i % 2 != 0 && under_wall(map, 1, w, 'l') == 0)
-				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->walls.top_wall_v2, x, y);
-			else if (i % 2 == 0 && under_wall(map, 1, w, 'l') == 1)
-				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->walls.block_wall_v1, x, y);
-			else if (i % 2 != 0 && under_wall(map, 1, w, 'l') == 1)
-				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->walls.block_wall_v2, x, y);
+			if (w % 2 == 0 && under_wall(map, 1, w, 'l') == 0)
+				mlx_put_image_to_window(game->mlx, game->mlx_window,
+					game->walls.top_wall_v1, game->draw_position.x,
+					game->draw_position.y);
+			else if (w % 2 != 0 && under_wall(map, 1, w, 'l') == 0)
+				mlx_put_image_to_window(game->mlx, game->mlx_window,
+					game->walls.top_wall_v2, game->draw_position.x,
+					game->draw_position.y);
+			else if (w % 2 == 0 && under_wall(map, 1, w, 'l') == 1)
+				mlx_put_image_to_window(game->mlx, game->mlx_window,
+					game->walls.block_wall_v1, game->draw_position.x,
+					game->draw_position.y);
+			else if (w % 2 != 0 && under_wall(map, 1, w, 'l') == 1)
+				mlx_put_image_to_window(game->mlx, game->mlx_window,
+					game->walls.block_wall_v2, game->draw_position.x,
+					game->draw_position.y);
 		}
-		else if (i == map_data->width)
-			mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->walls.right_wall_v1, x, y);
-		x += 96;
+		else if (w == game->width)
+			mlx_put_image_to_window(game->mlx, game->mlx_window,
+				game->walls.right_wall_v1, game->draw_position.x,
+				game->draw_position.y);
+		game->draw_position.x += 96;
 	}
+	game->draw_position.y = 96;
 }
 
-static int	draw_mid(t_data *map_data, char **map, int x, int y)
+static void	draw_mid(t_data *game, char **map)
 {
-	int	w;
-	int	h;
+	unsigned int	w;
+	unsigned int	h;
 
 	h = 0;
-	while (map[++h] && (unsigned int)h != map_data->height - 1)
+	game->draw_position.x = 0;
+	while (map[++h] && (unsigned int)h != game->height - 1)
 	{
-		x = 0;
+		game->draw_position.x = 0;
 		w = -1;
 		while (map[h][++w])
 		{
 			if (map[h][w] == '1')
-				draw_wall(map_data, h, w, x, y);
+				draw_wall(game, h, w);
 			else
 			{
-				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window, map_data->floors.floor, x, y);
-				if(map[h][w] == 'C')
+				mlx_put_image_to_window(game->mlx, game->mlx_window,
+					game->floors.floor, game->draw_position.x,
+					game->draw_position.y);
+				if (map[h][w] == 'C')
 				{
-					if (map[map_data->p_position.x][map_data->p_position.y] == 'C')
-						map[map_data->p_position.x][map_data->p_position.y] = '0';
+					if (map[game->p_position.x][game->p_position.y] == 'C')
+						map[game->p_position.x][game->p_position.y] = '0';
 					else
-						mlx_put_image_to_window(map_data->mlx, map_data->mlx_window, map_data->componets.collectible, x, y);
+						mlx_put_image_to_window(game->mlx, game->mlx_window,
+							game->componets.collectible, game->draw_position.x,
+							game->draw_position.y);
 				}
 				if (map[h][w] == 'E')
-					mlx_put_image_to_window(map_data->mlx, map_data->mlx_window, map_data->componets.exit, x, y);
+					mlx_put_image_to_window(game->mlx, game->mlx_window,
+						game->componets.exit, game->draw_position.x,
+						game->draw_position.y);
 			}
-			x += 96;
+			game->draw_position.x += 96;
 		}
-		y += 96;
+		game->draw_position.y += 96;
 	}
-	return (y);
 }
 
-static void	draw_last(t_data *map_data, char **map, int x, int y)
+static void	draw_last(t_data *game, char **map)
 {
-	int				w;
-	unsigned int i;
-	
-	i = 0;
+	unsigned int	w;
+
 	w = 0;
-	while (map[map_data->height - 1][w++] && map_data->width >= i)
+	game->draw_position.x = 0;
+	while (map[game->height - 1][w++])
 	{
-		if (i++ == 0)
-			mlx_put_image_to_window(map_data->mlx, map_data->mlx_window, map_data->walls.down_left_wall, x, y);
-		else if (i > 0 && i != map_data->width)
+		if (w == 1)
+			mlx_put_image_to_window(game->mlx, game->mlx_window,
+				game->walls.down_left_wall, game->draw_position.x,
+				game->draw_position.y);
+		else if (w > 0 && w != game->width)
 		{
-			if (i % 2 == 0)
-				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window, map_data->walls.down_wall_v1, x, y);
+			if (w % 2 == 0)
+				mlx_put_image_to_window(game->mlx, game->mlx_window,
+					game->walls.down_wall_v1, game->draw_position.x,
+					game->draw_position.y);
 			else
-				mlx_put_image_to_window(map_data->mlx, map_data->mlx_window, map_data->walls.down_wall_v2, x, y);
+				mlx_put_image_to_window(game->mlx, game->mlx_window,
+					game->walls.down_wall_v2, game->draw_position.x,
+					game->draw_position.y);
 		}
-		else if (i == map_data->width)
-			mlx_put_image_to_window(map_data->mlx, map_data->mlx_window, map_data->walls.down_right_wall, x, y);
-		x += 96;
+		else if (w == game->width)
+			mlx_put_image_to_window(game->mlx, game->mlx_window,
+				game->walls.down_right_wall, game->draw_position.x,
+				game->draw_position.y);
+		game->draw_position.x += 96;
 	}
 }
 
-int	drawing(t_data *map_data)
+int	drawing(t_data *game)
 {
 	char	**map;
-	int		y;
 
-	map = map_data->map;
-	mlx_clear_window(map_data->mlx,map_data->mlx_window);
-	draw_first(map_data, map, 0, 0);
-	y = draw_mid(map_data, map, 0, 96);
-	draw_last(map_data, map, 0, y);
-	mlx_put_image_to_window(map_data->mlx, map_data->mlx_window,map_data->componets.player, 96 * map_data->p_position.y, 96 * map_data->p_position.x);
+	map = game->map;
+	mlx_clear_window(game->mlx, game->mlx_window);
+	draw_first(game, map);
+	draw_mid(game, map);
+	draw_last(game, map);
+	mlx_put_image_to_window(game->mlx, game->mlx_window,
+		game->componets.player, 96 * game->p_position.y,
+		96 * game->p_position.x);
 	return (0);
 }

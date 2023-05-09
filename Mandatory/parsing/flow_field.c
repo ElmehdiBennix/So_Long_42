@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:18:53 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/08 04:11:01 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 15:47:23 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	flow_field(char **arr, int x, int y)
 
 char	**valid_path(char **res, char *str)
 {
-	char **map;
+	char	**map;
 
 	while (*res)
 	{
@@ -42,6 +42,6 @@ char	**valid_path(char **res, char *str)
 	}
 	map = ft_split(str, '\n');
 	if (!map)
-		return NULL;
+		return (NULL);
 	return (map);
 }

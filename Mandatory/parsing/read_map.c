@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/01 19:31:34 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 15:47:52 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ void	read_map(char *map_name, t_data *game)
 	valid_map(res, game);
 	flow_field(res, game->p_position.x, game->p_position.y);
 	game->map = valid_path(res, str);
+}
 	// free(res);
 	// system("leaks so_long");
-}
