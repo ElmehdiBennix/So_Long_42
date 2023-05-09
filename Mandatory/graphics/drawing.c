@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 20:24:59 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:29:34 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ static void	draw_first(t_data *game, char **map)
 			put_image(game, game->walls.left_v1);
 		else if (w > 0 && w != game->width)
 		{
-			if (w % 2 == 0 && under_wall(map, 1, w, 'l') == 0)
+			if (w % 2 == 0 && under_wall(map, 1, w, 'l') == FALSE)
 				put_image(game, game->walls.top_v1);
-			else if (w % 2 != 0 && under_wall(map, 1, w, 'l') == 0)
+			else if (w % 2 != 0 && under_wall(map, 1, w, 'l') == FALSE)
 				put_image(game, game->walls.top_v2);
-			else if (w % 2 == 0 && under_wall(map, 1, w, 'l') == 1)
+			else if (w % 2 == 0 && under_wall(map, 1, w, 'l') == TRUE)
 				put_image(game, game->walls.block_v1);
-			else if (w % 2 != 0 && under_wall(map, 1, w, 'l') == 1)
+			else if (w % 2 != 0 && under_wall(map, 1, w, 'l') == TRUE)
 				put_image(game, game->walls.block_v2);
 		}
 		else if (w == game->width)

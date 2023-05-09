@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 20:28:14 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:28:44 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 
 # define TRUE 1
 # define FALSE 0
-
-//macOS keyboard keycodes #
 
 # define MAC_W 13
 # define MAC_A 0
@@ -116,7 +114,5 @@ int		under_wall(char **map, int x, int y, int flag);
 
 void	flow_field(char **arr, int x, int y);
 char	**valid_path(char **res, char *str);
-
-// mac res 2880 * 1575
 
 #endif

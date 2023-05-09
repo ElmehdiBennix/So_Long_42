@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 09:54:28 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 20:23:49 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:32:18 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	put_image(t_data *game, void *p)
 		game->d_pos.x, game->d_pos.y);
 }
 
-void	draw_terain(t_data *game, char **map, unsigned w, unsigned h)
+void	draw_terain(t_data *game, char **map, unsigned int w, unsigned int h)
 {
 	put_image(game, game->floors.floor);
 	if (map[h][w] == 'C')
