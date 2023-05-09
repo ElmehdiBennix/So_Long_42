@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 20:15:32 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:51:29 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static char	*file_data(int fd)
+static char	*file_data(int fd) // brings the file data if it exists nd allowed.
 {
 	char	*str;
 	char	*row;
@@ -31,7 +31,7 @@ static char	*file_data(int fd)
 	return (str);
 }
 
-static	void	data_loop(t_data *game, char **res, int x, int len)
+static	void	data_loop(t_data *game, char **res, int x, int len) // collects the data and checks for the errors read exit_msg().
 {
 	int		y;
 	int		comp;
@@ -52,7 +52,7 @@ static	void	data_loop(t_data *game, char **res, int x, int len)
 		exit_msg(2, "Map must be surrounded by walls.", RED, 1);
 }
 
-static	void	valid_map(t_data *game, char **res)
+static	void	valid_map(t_data *game, char **res) // loops over every line of the 2d array to validate.
 {
 	int		x;
 	int		len;
@@ -68,7 +68,7 @@ static	void	valid_map(t_data *game, char **res)
 	set_check(game);
 }
 
-void	read_map(char *map_name, t_data *game)
+void	read_map(char *map_name, t_data *game) // reads the map and checks if there is a .ber at the end of the arg and if the file exists or not then makes call to other funcs to see if its valid or not.
 {
 	int		fd;
 	char	*str;

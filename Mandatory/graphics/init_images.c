@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:05:48 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 19:12:13 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:43:41 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static void	init_images_1(t_data *map_data)
+static void	init_images_1(t_data *map_data) // does what the name says.
 {
 	map_data->walls.block_v1 = mlx_xpm_file_to_image(map_data->mlx,
 			"textures/wall/block_wall_v1.xpm", &map_data->walls.img_width,
@@ -34,7 +34,7 @@ static void	init_images_1(t_data *map_data)
 			&map_data->walls.img_height);
 }
 
-static void	init_images_2(t_data *map_data)
+static void	init_images_2(t_data *map_data) // does what the name says.
 {
 	map_data->componets.player = mlx_xpm_file_to_image(map_data->mlx,
 			"textures/player/skull_1.xpm", &map_data->componets.img_width,
@@ -56,7 +56,7 @@ static void	init_images_2(t_data *map_data)
 			&map_data->walls.img_height);
 }
 
-static void	init_images_3(t_data *map_data)
+static void	init_images_3(t_data *map_data) // does what the name says.
 {
 	map_data->walls.full = mlx_xpm_file_to_image(map_data->mlx,
 			"textures/wall/full_wall.xpm", &map_data->walls.img_width,
@@ -75,7 +75,7 @@ static void	init_images_3(t_data *map_data)
 			&map_data->walls.img_height);
 }
 
-static void	protections(t_data *map_data)
+static void	protections(t_data *map_data) // does what the name says.
 {
 	if (!map_data->walls.top_v2 || !map_data->walls.block_v2
 		|| !map_data->walls.down_v1 || !map_data->walls.down_v2
@@ -92,7 +92,7 @@ static void	protections(t_data *map_data)
 		exit_msg(2, "Texture file not found.", RED, 1);
 }
 
-void	init_images(t_data *map_data)
+void	init_images(t_data *map_data) // does what the name says.
 {
 	init_images_1(map_data);
 	init_images_2(map_data);

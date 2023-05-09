@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 20:29:34 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:43:08 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static void	draw_first(t_data *game, char **map)
+static void	draw_first(t_data *game, char **map) // does what the name says draws first row.
 {
 	unsigned int	w;
 
@@ -41,7 +41,7 @@ static void	draw_first(t_data *game, char **map)
 	game->d_pos.y = 96;
 }
 
-static void	draw_mid(t_data *game, char **map)
+static void	draw_mid(t_data *game, char **map) // does what the name says ...
 {
 	unsigned int	w;
 	unsigned int	h;
@@ -64,7 +64,7 @@ static void	draw_mid(t_data *game, char **map)
 	}
 }
 
-static void	draw_last(t_data *game, char **map)
+static void	draw_last(t_data *game, char **map) // does what the name says ...
 {
 	unsigned int	w;
 
@@ -87,7 +87,7 @@ static void	draw_last(t_data *game, char **map)
 	}
 }
 
-int	drawing(t_data *game)
+int	drawing(t_data *game) // draws the full map and its elements depending on the map then clears the window for next frame.
 {
 	char	**map;
 

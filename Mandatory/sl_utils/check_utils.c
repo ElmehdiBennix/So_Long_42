@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 19:56:08 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 19:57:29 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:38:01 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ones_row(char *res)
+void	ones_row(char *res) // checks if the row is full of 1s so that the map has borders.
 {
 	if (res == NULL)
 		exit_msg(2, "File is empty.", RED, 1);
@@ -25,7 +25,7 @@ void	ones_row(char *res)
 	}
 }
 
-void	collect_data(t_data *game, char data, int x, int y)
+void	collect_data(t_data *game, char data, int x, int y) // collects data during parse.
 {
 	if (data == 'P')
 	{
@@ -39,7 +39,7 @@ void	collect_data(t_data *game, char data, int x, int y)
 		game->elements.e_count++;
 }
 
-void	set_check(t_data *game)
+void	set_check(t_data *game)  // checks if the map data is valid or not.
 {
 	if (game->elements.p_count != 1)
 		exit_msg(2, "Map must have :\033[0;32m 1 Player.", RED, 1);

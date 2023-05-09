@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 09:54:28 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 20:33:35 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:36:45 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	under_wall(char **map, int x, int y, int flag)
+int	under_wall(char **map, int x, int y, int flag) // checks if there is a wall on the next block depending on the flag #l l = left # d = down # r = right # t = top.
 {
 	if (flag == 'l')
 	{
@@ -37,13 +37,13 @@ int	under_wall(char **map, int x, int y, int flag)
 	return (FALSE);
 }
 
-void	put_image(t_data *game, void *p)
+void	put_image(t_data *game, void *p) // draws an image just for the norm.
 {
 	mlx_put_image_to_window(game->mlx, game->mlx_win, p,
 		game->d_pos.x, game->d_pos.y);
 }
 
-void	draw_terain(t_data *game, char **map, unsigned int w, unsigned int h)
+void	draw_terain(t_data *game, char **map, unsigned int w, unsigned int h) // draws the ground depending on the map.
 {
 	put_image(game, game->floors.floor);
 	if (map[h][w] == 'C')
@@ -57,7 +57,7 @@ void	draw_terain(t_data *game, char **map, unsigned int w, unsigned int h)
 		put_image(game, game->componets.exit);
 }
 
-void	draw_wall(t_data *game, int h, int w)
+void	draw_wall(t_data *game, int h, int w) // draws a wall depending on the underwall function and position on map
 {
 	char	**map;
 

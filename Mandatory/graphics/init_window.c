@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 09:43:15 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 20:23:38 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:45:35 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	open_window(t_data *game)
+void	open_window(t_data *game) // opens the window depending on the map width and height and calculates the image pixels to see if it can fit in the intra mac screen .
 {
 	int	hit;
 	int	wid;

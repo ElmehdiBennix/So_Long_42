@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:19 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 20:02:28 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:54:15 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	so_long(char **av)
 	read_map(*(++av), game);
 	open_window(game);
 	init_images(game);
-	mlx_loop_hook(game->mlx, drawing, game);
-	mlx_hook(game->mlx_win, 2, 0, key_hooks, game);
-	mlx_loop(game->mlx);
+	mlx_loop_hook(game->mlx, drawing, game); // loops over a render of an image to make multiple frames by a repeated call to the drawing func.
+	mlx_hook(game->mlx_win, 2, 0, key_hooks, game); // brings keyboard events and passes them to the desired function for the treatement.
+	mlx_loop(game->mlx); // loops over the mlx instance.
 }
 	// free(game); // at every exit or fail
 	// atexit(checker);
