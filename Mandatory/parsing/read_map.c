@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 20:51:29 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 23:02:27 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ static char	*file_data(int fd) // brings the file data if it exists nd allowed.
 		if (row == NULL)
 			break ;
 		if (row[0] == '\n')
+		{
+			free(str);
+			free(row);
 			exit_msg(2, "New line in map.", RED, 1);
+		}
 		str = ft_strjoin(str, row);
 		free(row);
 	}
@@ -84,7 +88,7 @@ void	read_map(char *map_name, t_data *game) // reads the map and checks if there
 	res = ft_split(str, '\n');
 	valid_map(game, res);
 	flow_field(res, game->p_pos.x, game->p_pos.y);
-	game->map = valid_path(res, str);
+	game->map = valid_path(res ,str);
+	if (!game->map)
+		exit_msg(2, "Map was not allocated.", RED, 1);
 }
-	// free(res);
-	// system("leaks so_long");

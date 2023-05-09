@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_msg.c                                         :+:      :+:    :+:   */
+/*   free2d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 02:29:46 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 23:15:21 by ebennix          ###   ########.fr       */
+/*   Created: 2023/05/09 21:11:15 by ebennix           #+#    #+#             */
+/*   Updated: 2023/05/09 22:45:50 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/utils.h"
 
-void	exit_msg(int fd, char *msg, char *color, int erno)
+char	**free2d(char **str)
 {
-	ft_fprintf(fd, "%s-> %s %s\n", color, msg, DEFAULT);
-	exit(erno);
+	int		i;
+
+	i = -1;
+	if (!str)
+		return (NULL);
+	while (str[++i])
+		free(str[i]);
+	free(str);
+	return (str);
 }

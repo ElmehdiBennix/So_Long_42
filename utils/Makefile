@@ -6,7 +6,7 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 04:53:15 by ebennix           #+#    #+#              #
-#    Updated: 2023/04/29 19:20:59 by ebennix          ###   ########.fr        #
+#    Updated: 2023/05/09 22:45:38 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ FILES := libft/string/ft_atoi		  libft/int/ft_itoa	               libft/int/ft_p
 		 libft/char/ft_isprint		  libft/memory/ft_memmove	 	   libft/lst/ft_lstsize	 	 	\
 		 libft/lst/ft_lstadd_front	  libft/lst/ft_lstnew	  	       libft/lst/ft_lstlast      	\
 		 libft/lst/ft_lstadd_back	  fprintf/utils/ft_fprintf_hex     fprintf/utils/ft_fprintf_put \
+		 libft/heap/free2d
 
 SRC := $(FILES:=.c)
 
