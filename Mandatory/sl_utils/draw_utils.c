@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 09:54:28 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 20:32:18 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:33:35 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,24 @@ int	under_wall(char **map, int x, int y, int flag)
 	if (flag == 'l')
 	{
 		if (map[x][y - 1] == '1')
-			return (1);
+			return (TRUE);
 	}
 	else if (flag == 'd')
 	{
 		if (map[x + 1][y] == '1')
-			return (1);
+			return (TRUE);
 	}
 	else if (flag == 'r')
 	{
 		if (map[x][y + 1] == '1')
-			return (1);
+			return (TRUE);
 	}
 	else if (flag == 't')
 	{
 		if (map[x - 1][y] == '1')
-			return (1);
+			return (TRUE);
 	}
-	return (0);
+	return (FALSE);
 }
 
 void	put_image(t_data *game, void *p)
@@ -78,11 +78,11 @@ void	draw_wall(t_data *game, int h, int w)
 	}
 	else
 	{
-		if (h % 2 == 0 && under_wall(map, h, w, 'd') == 1)
+		if (h % 2 == 0 && under_wall(map, h, w, 'd') == TRUE)
 			put_image(game, game->walls.block_v1);
-		else if (h % 2 != 0 && under_wall(map, h, w, 'd') == 1)
+		else if (h % 2 != 0 && under_wall(map, h, w, 'd') == TRUE)
 			put_image(game, game->walls.block_v2);
-		else if (under_wall(map, h, w, 'd') == 0)
+		else if (under_wall(map, h, w, 'd') == FALSE)
 			put_image(game, game->walls.full);
 	}
 }
