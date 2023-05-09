@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:19 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 15:52:53 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:02:28 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	so_long(char **av)
 	open_window(game);
 	init_images(game);
 	mlx_loop_hook(game->mlx, drawing, game);
-	mlx_hook(game->mlx_window, 2, 0, key_hooks, game);
+	mlx_hook(game->mlx_win, 2, 0, key_hooks, game);
 	mlx_loop(game->mlx);
+}
 	// free(game); // at every exit or fail
 	// atexit(checker);
-}
 
 int	main(int ac, char **av)
 {

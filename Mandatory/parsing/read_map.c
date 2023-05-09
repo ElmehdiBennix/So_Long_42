@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 15:47:52 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:00:22 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char	*file_data(int fd)
 	return (str);
 }
 
-void	valid_map(char **res, t_data *game)
+static	void	valid_map(char **res, t_data *game)
 {
 	int		x;
 	int		y;
@@ -79,7 +79,7 @@ void	read_map(char *map_name, t_data *game)
 	str = file_data(fd);
 	res = ft_split(str, '\n');
 	valid_map(res, game);
-	flow_field(res, game->p_position.x, game->p_position.y);
+	flow_field(res, game->p_pos.x, game->p_pos.y);
 	game->map = valid_path(res, str);
 }
 	// free(res);

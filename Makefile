@@ -6,7 +6,7 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 07:56:09 by ebennix           #+#    #+#              #
-#    Updated: 2023/05/08 02:30:54 by ebennix          ###   ########.fr        #
+#    Updated: 2023/05/09 19:58:19 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ HEADER := Bonus/so_long.h
 
 FILES := Mandatory/so_long 			Mandatory/parsing/read_map		Mandatory/graphics/drawing		\
 		 Mandatory/hooks/mlx_hooks		Mandatory/graphics/init_images	Mandatory/graphics/init_window	\
-		 Mandatory/sl_utils/utils		Mandatory/parsing/flow_field \
+		 Mandatory/sl_utils/check_utils		Mandatory/sl_utils/draw_utils		Mandatory/parsing/flow_field \
 
 FILES_B := Bonus/so_long 			Bonus/parsing/read_map		Bonus/graphics/drawing		\
 		   Bonus/hooks/mlx_hooks		Bonus/graphics/init_images	Bonus/graphics/init_window	\

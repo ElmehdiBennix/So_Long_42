@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 18:35:33 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 19:52:09 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,19 @@
 
 typedef struct s_walls
 {
-	void	*top_wall_v1;
-	void	*top_wall_v2;
-	void	*down_wall_v1;
-	void	*down_wall_v2;
-	void	*right_wall_v1;
-	void	*right_wall_v2;
-	void	*left_wall_v1;
-	void	*left_wall_v2;
-	void	*down_right_wall;
-	void	*down_left_wall;
-	void	*block_wall_v1;
-	void	*block_wall_v2;
-	void	*full_wall;
+	void	*top_v1;
+	void	*top_v2;
+	void	*down_v1;
+	void	*down_v2;
+	void	*right_v1;
+	void	*right_v2;
+	void	*left_v1;
+	void	*left_v2;
+	void	*down_right;
+	void	*down_left;
+	void	*block_v1;
+	void	*block_v2;
+	void	*full;
 
 	int		img_width;
 	int		img_height;
@@ -86,18 +86,20 @@ typedef struct s_position
 typedef struct s_data
 {
 	void			*mlx;
-	void			*mlx_window;
+	void			*mlx_win;
 	char			**map;
 	unsigned int	height;
 	unsigned int	width;
 	t_elements		elements;
-	t_position		p_position;
-	t_position		draw_position;
+	t_position		p_pos;
+	t_position		d_pos;
 	t_walls			walls;
 	t_floor			floors;
 	t_componets		componets;
 	unsigned int	moves;
 }					t_data;
+
+// mac res 2880 * 1575
 
 // parsing
 void	read_map(char *str, t_data *game);
@@ -108,6 +110,8 @@ int		key_hooks(int key_code, t_data *game); // change struct name to game
 void	init_images(t_data *game);
 int		under_wall(char **map, int x, int y, int flag);
 void	open_window(t_data *game);
+
+void	put_image(t_data *game, void *p);
 
 void	draw_wall(t_data *game, int h, int w);
 int		under_wall(char **map, int x, int y, int flag);
