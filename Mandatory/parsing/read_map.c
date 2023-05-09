@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 20:00:22 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 20:04:08 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static	void	valid_map(char **res, t_data *game)
 					|| res[x][y] == 'C' || res[x][y] == 'E') && len == comp)
 				collect_data(game, res[x][y], x, y);
 			else
-				exit_msg(2, "Map must be :\033[0;32m rectangular.", RED, 1);
+				exit_msg(2, "Unallowed symbol or Map is not :\033[0;32m rectangular.", RED, 1);
 		}
 		if (res[x][y] != '1')
 			exit_msg(2, "Map must be surrounded by walls.", RED, 1);
