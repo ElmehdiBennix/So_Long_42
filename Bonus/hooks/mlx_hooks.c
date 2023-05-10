@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:09:42 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/10 03:03:58 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/10 06:02:39 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,3 @@ int	key_hooks(int key_code, t_data *game)
 		exit_msg(1, "Quit.", YELLOW, 0);
 	return (0);
 }
-
-// #define NDEBUG // debug disabler
-// #include <assert.h> // assert that a line has what it needs otherwise it aborts 
-
-// assert(game->moves == 0);
-// ft_fprintf(1, "%s Number of moves: %d.\n%s, %s, %d", BLUE, game->moves, DEFAULT, __FILE__, __LINE__); // file and function and line of the exe to check

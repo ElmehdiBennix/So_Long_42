@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 02:32:58 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/10 03:00:58 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/10 06:02:28 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,4 +124,3 @@ void	init_images_4(t_data *game)
 	last = ft_lstlast(game->componets.collectible);
 	last->next = game->componets.collectible;
 }
-// fix animation with spikes
