@@ -6,7 +6,7 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 04:53:15 by ebennix           #+#    #+#              #
-#    Updated: 2023/05/09 22:45:38 by ebennix          ###   ########.fr        #
+#    Updated: 2023/05/11 00:25:26 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	$(AR) $(NAME) $(OBJ)
 
-%.o:%.c $(HEADER) %(COLORS)
+%.o:%.c $(HEADER) $(COLORS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
@@ -61,4 +61,4 @@ clean :
 fclean: clean
 	$(RM) $(NAME)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean
