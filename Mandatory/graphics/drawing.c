@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 20:43:08 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/09 23:20:27 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static void	draw_first(t_data *game, char **map) // does what the name says draws first row.
+static void	draw_first(t_data *game, char **map)
 {
 	unsigned int	w;
 
@@ -41,7 +41,7 @@ static void	draw_first(t_data *game, char **map) // does what the name says draw
 	game->d_pos.y = 96;
 }
 
-static void	draw_mid(t_data *game, char **map) // does what the name says ...
+static void	draw_mid(t_data *game, char **map)
 {
 	unsigned int	w;
 	unsigned int	h;
@@ -55,7 +55,7 @@ static void	draw_mid(t_data *game, char **map) // does what the name says ...
 		while (map[h][++w])
 		{
 			if (map[h][w] == '1')
-				draw_wall(game, h, w);
+				draw_wall(game, map, h, w);
 			else
 				draw_terain(game, map, w, h);
 			game->d_pos.x += 96;
@@ -64,7 +64,7 @@ static void	draw_mid(t_data *game, char **map) // does what the name says ...
 	}
 }
 
-static void	draw_last(t_data *game, char **map) // does what the name says ...
+static void	draw_last(t_data *game, char **map)
 {
 	unsigned int	w;
 
@@ -87,7 +87,7 @@ static void	draw_last(t_data *game, char **map) // does what the name says ...
 	}
 }
 
-int	drawing(t_data *game) // draws the full map and its elements depending on the map then clears the window for next frame.
+int	drawing(t_data *game)
 {
 	char	**map;
 

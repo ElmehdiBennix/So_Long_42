@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 19:56:08 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 23:35:17 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/10 05:48:02 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,31 @@ void	set_check(t_data *game)
 		exit_msg(2, "Unfinished map:\033[0;32m Coin or more is needed.", RED, 1);
 	if (game->elements.e_count != 1)
 		exit_msg(2, "Unfinished map:\033[0;32m 1 Exit is needed.", RED, 1);
+}
+
+void	texture_chance(char **map, int h, int w)
+{
+	int	rando;
+
+	srand(time(0));
+	while (map[++h])
+	{
+		while (map[h][++w])
+		{
+			rando = rand() % 100;
+			if (map[h][w] == '0' && rando <= 25)
+			{
+				rando = rand() % 4;
+				if (rando == 0)
+					map[h][w] = '6';
+				else if (rando == 1)
+					map[h][w] = '7';
+				else if (rando == 2)
+					map[h][w] = '8';
+				else if (rando == 3)
+					map[h][w] = '9';
+				w++;
+			}
+		}
+	}
 }

@@ -6,16 +6,11 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:19 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 23:16:13 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/10 00:44:22 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// void	checker(void)
-// {
-// 	system("leaks so_long");
-// }
 
 void	so_long(char **av)
 {
@@ -27,11 +22,9 @@ void	so_long(char **av)
 	read_map(*(++av), game);
 	open_window(game);
 	init_images(game);
-	mlx_loop_hook(game->mlx, drawing, game); // loops over a render of an image to make multiple frames by a repeated call to the drawing func.
-	mlx_hook(game->mlx_win, 2, 0, key_hooks, game); // brings keyboard events and passes them to the desired function for the treatement.
-	mlx_loop(game->mlx); // loops over the mlx instance.
-	free2d(game->map);
-	free(game);
+	mlx_loop_hook(game->mlx, drawing, game);
+	mlx_hook(game->mlx_win, 2, 0, key_hooks, game);
+	mlx_loop(game->mlx);
 }
 
 int	main(int ac, char **av)

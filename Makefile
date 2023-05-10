@@ -6,7 +6,7 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 07:56:09 by ebennix           #+#    #+#              #
-#    Updated: 2023/05/09 22:45:41 by ebennix          ###   ########.fr        #
+#    Updated: 2023/05/10 04:53:54 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ FILES := Mandatory/so_long 			Mandatory/parsing/read_map		Mandatory/graphics/dra
 		 Mandatory/sl_utils/check_utils		Mandatory/sl_utils/draw_utils		Mandatory/parsing/flow_field \
 
 FILES_B := Bonus/so_long 			Bonus/parsing/read_map		Bonus/graphics/drawing		\
-		   Bonus/hooks/mlx_hooks		Bonus/graphics/init_images	Bonus/graphics/init_window	\
-		   Bonus/sl_utils/utils		Bonus/parsing/flow_field \
+		   Bonus/hooks/mlx_hooks	Bonus/graphics/init_window  Bonus/graphics/init_images_2 	Bonus/graphics/init_images_1	 Bonus/graphics/sprites  \
+		   Bonus/sl_utils/check_utils		Bonus/sl_utils/draw_utils		Bonus/parsing/flow_field \
 
 SRC := $(FILES:=.c)
 
@@ -79,8 +79,12 @@ git :
 	git commit -m "$(m)"
 	git push
 
-play :
+play Bonus:
+	./so_long_bonus maps/Mandatory_maps/level1.ber
 	./so_long_bonus maps/Mandatory_maps/level2.ber
 	./so_long_bonus maps/Mandatory_maps/level3.ber
+	./so_long_bonus maps/Mandatory_maps/level4.ber
+	./so_long_bonus maps/Mandatory_maps/level5.ber
+	./so_long_bonus maps/Mandatory_maps/level6.ber
 
 .PHONY : all clean fclean re git

@@ -6,96 +6,89 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:05:48 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 20:43:41 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/10 02:39:51 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static void	init_images_1(t_data *map_data) // does what the name says.
+static	void	*protect_image(void *mlx_ptr, char *filename,
+								int *width, int *height)
 {
-	map_data->walls.block_v1 = mlx_xpm_file_to_image(map_data->mlx,
-			"textures/wall/block_wall_v1.xpm", &map_data->walls.img_width,
-			&map_data->walls.img_height);
-	map_data->walls.block_v2 = mlx_xpm_file_to_image(map_data->mlx,
-			"textures/wall/block_wall_v2.xpm", &map_data->walls.img_width,
-			&map_data->walls.img_height);
-	map_data->walls.down_v1 = mlx_xpm_file_to_image(map_data->mlx,
-			"textures/wall/down_wall_v1.xpm", &map_data->walls.img_width,
-			&map_data->walls.img_height);
-	map_data->walls.down_v2 = mlx_xpm_file_to_image(map_data->mlx,
-			"textures/wall/down_wall_v2.xpm", &map_data->walls.img_width,
-			&map_data->walls.img_height);
-	map_data->walls.left_v1 = mlx_xpm_file_to_image(map_data->mlx,
-			"textures/wall/left_wall_v1.xpm", &map_data->walls.img_width,
-			&map_data->walls.img_height);
-	map_data->walls.left_v2 = mlx_xpm_file_to_image(map_data->mlx,
-			"textures/wall/left_wall_v2.xpm", &map_data->walls.img_width,
-			&map_data->walls.img_height);
+	void	*p;
+
+	p = mlx_xpm_file_to_image(mlx_ptr, filename, width, height);
+	if (!p)
+		exit_msg(2, "Texture file not found.", RED, 1);
+	return (p);
 }
 
-static void	init_images_2(t_data *map_data) // does what the name says.
+static void	init_images_1(t_data *game)
 {
-	map_data->componets.player = mlx_xpm_file_to_image(map_data->mlx,
-			"textures/player/skull_1.xpm", &map_data->componets.img_width,
-			&map_data->componets.img_height);
-	map_data->componets.exit = mlx_xpm_file_to_image(map_data->mlx,
-			"textures/exit/exit_1.xpm", &map_data->componets.img_width,
-			&map_data->componets.img_height);
-	map_data->componets.collectible = mlx_xpm_file_to_image(map_data->mlx,
-			"textures/collectible/coin_1.xpm", &map_data->componets.img_width,
-			&map_data->componets.img_height);
-	map_data->floors.floor = mlx_xpm_file_to_image(map_data->mlx,
-			"textures/floor/floor.xpm", &map_data->floors.img_width,
-			&map_data->floors.img_height);
-	map_data->walls.right_v1 = mlx_xpm_file_to_image(map_data->mlx,
-			"textures/wall/right_wall_v1.xpm", &map_data->walls.img_width,
-			&map_data->walls.img_height);
-	map_data->walls.right_v2 = mlx_xpm_file_to_image(map_data->mlx,
-			"textures/wall/right_wall_v2.xpm", &map_data->walls.img_width,
-			&map_data->walls.img_height);
+	game->walls.block_v1 = protect_image(game->mlx,
+			"textures/wall/block_wall_v1.xpm", &game->walls.img_width,
+			&game->walls.img_height);
+	game->walls.block_v2 = protect_image(game->mlx,
+			"textures/wall/block_wall_v2.xpm", &game->walls.img_width,
+			&game->walls.img_height);
+	game->walls.down_v1 = protect_image(game->mlx,
+			"textures/wall/down_wall_v1.xpm", &game->walls.img_width,
+			&game->walls.img_height);
+	game->walls.down_v2 = protect_image(game->mlx,
+			"textures/wall/down_wall_v2.xpm", &game->walls.img_width,
+			&game->walls.img_height);
+	game->walls.left_v1 = protect_image(game->mlx,
+			"textures/wall/left_wall_v1.xpm", &game->walls.img_width,
+			&game->walls.img_height);
+	game->walls.left_v2 = protect_image(game->mlx,
+			"textures/wall/left_wall_v2.xpm", &game->walls.img_width,
+			&game->walls.img_height);
 }
 
-static void	init_images_3(t_data *map_data) // does what the name says.
+static void	init_images_2(t_data *game)
 {
-	map_data->walls.full = mlx_xpm_file_to_image(map_data->mlx,
-			"textures/wall/full_wall.xpm", &map_data->walls.img_width,
-			&map_data->walls.img_height);
-	map_data->walls.top_v1 = mlx_xpm_file_to_image(map_data->mlx,
-			"textures/wall/top_wall_v1.xpm", &map_data->walls.img_width,
-			&map_data->walls.img_height);
-	map_data->walls.top_v2 = mlx_xpm_file_to_image(map_data->mlx,
-			"textures/wall/top_wall_v2.xpm", &map_data->walls.img_width,
-			&map_data->walls.img_height);
-	map_data->walls.down_left = mlx_xpm_file_to_image(map_data->mlx,
-			"textures/wall/down_left_wall.xpm", &map_data->walls.img_width,
-			&map_data->walls.img_height);
-	map_data->walls.down_right = mlx_xpm_file_to_image(map_data->mlx,
-			"textures/wall/down_right_wall.xpm", &map_data->walls.img_width,
-			&map_data->walls.img_height);
+	game->componets.player = protect_image(game->mlx,
+			"textures/player/skull_1.xpm", &game->componets.img_width,
+			&game->componets.img_height);
+	game->componets.exit = protect_image(game->mlx,
+			"textures/exit/exit_1.xpm", &game->componets.img_width,
+			&game->componets.img_height);
+	game->componets.collectible = protect_image(game->mlx,
+			"textures/collectible/coin_1.xpm", &game->componets.img_width,
+			&game->componets.img_height);
+	game->floors.floor = protect_image(game->mlx,
+			"textures/floor/floor.xpm", &game->floors.img_width,
+			&game->floors.img_height);
+	game->walls.right_v1 = protect_image(game->mlx,
+			"textures/wall/right_wall_v1.xpm", &game->walls.img_width,
+			&game->walls.img_height);
+	game->walls.right_v2 = protect_image(game->mlx,
+			"textures/wall/right_wall_v2.xpm", &game->walls.img_width,
+			&game->walls.img_height);
 }
 
-static void	protections(t_data *map_data) // does what the name says.
+static void	init_images_3(t_data *game)
 {
-	if (!map_data->walls.top_v2 || !map_data->walls.block_v2
-		|| !map_data->walls.down_v1 || !map_data->walls.down_v2
-		|| !map_data->walls.left_v1)
-		exit_msg(2, "Texture file not found.", RED, 1);
-	if (!map_data->walls.left_v2 || !map_data->walls.down_left
-		|| !map_data->walls.down_right || !map_data->walls.full)
-		exit_msg(2, "Texture file not found.", RED, 1);
-	if (!map_data->walls.top_v1 || !map_data->walls.right_v2
-		|| !map_data->walls.down_right || !map_data->walls.right_v1)
-		exit_msg(2, "Texture file not found.", RED, 1);
-	if (!map_data->componets.player || !map_data->componets.exit
-		|| !map_data->componets.collectible || !map_data->floors.floor)
-		exit_msg(2, "Texture file not found.", RED, 1);
+	game->walls.full = protect_image(game->mlx,
+			"textures/wall/full_wall.xpm", &game->walls.img_width,
+			&game->walls.img_height);
+	game->walls.top_v1 = protect_image(game->mlx,
+			"textures/wall/top_wall_v1.xpm", &game->walls.img_width,
+			&game->walls.img_height);
+	game->walls.top_v2 = protect_image(game->mlx,
+			"textures/wall/top_wall_v2.xpm", &game->walls.img_width,
+			&game->walls.img_height);
+	game->walls.down_left = protect_image(game->mlx,
+			"textures/wall/down_left_wall.xpm", &game->walls.img_width,
+			&game->walls.img_height);
+	game->walls.down_right = protect_image(game->mlx,
+			"textures/wall/down_right_wall.xpm", &game->walls.img_width,
+			&game->walls.img_height);
 }
 
-void	init_images(t_data *map_data) // does what the name says.
+void	init_images(t_data *game)
 {
-	init_images_1(map_data);
-	init_images_2(map_data);
-	init_images_3(map_data);
-	protections(map_data);
+	init_images_1(game);
+	init_images_2(game);
+	init_images_3(game);
 }

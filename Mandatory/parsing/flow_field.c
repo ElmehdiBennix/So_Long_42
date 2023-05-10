@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:18:53 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 23:08:28 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/10 00:37:03 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	flow_field(char **arr, int x, int y) // recusive function that puts an X on eny allowed to visite area in the map.
+void	flow_field(char **arr, int x, int y)
 {
 	if (arr[x][y] && arr[x][y] != '1' && arr[x][y] != 'X' && arr[x][y] != 'E')
 	{
@@ -26,10 +26,10 @@ void	flow_field(char **arr, int x, int y) // recusive function that puts an X on
 		arr[x][y] = 'X';
 }
 
-char	**valid_path(char **res , char *str) // checks if there is a valid path from the player to the exit and 0 collectibles left meaning the game can be completed depends on the flow_field func.
+char	**valid_path(char **res, char *str)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
 	while (res[++i])

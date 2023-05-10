@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 23:02:27 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/10 00:37:51 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static char	*file_data(int fd) // brings the file data if it exists nd allowed.
+static char	*file_data(int fd)
 {
 	char	*str;
 	char	*row;
@@ -24,18 +24,14 @@ static char	*file_data(int fd) // brings the file data if it exists nd allowed.
 		if (row == NULL)
 			break ;
 		if (row[0] == '\n')
-		{
-			free(str);
-			free(row);
 			exit_msg(2, "New line in map.", RED, 1);
-		}
 		str = ft_strjoin(str, row);
 		free(row);
 	}
 	return (str);
 }
 
-static	void	data_loop(t_data *game, char **res, int x, int len) // collects the data and checks for the errors read exit_msg().
+static	void	data_loop(t_data *game, char **res, int x, int len)
 {
 	int		y;
 	int		comp;
@@ -50,13 +46,13 @@ static	void	data_loop(t_data *game, char **res, int x, int len) // collects the 
 				|| res[x][y] == 'C' || res[x][y] == 'E') && len == comp)
 			collect_data(game, res[x][y], x, y);
 		else
-			exit_msg(2, "Unallowed symbol or Map is not :\033[0;32m rectangular.", RED, 1);
+			exit_msg(2, "Unallowed symbole or Map is not Rectangular.", RED, 1);
 	}
 	if (res[x][y] != '1')
 		exit_msg(2, "Map must be surrounded by walls.", RED, 1);
 }
 
-static	void	valid_map(t_data *game, char **res) // loops over every line of the 2d array to validate.
+static	void	valid_map(t_data *game, char **res)
 {
 	int		x;
 	int		len;
@@ -72,7 +68,7 @@ static	void	valid_map(t_data *game, char **res) // loops over every line of the 
 	set_check(game);
 }
 
-void	read_map(char *map_name, t_data *game) // reads the map and checks if there is a .ber at the end of the arg and if the file exists or not then makes call to other funcs to see if its valid or not.
+void	read_map(char *map_name, t_data *game)
 {
 	int		fd;
 	char	*str;
@@ -88,7 +84,7 @@ void	read_map(char *map_name, t_data *game) // reads the map and checks if there
 	res = ft_split(str, '\n');
 	valid_map(game, res);
 	flow_field(res, game->p_pos.x, game->p_pos.y);
-	game->map = valid_path(res ,str);
+	game->map = valid_path(res, str);
 	if (!game->map)
 		exit_msg(2, "Map was not allocated.", RED, 1);
 }

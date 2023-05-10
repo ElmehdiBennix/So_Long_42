@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:09:42 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 20:48:14 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/10 00:36:45 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static void	move(t_data *game, unsigned int x, unsigned int y) // updates the positions and elements of the map depending on the hooks events comming from the allowed keys in the header file.
+static void	move(t_data *game, unsigned int x, unsigned int y)
 {
 	char	**map;
 
@@ -38,7 +38,7 @@ static void	move(t_data *game, unsigned int x, unsigned int y) // updates the po
 	ft_fprintf(1, "%s Number of moves: %d.\n%s", BLUE, game->moves, DEFAULT);
 }
 
-int	key_hooks(int key_code, t_data *game) // exec the action with the allowed keys to updates the elements of the map depending if its allowed to move there or not ...
+int	key_hooks(int key_code, t_data *game)
 {
 	if ((key_code == MAC_W || key_code == MAC_UP) && under_wall(
 			game->map, game->p_pos.x, game->p_pos.y, 't') == 0)

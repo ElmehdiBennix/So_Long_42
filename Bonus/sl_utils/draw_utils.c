@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 09:54:28 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 23:19:36 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/10 03:10:19 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,33 @@ void	put_image(t_data *game, void *p)
 		game->d_pos.x, game->d_pos.y);
 }
 
-void	draw_terain(t_data *game, char **map, unsigned int w, unsigned int h)
+void	draw_terain(t_data *game, char texture, int enemy_type)
 {
 	put_image(game, game->floors.floor);
-	if (map[h][w] == 'C')
+	if (texture == 'T')
 	{
-		if (map[game->p_pos.x][game->p_pos.y] == 'C')
-			map[game->p_pos.x][game->p_pos.y] = '0';
-		else
-			put_image(game, game->componets.collectible);
+		if (enemy_type == FALSE)
+			put_image(game, game->componets.floor_enemy -> content);
+		else if (enemy_type == TRUE)
+			mlx_put_image_to_window(game->mlx, game->mlx_win,
+				game->componets.wall_enemy -> content,
+				game->d_pos.x, game->d_pos.y - 90);
 	}
-	if (map[h][w] == 'E')
-		put_image(game, game->componets.exit);
+	else if (texture == '6')
+		put_image(game, game->floors.bones);
+	else if (texture == '7')
+		put_image(game, game->floors.head_bone);
+	else if (texture == '8')
+		put_image(game, game->floors.rocks);
+	else if (texture == '9')
+		put_image(game, game->floors.web);
+	else if (texture == 'C')
+	{
+		if (game->map[game->p_pos.x][game->p_pos.y] == 'C')
+			game->map[game->p_pos.x][game->p_pos.y] = '0';
+		else
+			put_image(game, game->componets.collectible -> content);
+	}
 }
 
 void	draw_wall(t_data *game, char **map, int h, int w)

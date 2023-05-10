@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 23:15:11 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/10 01:57:44 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define SO_LONG_H
 
 # include "../utils/inc/utils.h"
-# include <math.h>
 # include <mlx.h>
 
 # define TRUE 1
@@ -32,41 +31,41 @@
 
 typedef struct s_walls
 {
-	void	*top_v1;
-	void	*top_v2;
-	void	*down_v1;
-	void	*down_v2;
-	void	*right_v1;
-	void	*right_v2;
-	void	*left_v1;
-	void	*left_v2;
-	void	*down_right;
-	void	*down_left;
-	void	*block_v1;
-	void	*block_v2;
-	void	*full;
+	void			*top_v1;
+	void			*top_v2;
+	void			*down_v1;
+	void			*down_v2;
+	void			*right_v1;
+	void			*right_v2;
+	void			*left_v1;
+	void			*left_v2;
+	void			*down_right;
+	void			*down_left;
+	void			*block_v1;
+	void			*block_v2;
+	void			*full;
 
-	int		img_width;
-	int		img_height;
-}			t_walls;
+	int				img_width;
+	int				img_height;
+}					t_walls;
 
 typedef struct s_floor
 {
-	void	*floor;
+	void			*floor;
 
-	int		img_height;
-	int		img_width;
-}			t_floor;
+	int				img_height;
+	int				img_width;
+}					t_textures;
 
 typedef struct s_componets
 {
-	void	*player;
-	void	*exit;
-	void	*collectible;
+	void			*player;
+	void			*exit;
+	void			*collectible;
 
-	int		img_height;
-	int		img_width;
-}			t_componets;
+	int				img_height;
+	int				img_width;
+}					t_componets;
 
 typedef struct s_elements
 {
@@ -77,9 +76,9 @@ typedef struct s_elements
 
 typedef struct s_position
 {
-	int			x;
-	int			y;
-}				t_position;
+	int				x;
+	int				y;
+}					t_position;
 
 typedef struct s_data
 {
@@ -92,11 +91,12 @@ typedef struct s_data
 	t_position		p_pos;
 	t_position		d_pos;
 	t_walls			walls;
-	t_floor			floors;
+	t_textures		floors;
 	t_componets		componets;
 	unsigned int	moves;
 }					t_data;
 
+void	so_long(char **av);
 void	read_map(char *str, t_data *game);
 void	open_window(t_data *game);
 void	init_images(t_data *game);
@@ -104,7 +104,7 @@ int		drawing(t_data *game);
 int		key_hooks(int key_code, t_data *game);
 
 void	put_image(t_data *game, void *p);
-void	draw_wall(t_data *game, int h, int w);
+void	draw_wall(t_data *game, char **map, int h, int w);
 void	draw_terain(t_data *game, char **map, unsigned w, unsigned h);
 
 void	ones_row(char *res);
