@@ -6,7 +6,7 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 07:56:09 by ebennix           #+#    #+#              #
-#    Updated: 2023/05/10 06:05:15 by ebennix          ###   ########.fr        #
+#    Updated: 2023/05/10 06:16:32 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ ARCH := utils/utils.a
 
 CC := cc
 
-CFLAGS := -g -Wall -Wextra -Werror -Imlx
+CFLAGS := -Wall -Wextra -Werror -Imlx
 
 HEADER := Mandatory/so_long.h
 
@@ -81,11 +81,11 @@ git :
 	git push
 
 play Bonus:
-	./so_long_bonus maps/Mandatory_maps/level1.ber
-	./so_long_bonus maps/Mandatory_maps/level2.ber
-	./so_long_bonus maps/Mandatory_maps/level3.ber
-	./so_long_bonus maps/Mandatory_maps/level4.ber
-	./so_long_bonus maps/Mandatory_maps/level5.ber
-	./so_long_bonus maps/Mandatory_maps/level6.ber
+	./so_long_bonus maps/bonus_maps/level_1.ber
+	./so_long_bonus maps/bonus_maps/level_2.ber
+	./so_long_bonus maps/bonus_maps/level_3.ber
+	./so_long_bonus maps/bonus_maps/level_4.ber
+	./so_long_bonus maps/bonus_maps/level_5.ber
+	./so_long_bonus maps/bonus_maps/level_6.ber
 
 .PHONY : all clean fclean re git
