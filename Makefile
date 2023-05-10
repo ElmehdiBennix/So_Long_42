@@ -6,7 +6,7 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 07:56:09 by ebennix           #+#    #+#              #
-#    Updated: 2023/05/10 06:16:32 by ebennix          ###   ########.fr        #
+#    Updated: 2023/05/11 00:26:03 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ git :
 	git commit -m "$(m)"
 	git push
 
-play Bonus:
+play : bonus
 	./so_long_bonus maps/bonus_maps/level_1.ber
 	./so_long_bonus maps/bonus_maps/level_2.ber
 	./so_long_bonus maps/bonus_maps/level_3.ber
@@ -88,4 +88,4 @@ play Bonus:
 	./so_long_bonus maps/bonus_maps/level_5.ber
 	./so_long_bonus maps/bonus_maps/level_6.ber
 
-.PHONY : all clean fclean re git
+.PHONY : all clean fclean re git play
