@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 00:45:04 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/10 02:44:53 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/13 04:09:27 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,9 @@ void	read_map(char *map_name, t_data *game)
 		exit_msg(2, "File not found.", RED, 1);
 	str = file_data(fd);
 	res = ft_split(str, '\n');
+	if (!res)
+		exit_msg(2, "Memory problem !", RED, 1);
 	valid_map(game, res);
 	flow_field(res, game->p_pos.x, game->p_pos.y);
 	game->map = valid_path(res, str);
-	if (!game->map)
-		exit_msg(2, "Map was not allocated.", RED, 1);
 }

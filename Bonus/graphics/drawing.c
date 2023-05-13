@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 09:09:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/10 05:50:14 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/13 05:07:15 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,20 +91,21 @@ static void	draw_last(t_data *game, char **map)
 
 int	drawing(t_data *game)
 {
-	char	**map;
+	char	*toa;
 
-	map = game->map;
+	toa = ft_itoa(game->moves);
 	mlx_clear_window(game->mlx, game->mlx_win);
-	draw_first(game, map);
-	draw_mid(game, map);
-	draw_last(game, map);
+	draw_first(game, game->map);
+	draw_mid(game, game->map);
+	draw_last(game, game->map);
 	mlx_put_image_to_window(game->mlx, game->mlx_win,
 		game->componets.player->content,
 		96 * game->p_pos.y, 96 * game->p_pos.x);
 	mlx_string_put(game->mlx, game->mlx_win, 10,
 		10, 0xFFFF00, "Moves = ");
 	mlx_string_put(game->mlx, game->mlx_win, 90,
-		10, 0xFFFF00, ft_itoa(game->moves));
+		10, 0xFFFF00, toa);
+	free(toa);
 	next_frame(game);
 	return (0);
 }

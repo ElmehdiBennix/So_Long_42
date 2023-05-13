@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:05:48 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/10 04:23:09 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/13 05:10:56 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ static	void	init_images_7(t_data *game)
 	ft_lstcreate_back(&game->componets.exit, protect_image(
 			game->mlx, "textures/exit/exit_4.xpm",
 			&game->componets.img_width, &game->componets.img_height));
+	game->componets.tmp = game->componets.exit;
 	ft_lstcreate_back(&game->componets.floor_enemy, protect_image(
 			game->mlx, "textures/enemy/floor_enemy/peaks_4.xpm",
 			&game->componets.img_width, &game->componets.img_height));

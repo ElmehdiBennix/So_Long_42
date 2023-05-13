@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 05:05:48 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/09 21:14:23 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/13 04:06:02 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ typedef struct s_list
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
-
-// # define NULL (void *)0
 
 int					ft_printchar(int fd, char c);
 int					ft_printstr(int fd, char *c);

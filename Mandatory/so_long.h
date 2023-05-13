@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/10 01:57:44 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/13 05:30:40 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,7 @@ int		under_wall(char **map, int x, int y, int flag);
 
 void	flow_field(char **arr, int x, int y);
 char	**valid_path(char **res, char *str);
+void	free_game(t_data *game);
+int		exit_game(t_data *game);
 
 #endif

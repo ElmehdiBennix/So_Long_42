@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 06:21:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/10 03:11:55 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/13 05:32:11 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_componets
 	t_list			*collectible;
 	t_list			*floor_enemy;
 	t_list			*wall_enemy;
+	t_list			*tmp;
 
 	int				enemy_status;
 	int				img_height;
@@ -133,5 +134,7 @@ void	init_images_1(t_data *game);
 void	init_images_2(t_data *game);
 void	init_images_3(t_data *game);
 void	init_images_4(t_data *game);
+void	free_game(t_data *game);
+int		exit_game(t_data *game);
 
 #endif

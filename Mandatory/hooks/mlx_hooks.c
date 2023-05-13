@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 07:09:42 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/10 00:36:45 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/13 05:21:57 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ static void	move(t_data *game, unsigned int x, unsigned int y)
 	}
 	else if (map[game->p_pos.x + x][game->p_pos.y + y] == 'E' &&
 				game->elements.c_count == 0)
+	{
+		free_game(game);
 		exit_msg(1, "U escaped good job.", YELLOW, 0);
+	}
 	ft_fprintf(1, "%s Number of moves: %d.\n%s", BLUE, game->moves, DEFAULT);
 }
 
@@ -53,6 +56,6 @@ int	key_hooks(int key_code, t_data *game)
 			game->map, game->p_pos.x, game->p_pos.y, 'r') == 0)
 		move(game, 0, +1);
 	else if (key_code == MAC_ESC)
-		exit_msg(1, "Quit.", YELLOW, 0);
+		exit_game(game);
 	return (0);
 }

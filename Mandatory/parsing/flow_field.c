@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:18:53 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/10 00:37:03 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/13 05:24:56 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ char	**valid_path(char **res, char *str)
 	free2d(res);
 	res = ft_split(str, '\n');
 	free(str);
+	if (!res)
+		exit_msg(2, "Memory problem !", RED, 1);
 	return (res);
 }

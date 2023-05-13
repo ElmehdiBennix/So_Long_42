@@ -6,7 +6,7 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 07:56:09 by ebennix           #+#    #+#              #
-#    Updated: 2023/05/11 00:26:03 by ebennix          ###   ########.fr        #
+#    Updated: 2023/05/13 05:27:15 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ ARCH := utils/utils.a
 
 CC := cc
 
-CFLAGS := -Wall -Wextra -Werror -Imlx
+CFLAGS := -g -Wall -Wextra -Werror -Imlx
 
 HEADER := Mandatory/so_long.h
 
@@ -27,11 +27,13 @@ HEADER := Bonus/so_long.h
 FILES := Mandatory/so_long					Mandatory/parsing/read_map			Mandatory/graphics/drawing		\
 		 Mandatory/hooks/mlx_hooks			Mandatory/graphics/init_images		Mandatory/graphics/init_window	\
 		 Mandatory/sl_utils/check_utils		Mandatory/sl_utils/draw_utils		Mandatory/parsing/flow_field	\
+		 Mandatory/sl_utils/free_game																				\
 
-FILES_B := Bonus/so_long 					Bonus/parsing/read_map			Bonus/graphics/drawing		\
-		   Bonus/hooks/mlx_hooks			Bonus/graphics/init_window		Bonus/graphics/sprites		\
-		   Bonus/sl_utils/check_utils		Bonus/sl_utils/draw_utils		Bonus/parsing/flow_field 	\
-		   Bonus/graphics/init_images_1	 	Bonus/graphics/init_images_2								\
+FILES_B := Bonus/so_long 					Bonus/parsing/read_map			Bonus/graphics/drawing			\
+		   Bonus/hooks/mlx_hooks			Bonus/graphics/init_window		Bonus/graphics/sprites			\
+		   Bonus/sl_utils/check_utils		Bonus/sl_utils/draw_utils		Bonus/parsing/flow_field 		\
+		   Bonus/graphics/init_images_1	 	Bonus/graphics/init_images_2	Bonus/sl_utils/free_game		\
+
 
 SRC := $(FILES:=.c)
 

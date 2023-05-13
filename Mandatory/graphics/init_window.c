@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 09:43:15 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/10 04:32:46 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/13 01:25:51 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@ void	open_window(t_data *game)
 	if (wid > 2980 || hit > 1550)
 		exit_msg(2, "Map is valid but its too big for the window.", GREEN, 0);
 	game->mlx = mlx_init();
-	game->mlx_win = mlx_new_window(game->mlx,
-			wid, hit, "traps and dungeons");
+	game->mlx_win = mlx_new_window(game->mlx, wid, hit, "traps and dungeons");
 }
