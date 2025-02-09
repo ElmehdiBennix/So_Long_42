@@ -14,7 +14,6 @@
 # define COLORS_H
 
 //Regular text COLORS
-
 # define DEFAULT "\033[0;37m"
 # define BLACK "\033[0;30m"
 # define RED "\033[0;31m"

@@ -11,29 +11,27 @@
 # **************************************************************************** #
 
 EXE := so_long
-
 EXE_B := so_long_bonus
 
-ARCH := utils/utils.a
+#############################################################################################################
 
 CC := cc
-
 CFLAGS := -g -Wall -Wextra -Werror -Imlx
 
 HEADER := Mandatory/so_long.h
-
 HEADER := Bonus/so_long.h
+
+ARC := utils/utils.a
 
 FILES := Mandatory/so_long					Mandatory/parsing/read_map			Mandatory/graphics/drawing		\
 		 Mandatory/hooks/mlx_hooks			Mandatory/graphics/init_images		Mandatory/graphics/init_window	\
 		 Mandatory/sl_utils/check_utils		Mandatory/sl_utils/draw_utils		Mandatory/parsing/flow_field	\
-		 Mandatory/sl_utils/free_game																				\
+		 Mandatory/sl_utils/free_game
 
 FILES_B := Bonus/so_long 					Bonus/parsing/read_map			Bonus/graphics/drawing			\
 		   Bonus/hooks/mlx_hooks			Bonus/graphics/init_window		Bonus/graphics/sprites			\
 		   Bonus/sl_utils/check_utils		Bonus/sl_utils/draw_utils		Bonus/parsing/flow_field 		\
 		   Bonus/graphics/init_images_1	 	Bonus/graphics/init_images_2	Bonus/sl_utils/free_game		\
-
 
 SRC := $(FILES:=.c)
 
@@ -47,6 +45,7 @@ RM := rm -rf
 
 m := MakefileAutoPush
 
+#############################################################################################################
 
 all : $(EXE)
 
@@ -56,10 +55,10 @@ library:
 	make -C utils
 
 $(EXE) : $(OBJ)
-	$(CC) $(OBJ) $(ARCH) -lmlx -framework OpenGL -framework AppKit -o $(EXE)
+	$(CC) $(OBJ) $(ARC) -lmlx -framework OpenGL -framework AppKit -o $(EXE)
 
 $(EXE_B) : $(OBJ_B)
-	$(CC) $(OBJ_B) $(ARCH) -lmlx -framework OpenGL -framework AppKit -o $(EXE_B)
+	$(CC) $(OBJ_B) $(ARC) -lmlx -framework OpenGL -framework AppKit -o $(EXE_B)
 
 %.o : %.c $(HEADER) $(HEADER_B) | library
 	$(CC) $(CFLAGS) -c $< -o $@
