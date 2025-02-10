@@ -70,7 +70,7 @@ The program returns an `Error` message for the following cases:
 - `make clean`: Remove object files.
 - `make fclean`: Remove executables and object files.
 - `make re`: Recompile everything.
-- `make play`: Compile and run the game with a default map.
+- `make play`: Compile and run the game with a default maps.
 
 ## License
 This project is developed for educational purposes as part of the 42 curriculum.
