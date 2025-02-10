@@ -3,10 +3,8 @@
 ## Introduction
 `so_long` is a small 2D game that utilizes textures, sprites, and basic gameplay mechanics. The goal is to guide a character through a map, collecting items and reaching the exit while avoiding obstacles.
 
-usefull websites for the project :
-
+usefull websites for the project:
 https://lospec.com/pixel-art-scaler/
-
 https://anyconv.com/png-to-xpm-converter/
 
 ## Features
