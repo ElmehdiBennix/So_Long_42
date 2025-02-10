@@ -75,7 +75,7 @@ fclean : clean
 
 re : fclean all
 
-git :
+push :
 	git add .
 	git status
 	git commit -m "$(m)"
@@ -89,4 +89,4 @@ play : bonus
 	./so_long_bonus maps/bonus_maps/level_5.ber
 	./so_long_bonus maps/bonus_maps/level_6.ber
 
-.PHONY : all clean fclean re git play
+.PHONY : all clean fclean re push play
