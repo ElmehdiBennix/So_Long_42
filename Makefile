@@ -89,4 +89,6 @@ play : bonus
 	./so_long_bonus maps/bonus_maps/level_5.ber
 	./so_long_bonus maps/bonus_maps/level_6.ber
 
+# **************************************************************************** #
+
 .PHONY : all clean fclean re push play
